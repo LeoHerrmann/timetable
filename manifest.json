@@ -1,6 +1,6 @@
 {
-    "name": "Stundenplan",
-    "short_name": "Stundenplan",
+    "name": "Timetable",
+    "short_name": "Timetable",
     "icons": [
         {
             "src": "icon.png",
@@ -8,7 +8,7 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "/stundenplan",
+    "start_url": "/",
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#EEE"
