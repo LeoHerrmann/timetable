@@ -15,7 +15,7 @@ window.onload = function() {
 		var counter = 0;
 		
 		
-		for (entry of timetable) {
+		for (entry of config.timetable) {
 			var newButton = document.createElement("button");
 			
 			newButton.innerText = entry.day.substring(0,2);
@@ -48,7 +48,7 @@ window.onload = function() {
 
 
 	function fill_periods_container() {
-		for (period of periods) {
+		for (period of config.periods) {
 			var periodDiv = document.createElement("div");
 			var startSpan = document.createElement("span");
 			var endSpan = document.createElement("span");
@@ -67,7 +67,7 @@ window.onload = function() {
 	function create_subject_divs() {
 		var subjectsContainer = document.getElementById("subjects_container");
 
-		for (let i = 0; i < periods.length; i++) {
+		for (let i = 0; i < config.periods.length; i++) {
 			var subjectDiv = document.createElement("div");
 
 			subjectDiv.classList.add("subject");
@@ -91,7 +91,7 @@ window.onload = function() {
 
 		var headerButtons = document.querySelectorAll("header > button");
 
-		if (dayNumber >= timetable.length) {
+		if (dayNumber >= config.timetable.length) {
 			headerButtons[0].classList.add("open");
 			fill_subject_divs(0);
 		}
@@ -108,14 +108,14 @@ window.onload = function() {
 function fill_subject_divs(dayNumber) {
 	var subjectDivs = document.querySelectorAll(".subject");
 
-	for (let period = 0; period < timetable[dayNumber].schedule.length; period++) {
-		var subjectName = timetable[dayNumber].schedule[period].subject;
-		var subjectRoom = timetable[dayNumber].schedule[period].room;
+	for (let period = 0; period < config.timetable[dayNumber].schedule.length; period++) {
+		var subjectName = config.timetable[dayNumber].schedule[period].subject;
+		var subjectRoom = config.timetable[dayNumber].schedule[period].room;
 
 		if (subjectName != "") {
 			subjectDivs[period].classList.remove("empty");
 
-			subjectDivs[period].style.color = colors[subjectName];
+			subjectDivs[period].style.color = config.colors[subjectName];
 
 			subjectDivs[period].querySelectorAll("span")[0].innerText = subjectName;
 			subjectDivs[period].querySelectorAll("span")[1].innerText = subjectRoom;
