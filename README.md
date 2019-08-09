@@ -4,7 +4,7 @@ A web application for displaying your timetable
 
 
 ## Usage
-I suggest to use it the following way:
+I suggest using it the following way:
 
 - Edit configuration.js to match your schedule and subjects
 - Copy all files onto your phone
