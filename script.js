@@ -3,9 +3,10 @@ window.onload = function() {
 	fill_periods_container();
 	create_subject_divs();
 	show_current_timetable();
+	add_swipe_events();
 
 	setTimeout(function() {
-		show_subject_divs();
+		timetable.subject_divs.show();
 	}, 200);
 
 
@@ -31,12 +32,7 @@ window.onload = function() {
 
 				e.target.classList.add("open");
 
-				hide_subject_divs();
-
-				setTimeout(function() {
-					show_subject_divs();
-					fill_subject_divs(e.target.getAttribute("data-dayNumber"));
-				}, 450);
+				timetable.display_for_day(e.target.getAttribute("data-dayNumber"));
 			});
 			
 			
@@ -93,53 +89,86 @@ window.onload = function() {
 
 		if (dayNumber >= config.timetable.length) {
 			headerButtons[0].classList.add("open");
-			fill_subject_divs(0);
+			timetable.subject_divs.fill(0);
 		}
 		else {
 			headerButtons[dayNumber].classList.add("open");
-			fill_subject_divs(dayNumber);
+			timetable.subject_divs.fill(dayNumber);
 		}
+	}
+	
+	
+	
+	function add_swipe_events() {
+		window.ontouchstart = function(e_start) {
+			var touch_start_position = e_start.touches[0].clientX;
+
+			window.ontouchmove = function(e_end) {
+				var touch_end_position = e_end.touches[0].clientX;
+
+				if (touch_start_position < touch_end_position - 75) {
+					console.log("right swipe");
+					
+					window.ontouchmove = null;
+				}
+				else if (touch_start_position > touch_end_position + 75) {
+					console.log("left swipe");
+					window.ontouchmove = null;
+				}
+				
+				
+			};
+		};
 	}
 };
 
 
+var timetable = {
+	display_for_day: function(dayNumber) {
+		timetable.subject_divs.hide();
 
+		setTimeout(function() {
+			timetable.subject_divs.fill(dayNumber);
+			timetable.subject_divs.show();
+		}, 450);
+	},
+	
+	subject_divs: {
+		fill: function (dayNumber) {
+			var subjectDivs = document.querySelectorAll(".subject");
 
-function fill_subject_divs(dayNumber) {
-	var subjectDivs = document.querySelectorAll(".subject");
+			for (let period = 0; period < config.timetable[dayNumber].schedule.length; period++) {
+				var subjectName = config.timetable[dayNumber].schedule[period].subject;
+				var subjectRoom = config.timetable[dayNumber].schedule[period].room;
 
-	for (let period = 0; period < config.timetable[dayNumber].schedule.length; period++) {
-		var subjectName = config.timetable[dayNumber].schedule[period].subject;
-		var subjectRoom = config.timetable[dayNumber].schedule[period].room;
+				if (subjectName != "") {
+					subjectDivs[period].classList.remove("empty");
 
-		if (subjectName != "") {
-			subjectDivs[period].classList.remove("empty");
+					subjectDivs[period].style.color = config.colors[subjectName];
 
-			subjectDivs[period].style.color = config.colors[subjectName];
+					subjectDivs[period].querySelectorAll("span")[0].innerText = subjectName;
+					subjectDivs[period].querySelectorAll("span")[1].innerText = subjectRoom;
+				}
+				else {
+					subjectDivs[period].classList.add("empty");
+				}
+			}
+		},
+		
+		show: function() {
+			var subjectDivs = document.querySelectorAll(".subject");
 
-			subjectDivs[period].querySelectorAll("span")[0].innerText = subjectName;
-			subjectDivs[period].querySelectorAll("span")[1].innerText = subjectRoom;
+			for (div of subjectDivs) {
+				div.classList.remove("hidden");
+			}
+		},
+		
+		hide: function() {
+			var subjectDivs = document.querySelectorAll(".subject");
+
+			for (div of subjectDivs) {
+				div.classList.add("hidden");
+			}
 		}
-		else {
-			subjectDivs[period].classList.add("empty");
-		}
 	}
-}
-
-
-
-function hide_subject_divs() {
-	var subjectDivs = document.querySelectorAll(".subject");
-
-	for (div of subjectDivs) {
-		div.classList.add("hidden");
-	}
-}
-
-function show_subject_divs() {
-	var subjectDivs = document.querySelectorAll(".subject");
-
-	for (div of subjectDivs) {
-		div.classList.remove("hidden");
-	}
-}
+};
