@@ -5,10 +5,6 @@ window.onload = function() {
 	show_current_timetable();
 	add_swipe_events();
 
-	setTimeout(function() {
-		timetable.subject_divs.show();
-	}, 200);
-
 
 
 	function create_header_buttons() {
@@ -89,42 +85,46 @@ window.onload = function() {
 
 		if (dayNumber >= config.timetable.length) {
 			headerButtons[0].classList.add("open");
-			timetable.subject_divs.fill(0);
+			timetable.display_for_day(0);
 		}
 		else {
 			headerButtons[dayNumber].classList.add("open");
-			timetable.subject_divs.fill(dayNumber);
+			timetable.display_for_day(dayNumber);
 		}
 	}
 	
 	
 	
 	function add_swipe_events() {
-		window.ontouchstart = function(e_start) {
+		var timetable_div = document.getElementById("timetable");
+	
+		timetable_div.ontouchstart = function(e_start) {
 			var touch_start_position = e_start.touches[0].clientX;
 
-			window.ontouchmove = function(e_end) {
+			timetable_div.ontouchmove = function(e_end) {
 				var touch_end_position = e_end.touches[0].clientX;
 
 				if (touch_start_position < touch_end_position - 75) {
-					console.log("right swipe");
-					
-					window.ontouchmove = null;
+					timetable_div.ontouchmove = null;
+					timetable.display_next_day();
 				}
 				else if (touch_start_position > touch_end_position + 75) {
-					console.log("left swipe");
-					window.ontouchmove = null;
+					timetable_div.ontouchmove = null;
+					timetable.display_previous_day();
 				}
-				
-				
 			};
 		};
 	}
 };
 
 
+
 var timetable = {
+	currently_shown_day_number: 0,
+
 	display_for_day: function(dayNumber) {
+		timetable.currently_shown_day_number = dayNumber;
+	
 		timetable.subject_divs.hide();
 
 		setTimeout(function() {
@@ -132,6 +132,29 @@ var timetable = {
 			timetable.subject_divs.show();
 		}, 450);
 	},
+	
+	
+	display_previous_day: function() {
+		var previous_day_number;
+		var headerButtons = document.querySelectorAll("header > button");
+		
+		if (timetable.currently_shown_day_number != 0) {
+			previous_day_number = parseInt(timetable.currently_shown_day_number) - 1;
+			headerButtons[previous_day_number].click();
+		}
+	},
+	
+	
+	display_next_day: function() {
+		var next_day_number;
+		var headerButtons = document.querySelectorAll("header > button");
+	
+		if (timetable.currently_shown_day_number != config.timetable.length - 1) {
+			next_day_number = parseInt(timetable.currently_shown_day_number) + 1;
+			headerButtons[next_day_number].click();
+		}
+	},
+	
 	
 	subject_divs: {
 		fill: function (dayNumber) {
@@ -155,6 +178,7 @@ var timetable = {
 			}
 		},
 		
+		
 		show: function() {
 			var subjectDivs = document.querySelectorAll(".subject");
 
@@ -162,6 +186,7 @@ var timetable = {
 				div.classList.remove("hidden");
 			}
 		},
+		
 		
 		hide: function() {
 			var subjectDivs = document.querySelectorAll(".subject");
