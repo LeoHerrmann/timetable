@@ -106,11 +106,11 @@ window.onload = function() {
 
 				if (touch_start_position < touch_end_position - 75) {
 					timetable_div.ontouchmove = null;
-					timetable.display_next_day();
+					timetable.display_previous_day();
 				}
 				else if (touch_start_position > touch_end_position + 75) {
 					timetable_div.ontouchmove = null;
-					timetable.display_previous_day();
+					timetable.display_next_day();
 				}
 			};
 		};
