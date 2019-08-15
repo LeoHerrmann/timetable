@@ -1,17 +1,17 @@
 # Timetable
-A web application for displaying your timetable
+A simple web application for keeping track of your schedule
 
 
 
-## Usage
-I suggest using it the following way:
+## How to use
+I recommend using it the following way:
 
-- Edit configuration.js to match your schedule and subjects
-- Copy all files onto your phone
-- Open index.html using your phone's browser
-- Add it to your home screen, so you can use it like an app
+- Clone or download the files
+- Edit configuration.js to match your schedule and subjects and preferred colors (Sorry, I haven't implemented a more user friendly way yet...)
+- Open index.html using a web browser
+- Create a shortcut to your home screen or desktop for faster access
 
 
 
-## Screenshots
+## Screenshot
 ![Screenshot](https://user-images.githubusercontent.com/53840228/62796433-898e8880-bad9-11e9-8ad7-f216ac90f02b.png)
