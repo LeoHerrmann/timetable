@@ -3,8 +3,8 @@ A simple web application for keeping track of your schedule
 
 
 
-## How to use
-I recommend using it the following way:
+## Installation and setup
+I recommend proceeding the following way:
 
 - Clone or download the files
 - Edit configuration.js to match your schedule and subjects and preferred colors (Sorry, I haven't implemented a more user friendly way yet...)
