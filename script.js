@@ -1,4 +1,5 @@
 window.onload = function() {
+	translator.translate();
 	dom_setup();
 	add_navigation_events();
 	timetable.display_current();

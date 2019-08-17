@@ -1,4 +1,6 @@
 var config = {
+	language: "en",
+
 	timetable: [
 		{
 			day: "Monday",
