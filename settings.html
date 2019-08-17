@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title data-translate="timetable"></title>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<link rel="stylesheet" type="text/css" href="settings.css"/>
+		<script src="configuration.js"></script>
+		<script src="translator.js"></script>
+		<script src="settings.js"></script>
+
+
+		<link rel="manifest" href="manifest.json"/>
+		<meta name="theme-color" content="#FFFFFF"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Stundenplan">
+		<link rel="apple-touch-icon" href="icon.png">
+	</head>
+
+
+
+	<body>
+		<header>
+			<h1 data-translate="settings"></h1>
+		</header>
+		
+		<div id="settings_container">
+			<div class="settings_group">
+				<h2>General</h2>
+		
+				<div class="input_group">
+					<label data-translate="language: " for="language_input"></label>
+					<input type="text" name="language_input"/>
+				</div>
+				
+				<div class="input_group">
+					<button>Backup</button>
+					<button>Restore</button>
+				</div>
+				
+				<div class="input_group">
+					<button onclick="config.reset_data();">Reset</button>
+				</div>
+			</div>
+		
+		
+			<div id="color_settings_group" class="settings_group">
+				<h2>Colors</h2>
+			</div>
+		
+		
+			<div class="settings_group">
+				<h2>Schedules</h2>
+		
+				<!--<label data-translate="language: " for="language_input"></label>
+				<input type="text" name="language_input"/>-->
+			</div>
+		
+		
+			<div class="settings_group">
+				<h2>Timetable</h2>
+		
+				<!--<label data-translate="language: " for="language_input"></label>
+				<input type="text" name="language_input"/>-->
+			</div>
+			
+			
+			<button data-translate="save" onclick="save_settings();"></button>
+		</div>
+	</body>
+</html>

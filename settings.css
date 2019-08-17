@@ -1,0 +1,19 @@
+input, button {
+    font-size: 1rem;
+}
+
+#settings_container {
+    padding: var(--space-0);
+}
+.settings_group {
+    background: #FFF;
+    padding: var(--space--1) var(--space-0);
+    margin-bottom: var(--space-0);
+    border-radius: 5px;
+}
+.settings_group > h2 {
+    margin: 0;
+}
+.input_group {
+    margin-top: var(--space--2);
+}
