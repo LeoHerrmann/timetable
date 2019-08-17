@@ -47,9 +47,10 @@ h1 {
 	margin: 0;
 	line-height: var(--space-5);
 	font-size: var(--space-1);
+	text-align: center;
     background: #FFF;
-    text-align: center;
-    padding-top: var(--space-1);
+    padding: var(--space-0);
+    padding-bottom: 0;
 }
 
 

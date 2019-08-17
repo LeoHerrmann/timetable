@@ -1,7 +1,7 @@
 var config = {
 	timetable: [
 		{
-			day: "Montag",
+			day: "Monday",
 			schedule: [
 				{subject: "Physics", room: 321},
 				{subject: "Geography", room:304},
@@ -17,7 +17,7 @@ var config = {
 		},
 
 		{
-			day: "Dienstag",
+			day: "Tuesday",
 			schedule: [
 				{subject: "Computer Science", room: 312},
 				{subject: "German", room: 208},
@@ -33,7 +33,7 @@ var config = {
 		},
 
 		{
-			day: "Mittwoch",
+			day: "Wednesday",
 			schedule: [
 				{subject: "Geography", room:306},
 				{subject: "Religion", room:209},
@@ -49,7 +49,7 @@ var config = {
 		},
 
 		{
-			day: "Donnerstag",
+			day: "Thursday",
 			schedule: [
 				{subject: "Physics", room:321},
 				{subject: "History", room:304},
@@ -65,7 +65,7 @@ var config = {
 		},
 
 		{
-			day: "Freitag",
+			day: "Friday",
 			schedule: [
 				{subject: "Physics", room:321},
 				{subject: "Physics", room:321},
@@ -76,7 +76,8 @@ var config = {
 				{subject: "Sport", room:"SHG"},
 				{subject: "Sport", room:"SHG"},
 				{subject: "", room: ""},
-				{subject: "", room: ""}			]
+				{subject: "", room: ""}
+			]
 		}
 	],
 	
