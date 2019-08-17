@@ -4,6 +4,7 @@
     padding: var(--space-0);
     padding-bottom: 0;
     background: #FFF;
+    border-bottom: 1px solid #FFF;
 }
 #collapsing_header > a {
 	float:right;
