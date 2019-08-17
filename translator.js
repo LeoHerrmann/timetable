@@ -12,14 +12,26 @@ var translator = {
             "timetable": "Timetable",
             "settings": "Settings",
             "language: ": "Language:",
-            "save": "Save"
+            "save": "Save",
+            "general": "General",
+            "backup": "Backup",
+            "restore": "Restore",
+            "reset": "Reset",
+            "colors": "Colors",
+            "periods": "Periods"
         },
         
         de: {
             "timetable": "Stundenplan",
             "settings": "Einstellungen",
             "language: ": "Sprache:",
-            "save": "Save"
+            "save": "Speichern",
+            "general": "Allgemein",
+            "backup": "Backup",
+            "restore": "Wiederherstellen",
+            "reset": "Zurücksetzen",
+            "colors": "Farben",
+            "periods": "Zeiten"
         }
     }
 }

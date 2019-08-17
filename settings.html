@@ -29,40 +29,40 @@
 		
 		<div id="settings_container">
 			<div class="settings_group">
-				<h2>General</h2>
+				<h2 data-translate="general">General</h2>
 		
 				<div class="input_group">
-					<label data-translate="language: " for="language_input"></label>
+					<label data-translate="language: " for="language_input">Language:</label>
 					<input type="text" name="language_input"/>
 				</div>
 				
 				<div class="input_group">
-					<button>Backup</button>
-					<button>Restore</button>
+					<button data-translate="backup">Backup</button>
+					<button data-translate="restore">Restore</button>
 				</div>
 				
 				<div class="input_group">
-					<button class="negative" onclick="config.reset_data();">Reset</button>
+					<button class="negative" onclick="config.reset_data();" data-translate="reset">Reset</button>
 				</div>
 			</div>
 		
 		
 			<div id="color_settings_group" class="settings_group">
-				<h2>Colors</h2>
+				<h2 data-translate="colors">Colors</h2>
 			</div>
 		
 		
 			<div class="settings_group">
-				<h2>Schedules</h2>
+				<h2 data-translate="periods">Periods</h2>
 			</div>
 		
 		
 			<div class="settings_group">
-				<h2>Timetable</h2>
+				<h2 data-translate="timetable">Timetable</h2>
 			</div>
 			
 			
-			<button class="positive" data-translate="save" onclick="save_settings();">Save</button>
+			<button class="positive" data-translate="save" onclick="save_settings();" data-translate="save">Save</button>
 		</div>
 	</body>
 </html>
