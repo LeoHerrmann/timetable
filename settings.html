@@ -5,7 +5,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title data-translate="timetable"></title>
-		<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<link rel="stylesheet" type="text/css" href="general.css"/>
 		<link rel="stylesheet" type="text/css" href="settings.css"/>
 		<script src="configuration.js"></script>
 		<script src="translator.js"></script>
@@ -42,7 +42,7 @@
 				</div>
 				
 				<div class="input_group">
-					<button onclick="config.reset_data();">Reset</button>
+					<button class="negative" onclick="config.reset_data();">Reset</button>
 				</div>
 			</div>
 		
@@ -54,21 +54,15 @@
 		
 			<div class="settings_group">
 				<h2>Schedules</h2>
-		
-				<!--<label data-translate="language: " for="language_input"></label>
-				<input type="text" name="language_input"/>-->
 			</div>
 		
 		
 			<div class="settings_group">
 				<h2>Timetable</h2>
-		
-				<!--<label data-translate="language: " for="language_input"></label>
-				<input type="text" name="language_input"/>-->
 			</div>
 			
 			
-			<button data-translate="save" onclick="save_settings();"></button>
+			<button class="positive" data-translate="save" onclick="save_settings();">Save</button>
 		</div>
 	</body>
 </html>

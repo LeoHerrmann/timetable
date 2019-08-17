@@ -1,5 +1,8 @@
-input, button {
-    font-size: 1rem;
+
+
+header {
+    padding: var(--space-0);
+    padding-bottom: 0;
 }
 
 #settings_container {
@@ -14,6 +17,15 @@ input, button {
 .settings_group > h2 {
     margin: 0;
 }
-.input_group {
+
+.settings_group > * + * {
     margin-top: var(--space--2);
+}
+
+.input_group > * + * {
+    margin-left: var(--space--2);
+}
+
+#color_settings_group > .input_group > button {
+    background-color: #EEE;
 }

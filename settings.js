@@ -44,9 +44,12 @@ function show_options() {
         
             input_group.classList.add("input_group");
             subject_input.value = subject_value;
+            subject_input.setAttribute("size", 15);
             color_input.value = color_value;
+            color_input.setAttribute("size", 6);
             
             remove_button.innerText = "X";
+            remove_button.classList.add("negative");
             remove_button.onclick = function(e) {
                 e.target.parentElement.remove();
             }

@@ -11,14 +11,14 @@ var translator = {
         en: {
             "timetable": "Timetable",
             "settings": "Settings",
-            "language: ": "Language: ",
+            "language: ": "Language:",
             "save": "Save"
         },
         
         de: {
             "timetable": "Stundenplan",
             "settings": "Einstellungen",
-            "language: ": "Sprache: ",
+            "language: ": "Sprache:",
             "save": "Save"
         }
     }

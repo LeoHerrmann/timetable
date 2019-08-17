@@ -1,0 +1,97 @@
+:root {
+	--ratio: 1.27;
+	--space-6: calc(var(--space-5) * var(--ratio));
+	--space-5: calc(var(--space-4) * var(--ratio));
+	--space-4: calc(var(--space-3) * var(--ratio));
+	--space-3: calc(var(--space-2) * var(--ratio));
+	--space-2: calc(var(--space-1) * var(--ratio));
+	--space-1: calc(var(--space-0) * var(--ratio));
+	--space-0: 1rem;
+	--space--1: calc(var(--space-0) / var(--ratio));
+	--space--2: calc(var(--space--1) / var(--ratio));
+	--space--3: calc(var(--space--2) / var(--ratio));
+} 
+
+
+
+
+@font-face {
+	font-family: "Montserrat";
+	font-weight: 400;
+	src: url("Montserrat/Montserrat-Medium.ttf");
+}
+@font-face {
+	font-family: "Montserrat";
+	font-weight: 600;
+	src: url("Montserrat/Montserrat-Bold.ttf");
+}
+
+
+
+
+
+body {
+	line-height: 1.27;
+	margin: 0;
+	font-family: "Montserrat", sans-serif;
+	background-color: #EEE;
+}
+
+
+
+header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 5;
+	background-color: #FFF;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+h1 {
+	font-size: var(--space-2);
+	line-height: var(--space-5);
+	margin: 0;
+	display: inline-block;
+}
+h2 {
+	font-size: var(--space-1);
+}
+
+
+
+
+
+input, button {
+    font-size: var(--space--1);
+    font-family: "Montserrat", sans-serif;
+    height: var(--space-3);
+    border:0;
+	padding: 0 var(--space--1);
+	border-radius: 5px;
+}
+input {
+	background: #eee;
+}
+
+button {
+	background-color: #FFF;
+	text-transform: uppercase;
+	font-weight: 600;
+	transition-duration: 0.2s;
+}
+button.positive {
+	color: #0BF;
+}
+button.negative {
+	color: #F53;
+}
+button:active {
+	background-color: #EEE;
+}
