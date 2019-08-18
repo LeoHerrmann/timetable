@@ -22,10 +22,28 @@ header {
     margin-top: var(--space--2);
 }
 
+
+.input_group {
+    display: flex;
+    line-height: var(--space-3);
+}
 .input_group > * + * {
     margin-left: var(--space--2);
 }
 
-#color_settings_group > .input_group > button {
+#color_settings_group > .input_group > input:nth-of-type(1) {
+    flex-grow: 1;
+}
+
+#color_settings_group > .input_group > button, #periods_settings_group > .input_group > button {
     background-color: #EEE;
+}
+
+#periods_settings_group > .input_group {
+    
+
+}
+
+#periods_settings_group > .input_group > input {
+    flex-basis: 100%;
 }
