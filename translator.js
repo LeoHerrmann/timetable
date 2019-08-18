@@ -23,7 +23,8 @@ var translator = {
             "restore": "Restore",
             "reset": "Reset",
             "colors": "Colors",
-            "periods": "Periods"
+            "periods": "Periods",
+            "add": "Add"
         },
         
         de: {
@@ -32,11 +33,12 @@ var translator = {
             "language: ": "Sprache:",
             "save": "Speichern",
             "general": "Allgemein",
-            "backup": "Backup",
+            "backup": "Sichern",
             "restore": "Wiederherstellen",
             "reset": "Zurücksetzen",
             "colors": "Farben",
-            "periods": "Zeiten"
+            "periods": "Zeiten",
+            "add": "Hinzufügen"
         }
     }
 }

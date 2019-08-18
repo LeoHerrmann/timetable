@@ -22,7 +22,7 @@ function show_options() {
     
         var add_input_group_button = document.createElement("button");
         
-        add_input_group_button.innerText = "Add";
+        add_input_group_button.innerText = translator.translate("add");//"Add";
         
         add_input_group_button.onclick = function() {
             add_input_group("", "");
@@ -69,7 +69,7 @@ function show_options() {
         var periods_settings_group = document.getElementById("periods_settings_group");
         
         var add_input_group_button = document.createElement("button");
-        add_input_group_button.innerText = "Add";
+        add_input_group_button.innerText = translator.translate("add");//"Add";
         add_input_group_button.onclick = function() {
             add_input_group("", "")
         }
