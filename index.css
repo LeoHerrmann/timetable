@@ -11,6 +11,7 @@
 }
 #collapsing_header > a > button {
 	height: var(--space-5);
+	width: var(--space-5);
 }
 
 

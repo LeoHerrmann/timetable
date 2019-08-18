@@ -1,13 +1,15 @@
 18.08.2019:
-styling adjustments on settings page
-periods can be configured using settings page
+Added fontello icon for settings
+Styling adjustments on settings page
+Periods can be configured using settings page
+
 
 
 17.08.2019:
-updated styling
-separation of styles in general and site specific css files
-translator added
-settings page added -> language and colors can be configured using settings page
+Updated styling
+Separation of styles in general and site specific css files
+Translator added
+Settings page added -> language and colors can be configured using settings page
 
 
 16.08.2019:
