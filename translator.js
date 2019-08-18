@@ -1,9 +1,14 @@
 var translator = {
-    translate: function() {
-        var elements_to_translate = document.querySelectorAll("[data-translate]");
+    translate: function(key) {
+        var translation = translator.languages[config.data.language][key];
+        return translation;
+    },
+    
+    translate_ui: function() {
+        var elements_to_translate = document.querySelectorAll("[data-translator-key]");
         
         for (element of elements_to_translate) {
-            element.innerText = translator.languages[config.data.language][element.getAttribute("data-translate")];
+            element.innerText = translator.translate(element.getAttribute("data-translator-key"));
         }
     },
 

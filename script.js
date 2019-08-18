@@ -1,6 +1,6 @@
 window.onload = function() {
     config.load_data();
-	translator.translate();
+	translator.translate_ui();
 	
 	dom_setup();
 	add_navigation_events();
