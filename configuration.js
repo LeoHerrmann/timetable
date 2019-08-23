@@ -18,9 +18,7 @@ var config = {
 	},
 	
 	reset_data: function() {
-		if (confirm("Are you sure to reset configuration data?")) {
-			localStorage.removeItem("config_data");
-		}
+		localStorage.removeItem("config_data");
 	},
 
 	data: {

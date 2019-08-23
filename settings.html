@@ -37,12 +37,12 @@
 				</div>
 				
 				<div class="input_group">
-					<button data-translator-key="backup">Backup</button>
-					<button data-translator-key="restore">Restore</button>
+					<button onclick="backup();" data-translator-key="backup">Backup</button>
+					<button onclick="restore();" data-translator-key="restore">Restore</button>
 				</div>
 				
 				<div class="input_group">
-					<button class="negative" onclick="config.reset_data();" data-translator-key="reset">Reset</button>
+					<button class="negative" onclick="reset();" data-translator-key="reset">Reset</button>
 				</div>
 			</div>
 		
@@ -57,7 +57,7 @@
 			</div>
 		
 		
-			<div class="settings_group">
+			<div id="timetable_settings_group" class="settings_group">
 				<h2 data-translator-key="timetable">Timetable</h2>
 			</div>
 			

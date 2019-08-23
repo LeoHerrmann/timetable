@@ -13,24 +13,25 @@ function show_options() {
     
     show_color_options();
     show_periods_options();
+    show_timetable_options();
     
     
     
     function show_color_options() {
         var color_settings_group = document.getElementById("color_settings_group");
-    
-    
+        var color_input_groups_container = document.createElement("div");
         var add_input_group_button = document.createElement("button");
         
+        color_input_groups_container.setAttribute("id", "color_input_groups_container");
         add_input_group_button.innerText = translator.translate("add");//"Add";
-        
         add_input_group_button.onclick = function() {
             add_input_group("", "");
         }
         
+        color_settings_group.append(color_input_groups_container);
         color_settings_group.append(add_input_group_button);
-    
-    
+
+
         for (entry in config.data.colors) {
             add_input_group(entry, config.data.colors[entry]);
         }
@@ -59,7 +60,7 @@ function show_options() {
             input_group.append(color_input);
             input_group.append(remove_button);
         
-            color_settings_group.insertBefore(input_group, add_input_group_button)
+            color_input_groups_container.append(input_group);
         }
     }
     
@@ -67,12 +68,17 @@ function show_options() {
     
     function show_periods_options() {
         var periods_settings_group = document.getElementById("periods_settings_group");
-        
+        var periods_input_groups_container = document.createElement("div");
         var add_input_group_button = document.createElement("button");
-        add_input_group_button.innerText = translator.translate("add");//"Add";
+        
+        periods_input_groups_container.setAttribute("id", "periods_input_groups_container");
+        
+        add_input_group_button.innerText = translator.translate("add");
         add_input_group_button.onclick = function() {
-            add_input_group("", "")
-        }
+            add_input_group("", "");
+        };
+        
+        periods_settings_group.append(periods_input_groups_container);
         periods_settings_group.append(add_input_group_button);
         
         for (period of config.data.periods) {
@@ -101,8 +107,62 @@ function show_options() {
             input_group.append(start_input);
             input_group.append(end_input);
             input_group.append(remove_button);
-            periods_settings_group.insertBefore(input_group, add_input_group_button);
+            periods_input_groups_container.append(input_group);
         }
+    }
+    
+    
+    
+    function show_timetable_options() {
+        var timetable_settings_group = document.getElementById("timetable_settings_group");
+        
+        for (day_object of config.data.timetable) {
+            var day_name_input_group = document.createElement("div");
+            var day_name_input = document.createElement("input");
+            
+            day_name_input_group.classList.add("input_group");
+            day_name_input.setAttribute("name", "day_name_input");
+            day_name_input.value = day_object.day;
+            
+            day_name_input_group.append(day_name_input);
+            console.log(timetable_settings_group)
+            timetable_settings_group.append(day_name_input_group);
+            
+            
+            
+            var schedule_inputs_container = document.createElement("div");
+            schedule_inputs_container.classList.add("schedule_inputs_container");
+            
+            for (period of day_object.schedule) {
+                var periods_input_group = document.createElement("div");
+                var subject_input = document.createElement("input");
+                var room_input = document.createElement("input");
+                
+                periods_input_group.classList.add("input_group");
+                subject_input.value = period.subject;
+                room_input.value = period.room;
+                
+                periods_input_group.append(subject_input);
+                periods_input_group.append(room_input);
+                schedule_inputs_container.append(periods_input_group);
+            }
+            
+            timetable_settings_group.append(schedule_inputs_container);
+        }
+    }
+}
+
+
+
+function backup() {
+    alert("Sorry, this feature hasn't been implemented yet.");
+}
+function restore() {
+    alert("Sorry, this feature hasn't been implemented yet.");
+}
+function reset() {
+    if (confirm(translator.translate("reset_confirm"))) {
+        config.reset_data();
     }
 }
 
@@ -113,7 +173,7 @@ function save_settings() {
     config.data.language = language_input_value;
     
     
-    var color_settings_input_groups = document.querySelectorAll("#color_settings_group > .input_group");
+    var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
     var new_colors = {};
     
     for (input_group of color_settings_input_groups) {
@@ -124,10 +184,10 @@ function save_settings() {
     config.data.colors = new_colors;
     
     
-    var color_settings_input_groups = document.querySelectorAll("#periods_settings_group > .input_group");
+    var periods_settings_input_groups = document.querySelectorAll("#periods_input_groups_container > .input_group");
     var new_periods = [];
     
-    for (input_group of color_settings_input_groups) {
+    for (input_group of periods_settings_input_groups) {
         var inputs = input_group.getElementsByTagName("input");
         var period = {};
         console.log(inputs[0].value)
@@ -140,4 +200,5 @@ function save_settings() {
     
     
     config.save_data(config.data);
+    alert(translator.translate("data_saved"))
 }

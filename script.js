@@ -131,7 +131,7 @@ var timetable = {
 	display_for_day: function(dayNumber) {
 		timetable.currently_shown_day_number = dayNumber;
 	
-		timetable.subject_divs.hide();
+		timetable.subject_divs.hide();		
 
 		setTimeout(function() {
 			timetable.subject_divs.fill(dayNumber);

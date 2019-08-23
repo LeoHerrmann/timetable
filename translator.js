@@ -24,7 +24,9 @@ var translator = {
             "reset": "Reset",
             "colors": "Colors",
             "periods": "Periods",
-            "add": "Add"
+            "add": "Add",
+            "data_saved": "Your application data was successfully saved.",
+            "reset_confirm": "Are you sure to reset all data? If you haven't made a backup, all application data will be lost forever."
         },
         
         de: {
@@ -38,7 +40,9 @@ var translator = {
             "reset": "Zurücksetzen",
             "colors": "Farben",
             "periods": "Zeiten",
-            "add": "Hinzufügen"
+            "add": "Hinzufügen",
+            "data_saved": "Ihre Anwendungsdaten wurden erfolgreich gespeichert.",
+            "reset_confirm": "Sind Sie sich sicher, dass sie alle Anwendungsdaten zurücksetzen wollen? Wenn Sie kein Backup gemacht haben, gehen dadurch alle Anwendungsdaten für immer verloren."
         }
     }
 }
