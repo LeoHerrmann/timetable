@@ -29,7 +29,10 @@
 		
 		<div id="settings_container">
 			<div class="settings_group">
-				<h2 data-translator-key="general">General</h2>
+				<div class="settings_group_header">
+					<h2 data-translator-key="general">General</h2>
+					<button class="positive" data-translator-key="save" onclick="save_general_settings();">Save</button>
+				</div>
 		
 				<div class="input_group">
 					<label data-translator-key="language: " for="language_input">Language:</label>
@@ -45,24 +48,37 @@
 					<button class="negative" onclick="reset();" data-translator-key="reset">Reset</button>
 				</div>
 			</div>
-		
-		
+
+
+
 			<div id="color_settings_group" class="settings_group">
-				<h2 data-translator-key="colors">Colors</h2>
+				<div class="settings_group_header">
+					<h2 data-translator-key="colors">Colors</h2>
+					<button class="positive" data-translator-key="save" onclick="save_color_settings();">Save</button>
+				</div>
+				
+				<div id="color_input_groups_container"></div>
 			</div>
-		
-		
+
+
+
 			<div id="periods_settings_group" class="settings_group">
-				<h2 data-translator-key="periods">Periods</h2>
+				<div class="settings_group_header">
+					<h2 data-translator-key="periods">Periods</h2>
+					<button class="positive" data-translator-key="save" onclick="save_periods_settings();">Save</button>
+				</div>
+				
+				<div id="periods_input_groups_container"></div>
 			</div>
-		
-		
+
+
+
 			<div id="timetable_settings_group" class="settings_group">
-				<h2 data-translator-key="timetable">Timetable</h2>
+				<div class="settings_group_header">
+					<h2 data-translator-key="timetable">Timetable</h2>
+					<button class="positive" data-translator-key="save" onclick="save_timetable_settings();">Save</button>
+				</div>
 			</div>
-			
-			
-			<button class="positive" data-translator-key="save" onclick="save_settings();" data-translator-key="save">Save</button>
 		</div>
 	</body>
 </html>

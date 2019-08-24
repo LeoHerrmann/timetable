@@ -1,5 +1,12 @@
+24.08.2019:
+DOM Elements of settings page are now created using string concatenation isntead of document.createElement to improve code redability
+Every settings group can be saved individually instead of all at once
+Timetable can now be edited using settings page
+
+
 23.08.2019:
 Settings page shows current timetable (cannot be edited yet though); 
+
 
 18.08.2019:
 Added fontello icon for settings

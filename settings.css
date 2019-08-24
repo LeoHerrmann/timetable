@@ -3,24 +3,42 @@ header {
     padding-bottom: 0;
 }
 
+
+
 #settings_container {
     padding: var(--space-0);
 }
+
+
+
 .settings_group {
     background: #FFF;
     padding: var(--space--1) var(--space-0);
     margin-bottom: var(--space-0);
     border-radius: 5px;
 }
-.settings_group > h2 {
-    margin: 0;
+
+
+
+.settings_group > .settings_group_header {
+    display: flex;
 }
+
+.settings_group > .settings_group_header > h2 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.settings_group > .settings_group_header > button {
+    height: calc(var(--sapce-1) * 1.27);
+}
+
+
 
 .settings_group > * + *, .input_group {
     margin-top: var(--space--2);
+
 }
-
-
 .input_group {
     display: flex;
     line-height: var(--space-3);
@@ -31,13 +49,18 @@ header {
 
 
 
+#color_input_groups_container > .input_group > button,
+#periods_input_groups_container > .input_group > button,
+#timetable_settings_group > .schedule_inputs_container > .input_group > button {
+    background-color: #EEE;
+}
+
+
+
 #color_input_groups_container > .input_group > input:nth-of-type(1) {
     flex-grow: 1;
 }
 
-#color_input_groups_container > .input_group > button, #periods_input_groups_container > .input_group > button {
-    background-color: #EEE;
-}
 
 
 #periods_input_groups_container > .input_group > input {
@@ -45,12 +68,15 @@ header {
 }
 
 
+
 #timetable_settings_group > .input_group > input {
     width: 12ch;
 }
+
 #timetable_settings_group > .schedule_inputs_container {
     padding: 0 var(--space--2);
 }
+
 #timetable_settings_group > .schedule_inputs_container + .input_group {
     margin-top: var(--space-1);
 }
@@ -59,6 +85,7 @@ header {
     flex-grow: 1;
     width: 12ch;
 }
+
 #timetable_settings_group > .schedule_inputs_container > .input_group > input:nth-of-type(2) {
     width: 9ch;
 }

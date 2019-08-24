@@ -183,7 +183,8 @@ var timetable = {
 		fill: function (dayNumber) {
 			var subjectDivs = document.querySelectorAll(".subject");
 
-			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length; period++) {
+			//for (let period = 0; period < config.data.timetable[dayNumber].schedule.length; period++) {
+			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length && period < config.data.periods.length; period++) {
 				var subjectName = config.data.timetable[dayNumber].schedule[period].subject;
 				var subjectRoom = config.data.timetable[dayNumber].schedule[period].room;
 
