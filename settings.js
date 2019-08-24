@@ -3,7 +3,7 @@ window.onload = function() {
     translator.translate_ui();
     
     show_options();
-}
+};
 
 
 
@@ -11,9 +11,23 @@ function show_options() {
     var language_input = document.querySelector("[name='language_input']");
     language_input.value = config.data.language;
     
+    setup_backup_button();
     show_color_options();
     show_periods_options();
     show_timetable_options();
+    
+    
+    
+    function setup_backup_button() {
+        var data_string = JSON.stringify(config.data);
+        var data_uri = "data:application/json; charset=utf-8," + encodeURIComponent(data_string);
+        
+        var file_name = "timetable_data_backup.json";
+        
+        var link_element = document.getElementById("backup_button").parentElement;
+        link_element.setAttribute("href", data_uri);
+        link_element.setAttribute("download", file_name);
+    }
     
     
     
@@ -123,9 +137,7 @@ function remove_parent_input_group(clicked_button) {
 
 
 
-function backup() {
-    alert("Sorry, this feature hasn't been implemented yet.");
-}
+
 function restore() {
     alert("Sorry, this feature hasn't been implemented yet.");
 }
