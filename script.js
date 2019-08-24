@@ -1,5 +1,7 @@
 window.onload = function() {
-	translator.translate();
+    config.load_data();
+	translator.translate_ui();
+	
 	dom_setup();
 	add_navigation_events();
 	timetable.display_current();
@@ -17,7 +19,7 @@ window.onload = function() {
 			var counter = 0;
 		
 		
-			for (entry of config.timetable) {
+			for (entry of config.data.timetable) {
 				var newButton = document.createElement("button");
 			
 				newButton.innerText = entry.day.substring(0,2);
@@ -44,7 +46,7 @@ window.onload = function() {
 
 
 		function fill_periods_container() {
-			for (period of config.periods) {
+			for (period of config.data.periods) {
 				var periodDiv = document.createElement("div");
 				var startSpan = document.createElement("span");
 				var endSpan = document.createElement("span");
@@ -62,7 +64,7 @@ window.onload = function() {
 		function create_subject_divs() {
 			var subjectsContainer = document.getElementById("subjects_container");
 
-			for (let i = 0; i < config.periods.length; i++) {
+			for (let i = 0; i < config.data.periods.length; i++) {
 				var subjectDiv = document.createElement("div");
 
 				subjectDiv.classList.add("subject");
@@ -129,7 +131,7 @@ var timetable = {
 	display_for_day: function(dayNumber) {
 		timetable.currently_shown_day_number = dayNumber;
 	
-		timetable.subject_divs.hide();
+		timetable.subject_divs.hide();		
 
 		setTimeout(function() {
 			timetable.subject_divs.fill(dayNumber);
@@ -144,7 +146,7 @@ var timetable = {
 
 		var headerButtons = document.querySelectorAll("header > button");
 
-		if (dayNumber >= config.timetable.length) {
+		if (dayNumber >= config.data.timetable.length) {
 			headerButtons[0].classList.add("open");
 			timetable.display_for_day(0);
 		}
@@ -170,7 +172,7 @@ var timetable = {
 		var next_day_number;
 		var headerButtons = document.querySelectorAll("header > button");
 	
-		if (timetable.currently_shown_day_number != config.timetable.length - 1) {
+		if (timetable.currently_shown_day_number != config.data.timetable.length - 1) {
 			next_day_number = parseInt(timetable.currently_shown_day_number) + 1;
 			headerButtons[next_day_number].click();
 		}
@@ -181,14 +183,20 @@ var timetable = {
 		fill: function (dayNumber) {
 			var subjectDivs = document.querySelectorAll(".subject");
 
-			for (let period = 0; period < config.timetable[dayNumber].schedule.length; period++) {
-				var subjectName = config.timetable[dayNumber].schedule[period].subject;
-				var subjectRoom = config.timetable[dayNumber].schedule[period].room;
+			//for (let period = 0; period < config.data.timetable[dayNumber].schedule.length; period++) {
+			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length && period < config.data.periods.length; period++) {
+				var subjectName = config.data.timetable[dayNumber].schedule[period].subject;
+				var subjectRoom = config.data.timetable[dayNumber].schedule[period].room;
 
 				if (subjectName != "") {
 					subjectDivs[period].classList.remove("empty");
 
-					subjectDivs[period].style.color = config.colors[subjectName];
+					if (typeof config.data.colors[subjectName] != "undefined") {
+						subjectDivs[period].style.color = config.data.colors[subjectName];
+					}
+					else {
+						subjectDivs[period].style.color = "#000";
+					}
 
 					subjectDivs[period].querySelectorAll("span")[0].innerText = subjectName;
 					subjectDivs[period].querySelectorAll("span")[1].innerText = subjectRoom;

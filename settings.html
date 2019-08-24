@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title data-translator-key="timetable"></title>
+		<link rel="stylesheet" type="text/css" href="general.css"/>
+		<link rel="stylesheet" type="text/css" href="settings.css"/>
+		<script src="configuration.js"></script>
+		<script src="translator.js"></script>
+		<script src="settings.js"></script>
+
+
+		<link rel="manifest" href="manifest.json"/>
+		<meta name="theme-color" content="#FFFFFF"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Stundenplan">
+		<link rel="apple-touch-icon" href="icon.png">
+	</head>
+
+
+
+	<body>
+		<header>
+			<h1 data-translator-key="settings"></h1>
+		</header>
+		
+		<div id="settings_container">
+			<div class="settings_group">
+				<div class="settings_group_header">
+					<h2 data-translator-key="general">General</h2>
+					<button class="positive" data-translator-key="save" onclick="save_general_settings();">Save</button>
+				</div>
+		
+				<div class="input_group">
+					<label data-translator-key="language: " for="language_input">Language:</label>
+					<input type="text" name="language_input" size="4"/>
+				</div>
+				
+				<div class="input_group">
+					<button onclick="backup();" data-translator-key="backup">Backup</button>
+					<button onclick="restore();" data-translator-key="restore">Restore</button>
+				</div>
+				
+				<div class="input_group">
+					<button class="negative" onclick="reset();" data-translator-key="reset">Reset</button>
+				</div>
+			</div>
+
+
+
+			<div id="color_settings_group" class="settings_group">
+				<div class="settings_group_header">
+					<h2 data-translator-key="colors">Colors</h2>
+					<button class="positive" data-translator-key="save" onclick="save_color_settings();">Save</button>
+				</div>
+				
+				<div id="color_input_groups_container"></div>
+			</div>
+
+
+
+			<div id="periods_settings_group" class="settings_group">
+				<div class="settings_group_header">
+					<h2 data-translator-key="periods">Periods</h2>
+					<button class="positive" data-translator-key="save" onclick="save_periods_settings();">Save</button>
+				</div>
+				
+				<div id="periods_input_groups_container"></div>
+			</div>
+
+
+
+			<div id="timetable_settings_group" class="settings_group">
+				<div class="settings_group_header">
+					<h2 data-translator-key="timetable">Timetable</h2>
+					<button class="positive" data-translator-key="save" onclick="save_timetable_settings();">Save</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

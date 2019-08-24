@@ -1,92 +1,37 @@
-:root {
-	--ratio: 1.27;
-	--space-6: calc(var(--space-5) * var(--ratio));
-	--space-5: calc(var(--space-4) * var(--ratio));
-	--space-4: calc(var(--space-3) * var(--ratio));
-	--space-3: calc(var(--space-2) * var(--ratio));
-	--space-2: calc(var(--space-1) * var(--ratio));
-	--space-1: calc(var(--space-0) * var(--ratio));
-	--space-0: 1rem;
-	--space--1: calc(var(--space-0) / var(--ratio));
-	--space--2: calc(var(--space--1) / var(--ratio));
-	--space--3: calc(var(--space--2) / var(--ratio));
-} 
-
-
-
-
-@font-face {
-	font-family: "Montserrat";
-	font-weight: 400;
-	src: url("Montserrat/Montserrat-Medium.ttf");
-}
-@font-face {
-	font-family: "Montserrat";
-	font-weight: 600;
-	src: url("Montserrat/Montserrat-Bold.ttf");
-}
-
-
-
-
-
-body {
-	line-height: 1.27;
-	margin: 0;
-	font-family: "Montserrat", sans-serif;
-	background-color: #EEE;
-}
-
-
-
-
-
-h1 {
+#collapsing_header {
 	position: relative;
 	z-index: 10;
-	margin: 0;
-	line-height: var(--space-5);
-	font-size: var(--space-1);
-	text-align: center;
-    background: #FFF;
     padding: var(--space-0);
     padding-bottom: 0;
+    background: #FFF;
+    border-bottom: 1px solid #FFF;
+}
+#collapsing_header > a {
+	float:right;
+}
+#collapsing_header > a > button {
+	height: var(--space-5);
+	width: var(--space-5);
 }
 
 
 
 header {
-	position: sticky;
-	top: 0;
-	left: 0;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 	grid-template-rows: 1fr;
 	justify-items: center;
-	width: 100%;
-	height: var(--space-5);
-	box-sizing: border-box;
-	z-index: 5;
-	background-color: #FFF;
-	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 header > button {
 	width: var(--space-5);
 	height: var(--space-5);
-	border: 0;
 	border-bottom: 2px solid #FFF;
-	font-weight: 600;
-	font-family: "Montserrat";
-	font-size: var(--space--1);
 	color: #777;
-	background-color: #FFF;
-	transition-duration: 0.2s;
-	text-transform: uppercase;
+	border-radius: 0;
 }
 header > button.open {
 	color: #000;
 	border-color: #000;
-	border-radius: 0;
 }
 header > button:active {
 	color: #555;
