@@ -56,7 +56,7 @@ function show_options() {
                 "<div class='input_group'/>" + 
                     `<input value='${subject_value}' size='9'/>` +
                     `<input value='${color_value}' type='color'/>` +
-                    "<button class='negative' onclick='remove_parent_input_group(this)'>X</button>" +
+                    "<button class='negative' onclick='this.parentElement.remove();'>X</button>" +
                 "</div>";
         }
     }
@@ -85,7 +85,7 @@ function show_options() {
                 "<div class='input_group'>" + 
                     `<input type='time' value='${start}'/>` +
                     `<input type='time' value='${end}'/>` +
-                    "<button class='negative' onclick='remove_parent_input_group(this);'>X</button>" +
+                    "<button class='negative' onclick='this.parentElement.remove();'>X</button>" +
                 "</div>";
         }
     }
@@ -131,10 +131,6 @@ function show_options() {
 
 
 
-function remove_parent_input_group(clicked_button) {
-    clicked_button.parentElement.remove();
-}
-
 
 
 
@@ -151,87 +147,87 @@ function reset() {
 
 
 
-function save_general_settings() {
-    var language_input_value = document.querySelector("[name='language_input']").value;
-    config.data.language = language_input_value;
+var save = {
+    general: function() {
+        var language_input_value = document.querySelector("[name='language_input']").value;
+        config.data.language = language_input_value;
     
-    config.save_data(config.data);
-    alert("General settings have been saved. Changes will take effect after page refresh.")
-}
-
-
-function save_color_settings() {
-    var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
-    var new_colors = {};
-    
-    for (input_group of color_settings_input_groups) {
-        var inputs = input_group.getElementsByTagName("input");
-        new_colors[inputs[0].value] = inputs[1].value;
-    }
-    
-    config.data.colors = new_colors;
-    
-    config.save_data(config.data);
-    alert("Color settings have been saved. Changes will take effect after page refresh.")
-}
-
-
-function save_periods_settings() {
-    var periods_settings_input_groups = document.querySelectorAll("#periods_input_groups_container > .input_group");
-    var new_periods = [];
-    
-    for (input_group of periods_settings_input_groups) {
-        var inputs = input_group.getElementsByTagName("input");
-        var period = {};
-        console.log(inputs[0].value)
-        period.start = inputs[0].value;
-        period.end = inputs[1].value;
-        new_periods.push(period);
-    }
-    
-    config.data.periods = new_periods;
-    
-    config.save_data(config.data);
-    alert("Periods settings have been saved. Changes will take effect after page refresh.")
-}
-
-
-function save_timetable_settings() {
-    var day_name_inputs = document.querySelectorAll("#timetable_settings_group [name='day_name_input']");
-    var schedule_input_group_containers = document.querySelectorAll("#timetable_settings_group > .schedule_inputs_container");
-    
-    if (day_name_inputs.length != schedule_input_group_containers.length) {
-        alert("Error saving timetable settings");
-        return false;
-    }
+        config.save_data(config.data);
+        alert("General settings have been saved. Changes will take effect after page refresh.");
+    },
     
     
-    var new_timetable = [];
+    colors: function() {
+        var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
+        var new_colors = {};
     
-    for (var i = 0; i < day_name_inputs.length; i++) {
-        var schedule_input_groups = schedule_input_group_containers[i].getElementsByClassName("input_group");
-    
-        var new_timetable_day = {
-            day: day_name_inputs[i].value,
-            schedule: []
+        for (input_group of color_settings_input_groups) {
+            var inputs = input_group.getElementsByTagName("input");
+            new_colors[inputs[0].value] = inputs[1].value;
         }
-        
-        for (input_group of schedule_input_groups) {
-            var subject = input_group.children[0].value;
-            var room = input_group.children[1].value;
+    
+        config.data.colors = new_colors;
+    
+        config.save_data(config.data);
+        alert("Color settings have been saved. Changes will take effect after page refresh.");
+    },
+    
+    
+    periods: function() {
+        var periods_settings_input_groups = document.querySelectorAll("#periods_input_groups_container > .input_group");
+        var new_periods = [];
+    
+        for (input_group of periods_settings_input_groups) {
+            var inputs = input_group.getElementsByTagName("input");
+            var period = {};
             
-            new_timetable_day.schedule.push({
-                "subject": subject,
-                "room": room,
-            });
+            period.start = inputs[0].value;
+            period.end = inputs[1].value;
+            new_periods.push(period);
         }
+    
+        config.data.periods = new_periods;
+    
+        config.save_data(config.data);
+        alert("Periods settings have been saved. Changes will take effect after page refresh.");
+    },
+    
+    
+    timetable: function() {
+        var day_name_inputs = document.querySelectorAll("#timetable_settings_group [name='day_name_input']");
+        var schedule_input_group_containers = document.querySelectorAll("#timetable_settings_group > .schedule_inputs_container");
+    
+        if (day_name_inputs.length != schedule_input_group_containers.length) {
+            alert("Error saving timetable settings");
+            return false;
+        }
+    
+    
+        var new_timetable = [];
+    
+        for (var i = 0; i < day_name_inputs.length; i++) {
+            var schedule_input_groups = schedule_input_group_containers[i].getElementsByClassName("input_group");
+    
+            var new_timetable_day = {
+                day: day_name_inputs[i].value,
+                schedule: []
+            }
         
-        new_timetable.push(new_timetable_day);
-    }
+            for (input_group of schedule_input_groups) {
+                var subject = input_group.children[0].value;
+                var room = input_group.children[1].value;
+            
+                new_timetable_day.schedule.push({
+                    "subject": subject,
+                    "room": room,
+                });
+            }
+        
+            new_timetable.push(new_timetable_day);
+        }
     
-    console.log(new_timetable);
-    
-    config.data.timetable = new_timetable;
-    config.save_data(config.data);
-    alert("Timetable settings have been saved. Changes will take effect after page refresh.")
-}
+        config.data.timetable = new_timetable;
+        config.save_data(config.data);
+        alert("Timetable settings have been saved. Changes will take effect after page refresh.");
+    },
+};

@@ -20,16 +20,16 @@ window.onload = function() {
 		
 		
 			for (entry of config.data.timetable) {
-				var newButton = document.createElement("button");
+				var new_button = document.createElement("button");
 			
-				newButton.innerText = entry.day.substring(0,2);
-				newButton.setAttribute("data-dayNumber", counter);
+				new_button.innerText = entry.day.substring(0,2);
+				new_button.setAttribute("data-dayNumber", counter);
 			
 			
-				newButton.addEventListener("click", function(e) {
-					var headerButtons = document.querySelectorAll("header > button");
+				new_button.addEventListener("click", function(e) {
+					var header_buttons = document.querySelectorAll("header > button");
 			
-					for (button of headerButtons) {
+					for (button of header_buttons) {
 						button.classList.remove("open");
 					}
 
@@ -39,24 +39,21 @@ window.onload = function() {
 				});
 			
 			
-				header.append(newButton);
+				header.append(new_button);
 				counter++;
 			}
 		}
 
 
 		function fill_periods_container() {
+			var periods_container = document.getElementById("periods_container");
+		
 			for (period of config.data.periods) {
-				var periodDiv = document.createElement("div");
-				var startSpan = document.createElement("span");
-				var endSpan = document.createElement("span");
-
-				startSpan.innerText = period.start;
-				endSpan.innerText = period.end;
-
-				periodDiv.append(startSpan, endSpan);
-				periodDiv.classList.add("period");
-				document.getElementById("periods_container").append(periodDiv);
+				periods_container.innerHTML += 
+					"<div class='period'>" +
+						`<span>${period.start}</span>` +
+						`<span>${period.end}</span>` +
+					"</div>";
 			}
 		}
 
@@ -71,10 +68,7 @@ window.onload = function() {
 				subjectDiv.classList.add("hidden");
 				subjectDiv.style.transitionDelay = i*0.025 + "s";
 
-				subjectNameSpan	= document.createElement("span");
-				subjectRoomSpan	= document.createElement("span");
-				subjectDiv.append(subjectNameSpan);
-				subjectDiv.append(subjectRoomSpan);
+				subjectDiv.innerHTML = "<span></span><span></span>";
 
 				subjectsContainer.append(subjectDiv);
 			}
@@ -131,7 +125,7 @@ var timetable = {
 	display_for_day: function(dayNumber) {
 		timetable.currently_shown_day_number = dayNumber;
 	
-		timetable.subject_divs.hide();		
+		timetable.subject_divs.hide();
 
 		setTimeout(function() {
 			timetable.subject_divs.fill(dayNumber);
@@ -144,14 +138,14 @@ var timetable = {
 		var d = new Date();
 		dayNumber = (d.getDay() != 0) ? d.getDay() - 1 : 6;
 
-		var headerButtons = document.querySelectorAll("header > button");
+		var header_buttons = document.querySelectorAll("header > button");
 
 		if (dayNumber >= config.data.timetable.length) {
-			headerButtons[0].classList.add("open");
+			header_buttons[0].classList.add("open");
 			timetable.display_for_day(0);
 		}
 		else {
-			headerButtons[dayNumber].classList.add("open");
+			header_buttons[dayNumber].classList.add("open");
 			timetable.display_for_day(dayNumber);
 		}
 	},
@@ -159,68 +153,68 @@ var timetable = {
 	
 	display_previous_day: function() {
 		var previous_day_number;
-		var headerButtons = document.querySelectorAll("header > button");
+		var header_buttons = document.querySelectorAll("header > button");
 		
 		if (timetable.currently_shown_day_number != 0) {
 			previous_day_number = parseInt(timetable.currently_shown_day_number) - 1;
-			headerButtons[previous_day_number].click();
+			header_buttons[previous_day_number].click();
 		}
 	},
 	
 	
 	display_next_day: function() {
 		var next_day_number;
-		var headerButtons = document.querySelectorAll("header > button");
+		var header_buttons = document.querySelectorAll("header > button");
 	
 		if (timetable.currently_shown_day_number != config.data.timetable.length - 1) {
 			next_day_number = parseInt(timetable.currently_shown_day_number) + 1;
-			headerButtons[next_day_number].click();
+			header_buttons[next_day_number].click();
 		}
 	},
 	
 	
 	subject_divs: {
 		fill: function (dayNumber) {
-			var subjectDivs = document.querySelectorAll(".subject");
+			var subject_divs = document.querySelectorAll(".subject");
 
 			//for (let period = 0; period < config.data.timetable[dayNumber].schedule.length; period++) {
 			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length && period < config.data.periods.length; period++) {
-				var subjectName = config.data.timetable[dayNumber].schedule[period].subject;
-				var subjectRoom = config.data.timetable[dayNumber].schedule[period].room;
+				var subject_name = config.data.timetable[dayNumber].schedule[period].subject;
+				var subject_room = config.data.timetable[dayNumber].schedule[period].room;
 
-				if (subjectName != "") {
-					subjectDivs[period].classList.remove("empty");
+				if (subject_name != "") {
+					subject_divs[period].classList.remove("empty");
 
-					if (typeof config.data.colors[subjectName] != "undefined") {
-						subjectDivs[period].style.color = config.data.colors[subjectName];
+					if (typeof config.data.colors[subject_name] != "undefined") {
+						subject_divs[period].style.color = config.data.colors[subject_name];
 					}
 					else {
-						subjectDivs[period].style.color = "#000";
+						subject_divs[period].style.color = "#000";
 					}
 
-					subjectDivs[period].querySelectorAll("span")[0].innerText = subjectName;
-					subjectDivs[period].querySelectorAll("span")[1].innerText = subjectRoom;
+					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
+					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
 				}
 				else {
-					subjectDivs[period].classList.add("empty");
+					subject_divs[period].classList.add("empty");
 				}
 			}
 		},
 		
 		
 		show: function() {
-			var subjectDivs = document.querySelectorAll(".subject");
+			var subject_divs = document.querySelectorAll(".subject");
 
-			for (div of subjectDivs) {
+			for (div of subject_divs) {
 				div.classList.remove("hidden");
 			}
 		},
 		
 		
 		hide: function() {
-			var subjectDivs = document.querySelectorAll(".subject");
+			var subject_divs = document.querySelectorAll(".subject");
 
-			for (div of subjectDivs) {
+			for (div of subject_divs) {
 				div.classList.add("hidden");
 			}
 		}
