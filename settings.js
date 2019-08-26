@@ -18,38 +18,6 @@ function show_options() {
     
     
     
-    function show_color_options() {
-        var color_settings_group = document.getElementById("color_settings_group");
-        var add_input_group_button = document.createElement("button");
-        
-        add_input_group_button.innerText = translator.translate("add");
-        add_input_group_button.onclick = function() {
-            add_input_group("", "");
-        }
-        
-        
-        color_settings_group.append(add_input_group_button);
-
-
-        for (entry in config.data.colors) {
-            add_input_group(entry, config.data.colors[entry]);
-        }
-
-        
-        function add_input_group(subject_value, color_value) {
-            var color_input_groups_container = document.getElementById("color_input_groups_container");
-            
-            color_input_groups_container.innerHTML += 
-                "<div class='input_group'/>" + 
-                    `<input value='${subject_value}' size='9'/>` +
-                    `<input value='${color_value}' type='color'/>` +
-                    "<button class='negative' onclick='this.parentElement.remove();'>X</button>" +
-                "</div>";
-        }
-    }
-    
-    
-    
     function show_periods_options() {
         var periods_settings_group = document.getElementById("periods_settings_group");
         var add_input_group_button = document.createElement("button");
@@ -114,6 +82,33 @@ function show_options() {
                 "</div>"; 
         }
     }
+    
+    
+    
+    function show_color_options() {
+        var color_settings_group = document.getElementById("color_settings_group");
+        var color_input_groups_container = document.getElementById("color_input_groups_container");
+        
+        var subjects_list = [];
+        
+        for (day of config.data.timetable) {
+            for (period of day.schedule) {
+                if (subjects_list.indexOf(period.subject) < 0 && period.subject != "") {
+                    subjects_list.push(period.subject);
+                }
+            }
+        }
+        
+        for (subject of subjects_list) {
+            var color = config.data.colors[subject];
+        
+            color_input_groups_container.innerHTML += 
+                "<div class='input_group'>" +
+                    `<label>${subject}</label>` +
+                    `<input type='color' value='${typeof(color) == "undefined" ? "#000" : color}'`+
+                "</div>";
+        }
+    }
 }
 
 
@@ -155,22 +150,6 @@ var save = {
     
         config.save_data(config.data);
         alert("General settings have been saved. Changes will take effect after page refresh.");
-    },
-    
-    
-    colors: function() {
-        var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
-        var new_colors = {};
-    
-        for (input_group of color_settings_input_groups) {
-            var inputs = input_group.getElementsByTagName("input");
-            new_colors[inputs[0].value] = inputs[1].value;
-        }
-    
-        config.data.colors = new_colors;
-    
-        config.save_data(config.data);
-        alert("Color settings have been saved. Changes will take effect after page refresh.");
     },
     
     
@@ -230,6 +209,24 @@ var save = {
         config.data.timetable = new_timetable;
         config.save_data(config.data);
         alert("Timetable settings have been saved. Changes will take effect after page refresh.");
+    },
+    
+    
+    colors: function() {
+        var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
+        var new_colors = {};
+        
+        for (input_group of color_settings_input_groups) {
+            var label = input_group.getElementsByTagName("label")[0];
+            var input = input_group.getElementsByTagName("input")[0];
+            
+            new_colors[label.innerText] = input.value;
+        }
+    
+        config.data.colors = new_colors;
+    
+        config.save_data(config.data);
+        alert("Color settings have been saved. Changes will take effect after page refresh.");
     },
 };
 

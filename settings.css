@@ -65,8 +65,11 @@ header {
 
 
 
-#color_input_groups_container > .input_group > input:nth-of-type(1) {
-    flex-grow: 1;
+#color_input_groups_container > .input_group > label {
+    flex-grow: 2;
+}
+#color_input_groups_container > .input_group > input {
+    width: 9ch;
 }
 
 
