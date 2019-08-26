@@ -7,6 +7,7 @@
 		<title data-translator-key="timetable"></title>
 		<link rel="stylesheet" type="text/css" href="general.css"/>
 		<link rel="stylesheet" type="text/css" href="settings.css"/>
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css"/>
 		<script src="configuration.js"></script>
 		<script src="translator.js"></script>
 		<script src="settings.js"></script>
@@ -28,10 +29,11 @@
 		</header>
 		
 		<div id="settings_container">
-			<div class="settings_group">
+			<div class="settings_group closed">
 				<div class="settings_group_header">
 					<h2 data-translator-key="general">General</h2>
 					<button class="positive" data-translator-key="save" onclick="save.general();">Save</button>
+					<button class="icon-arrow-down state_toggle_button" onclick="toggle_settings_group_state(this);"></button>
 				</div>
 		
 				<div class="input_group">
@@ -51,21 +53,11 @@
 
 
 
-			<div id="color_settings_group" class="settings_group">
-				<div class="settings_group_header">
-					<h2 data-translator-key="colors">Colors</h2>
-					<button class="positive" data-translator-key="save" onclick="save.colors();">Save</button>
-				</div>
-				
-				<div id="color_input_groups_container"></div>
-			</div>
-
-
-
-			<div id="periods_settings_group" class="settings_group">
+			<div id="periods_settings_group" class="settings_group closed">
 				<div class="settings_group_header">
 					<h2 data-translator-key="periods">Periods</h2>
 					<button class="positive" data-translator-key="save" onclick="save.periods();">Save</button>
+					<button class="icon-arrow-down state_toggle_button" onclick="toggle_settings_group_state(this);"></button>
 				</div>
 				
 				<div id="periods_input_groups_container"></div>
@@ -73,11 +65,24 @@
 
 
 
-			<div id="timetable_settings_group" class="settings_group">
+			<div id="timetable_settings_group" class="settings_group closed">
 				<div class="settings_group_header">
 					<h2 data-translator-key="timetable">Timetable</h2>
 					<button class="positive" data-translator-key="save" onclick="save.timetable();">Save</button>
+					<button class="icon-arrow-down state_toggle_button" onclick="toggle_settings_group_state(this);"></button>
 				</div>
+			</div>
+
+
+
+			<div id="color_settings_group" class="settings_group closed">
+				<div class="settings_group_header">
+					<h2 data-translator-key="colors">Colors</h2>
+					<button class="positive" data-translator-key="save" onclick="save.colors();">Save</button>
+					<button class="icon-arrow-down state_toggle_button" onclick="toggle_settings_group_state(this);"></button>
+				</div>
+				
+				<div id="color_input_groups_container"></div>
 			</div>
 		</div>
 	</body>

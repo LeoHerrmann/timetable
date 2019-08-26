@@ -1,2 +1,4 @@
 
 .icon-settings:before { content: '\e800'; } /* '' */
+.icon-arrow-up:before { content: '\e801'; } /* '' */
+.icon-arrow-down:before { content: '\e802'; } /* '' */

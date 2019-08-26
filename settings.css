@@ -17,6 +17,9 @@ header {
     margin-bottom: var(--space-0);
     border-radius: 5px;
 }
+.settings_group.closed > *:not(.settings_group_header) {
+    display: none;
+}
 
 
 
@@ -30,7 +33,12 @@ header {
 }
 
 .settings_group > .settings_group_header > button {
-    height: calc(var(--sapce-1) * 1.27);
+    height: calc(var(--space-1) * 1.27);
+}
+
+.settings_group > .settings_group_header > button.state_toggle_button {
+    padding: 0;
+    min-width: calc(var(--space-1) * 1.27);
 }
 
 

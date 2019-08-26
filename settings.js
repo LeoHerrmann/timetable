@@ -231,3 +231,22 @@ var save = {
         alert("Timetable settings have been saved. Changes will take effect after page refresh.");
     },
 };
+
+
+
+
+
+function toggle_settings_group_state(clicked_button) {
+    var parent_settings_group = clicked_button.parentElement.parentElement;
+    
+    if (parent_settings_group.classList.contains("closed")) {
+        parent_settings_group.classList.remove("closed");
+        clicked_button.classList.remove("icon-arrow-down");
+        clicked_button.classList.add("icon-arrow-up");
+    }
+    else {
+        parent_settings_group.classList.add("closed");
+        clicked_button.classList.remove("icon-arrow-up");
+        clicked_button.classList.add("icon-arrow-down");
+    }
+}
