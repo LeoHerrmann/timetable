@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css"/>
 		<script src="configuration.js"></script>
 		<script src="translator.js"></script>
-		<script src="settings.js"></script>
+		<script src="general_settings.js"></script>
 
 
 		<link rel="manifest" href="manifest.json"/>
@@ -31,31 +31,23 @@
 		<div id="settings_container">
 			<div class="settings_group closed">
 				<div class="settings_group_header">
-					<a href="general_settings.html"><h2 data-translator-key="general">General</h2></a>
+					<h2 data-translator-key="general">General</h2>
+					<button class="positive" data-translator-key="save" onclick="save.general();">Save</button>
+					<button class="icon-arrow-down state_toggle_button" onclick="toggle_settings_group_state(this);"></button>
 				</div>
-			</div>
-
-
-
-			<div id="periods_settings_group" class="settings_group closed">
-				<div class="settings_group_header">
-					<a href="periods_settings.html"><h2 data-translator-key="periods">Periods</h2></a>
+		
+				<div class="input_group">
+					<label data-translator-key="language: " for="language_input">Language:</label>
+					<input type="text" name="language_input" size="4"/>
 				</div>
-			</div>
-
-
-
-			<div id="timetable_settings_group" class="settings_group closed">
-				<div class="settings_group_header">
-					<a href="timetable_settings.html"><h2 data-translator-key="timetable">Timetable</h2></a>
+				
+				<div class="input_group">
+					<a><button id="backup_button" data-translator-key="backup">Backup</button></a>
+					<button onclick="restore();" data-translator-key="restore">Restore</button>
 				</div>
-			</div>
-
-
-
-			<div id="color_settings_group" class="settings_group closed">
-				<div class="settings_group_header">
-					<a href="color_settings.html"><h2 data-translator-key="colors">Colors</h2></a>
+				
+				<div class="input_group">
+					<button class="negative" onclick="reset();" data-translator-key="reset">Reset</button>
 				</div>
 			</div>
 		</div>

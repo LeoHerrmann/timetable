@@ -27,9 +27,13 @@ header {
     display: flex;
 }
 
-.settings_group > .settings_group_header > h2 {
+.settings_group > .settings_group_header > h2, .settings_group h2 {
     margin: 0;
     flex-grow: 1;
+}
+.settings_group .settings_group_header > a {
+	text-decoration: none;
+	color: #000;
 }
 
 .settings_group > .settings_group_header > button {
