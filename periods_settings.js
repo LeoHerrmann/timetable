@@ -44,42 +44,21 @@ function show_options() {
 
 
 
-var save = {   
-    periods: function() {
-        var periods_settings_input_groups = document.querySelectorAll("#periods_input_groups_container > .input_group");
-        var new_periods = [];
+function save() {
+    var periods_settings_input_groups = document.querySelectorAll("#periods_input_groups_container > .input_group");
+    var new_periods = [];
     
-        for (input_group of periods_settings_input_groups) {
-            var inputs = input_group.getElementsByTagName("input");
-            var period = {};
+    for (input_group of periods_settings_input_groups) {
+        var inputs = input_group.getElementsByTagName("input");
+        var period = {};
             
-            period.start = inputs[0].value;
-            period.end = inputs[1].value;
-            new_periods.push(period);
-        }
-    
-        config.data.periods = new_periods;
-    
-        config.save_data(config.data);
-        alert("Periods settings have been saved. Changes will take effect after page refresh.");
-    },
-};
-
-
-
-
-
-function toggle_settings_group_state(clicked_button) {
-    var parent_settings_group = clicked_button.parentElement.parentElement;
-    
-    if (parent_settings_group.classList.contains("closed")) {
-        parent_settings_group.classList.remove("closed");
-        clicked_button.classList.remove("icon-arrow-down");
-        clicked_button.classList.add("icon-arrow-up");
+        period.start = inputs[0].value;
+        period.end = inputs[1].value;
+        new_periods.push(period);
     }
-    else {
-        parent_settings_group.classList.add("closed");
-        clicked_button.classList.remove("icon-arrow-up");
-        clicked_button.classList.add("icon-arrow-down");
-    }
+    
+    config.data.periods = new_periods;
+    
+    config.save_data(config.data);
+    alert("Periods settings have been saved. Changes will take effect after page refresh.");
 }

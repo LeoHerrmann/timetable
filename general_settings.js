@@ -49,34 +49,10 @@ function reset() {
 
 
 
-var save = {
-    general: function() {
-        var language_input_value = document.querySelector("[name='language_input']").value;
-        config.data.language = language_input_value;
+function save() {
+    var language_input_value = document.querySelector("[name='language_input']").value;
+    config.data.language = language_input_value;
     
-        config.save_data(config.data);
-        alert("General settings have been saved. Changes will take effect after page refresh.");
-    }
-};
-
-
-
-
-
-
-
-
-function toggle_settings_group_state(clicked_button) {
-    var parent_settings_group = clicked_button.parentElement.parentElement;
-    
-    if (parent_settings_group.classList.contains("closed")) {
-        parent_settings_group.classList.remove("closed");
-        clicked_button.classList.remove("icon-arrow-down");
-        clicked_button.classList.add("icon-arrow-up");
-    }
-    else {
-        parent_settings_group.classList.add("closed");
-        clicked_button.classList.remove("icon-arrow-up");
-        clicked_button.classList.add("icon-arrow-down");
-    }
+    config.save_data(config.data);
+    alert("General settings have been saved. Changes will take effect after page refresh.");
 }

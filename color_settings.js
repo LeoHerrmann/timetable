@@ -39,40 +39,19 @@ function show_options() {
 
 
 
-var save = {
-    colors: function() {
-        var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
-        var new_colors = {};
-        
-        for (input_group of color_settings_input_groups) {
-            var label = input_group.getElementsByTagName("label")[0];
-            var input = input_group.getElementsByTagName("input")[0];
-            
-            new_colors[label.innerText] = input.value;
-        }
-    
-        config.data.colors = new_colors;
-    
-        config.save_data(config.data);
-        alert("Color settings have been saved. Changes will take effect after page refresh.");
+function save() {
+    var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
+    var new_colors = {};
+
+    for (input_group of color_settings_input_groups) {
+        var label = input_group.getElementsByTagName("label")[0];
+        var input = input_group.getElementsByTagName("input")[0];
+
+        new_colors[label.innerText] = input.value;
     }
-};
-
-
-
-
-
-function toggle_settings_group_state(clicked_button) {
-    var parent_settings_group = clicked_button.parentElement.parentElement;
     
-    if (parent_settings_group.classList.contains("closed")) {
-        parent_settings_group.classList.remove("closed");
-        clicked_button.classList.remove("icon-arrow-down");
-        clicked_button.classList.add("icon-arrow-up");
-    }
-    else {
-        parent_settings_group.classList.add("closed");
-        clicked_button.classList.remove("icon-arrow-up");
-        clicked_button.classList.add("icon-arrow-down");
-    }
+    config.data.colors = new_colors;
+    
+    config.save_data(config.data);
+    alert("Color settings have been saved. Changes will take effect after page refresh.");
 }

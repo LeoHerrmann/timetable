@@ -17,9 +17,6 @@ header {
     margin-bottom: var(--space-0);
     border-radius: 5px;
 }
-.settings_group.closed > *:not(.settings_group_header) {
-    display: none;
-}
 
 
 
