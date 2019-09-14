@@ -1,3 +1,7 @@
+14.09.2019:
+Merged separate_settings_pages to master
+
+
 08.09.2019:
 Changed Appearance of settings.html
 separate style files for settings.html and other settings 
