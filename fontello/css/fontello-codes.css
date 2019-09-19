@@ -1,4 +1,5 @@
 
 .icon-settings:before { content: '\e800'; } /* '' */
-.icon-arrow-up:before { content: '\e801'; } /* '' */
-.icon-arrow-down:before { content: '\e802'; } /* '' */
+.icon-periods:before { content: '\e801'; } /* '' */
+.icon-timetable:before { content: '\e802'; } /* '' */
+.icon-colors:before { content: '\f1fc'; } /* '' */

@@ -32,6 +32,7 @@
 
 body {
 	line-height: 1.27;
+	font-size: var(--space-0);
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
 	background-color: #EEE;
@@ -48,6 +49,11 @@ header {
 	z-index: 5;
 	background-color: #FFF;
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+header + * {
+	max-width: 700px;
+	margin: auto;
 }
 
 
@@ -84,7 +90,7 @@ button {
 	background-color: #FFF;
 	text-transform: uppercase;
 	font-weight: 600;
-	transition-duration: 0.2s;
+	transition:background 0.2s, border 0.4s;
 }
 button.positive {
 	color: #0BF;
@@ -94,4 +100,11 @@ button.negative {
 }
 button:active {
 	background-color: #EEE;
+}
+
+
+@media screen and (min-width: 500px) and (min-height: 500px) {
+	:root {
+		--space-0: 1.2rem;
+	}
 }
