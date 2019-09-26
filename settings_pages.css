@@ -98,3 +98,23 @@ header {
 #timetable_settings_group > .schedule_inputs_container > .input_group > input:nth-of-type(2) {
     width: 9ch;
 }
+
+
+
+
+label[for="restore_file_input"] {
+    height: var(--space-3);
+    padding: 0 var(--space--1);
+    border-radius: 5px;
+    line-height: var(--space-3);
+    text-transform: uppercase;
+    font-size: var(--space--1);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+label[for="restore_file_input"]:active {
+    background-color: #EEE;
+}
+input[name="restore_file_input"] {
+    display: none;
+}

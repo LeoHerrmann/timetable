@@ -1,3 +1,7 @@
+26.09.2019:
+Added functionality to restore data from previously made backup files
+
+
 19.09.2019:
 Made application appear better on bigger screens
 Added icons to settings page

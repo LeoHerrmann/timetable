@@ -1,9 +1,14 @@
 window.onload = function() {
     config.load_data();
     translator.translate_ui();
-    
+
     show_options();
 	setup_backup_button();
+
+	var input = document.getElementById("restore_file_input");
+	input.addEventListener("change", function() {
+	    restore();
+	});
 };
 
 
@@ -33,8 +38,31 @@ function setup_backup_button() {
 
 
 function restore() {
-    alert("Sorry, this feature hasn't been implemented yet.");
+    var input = document.getElementById("restore_file_input");
+    var file = input.files[0];
+    var x = 0;
+
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        try {
+            var content = e.target.result;
+            var content_json = JSON.parse(content);
+
+            config.data = content_json;
+            config.save_data(config.data);
+
+            alert("Settings have been restored. Changes will take effect after page refresh.");
+        }
+
+        catch(e) {
+            alert("There has been an error restoring your data.");
+        }
+    }
+
+    reader.readAsText(file);
 }
+
 function reset() {
     if (confirm(translator.translate("reset_confirm"))) {
         config.reset_data();
