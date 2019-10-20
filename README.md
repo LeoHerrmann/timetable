@@ -6,7 +6,7 @@ I made this app primarily for personal use, however you can still feel free to t
 
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/53840228/63791260-65191580-c8fb-11e9-87f2-a56c3ccc68f2.png" alt="Main screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/63791269-6c402380-c8fb-11e9-9d1d-688d980c2f46.png" alt="Settings screen" width="300"/>
+<img src="https://user-images.githubusercontent.com/53840228/67162595-a232de80-f365-11e9-9730-5c5fa3b532ec.png" alt="Main screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/67162597-a232de80-f365-11e9-9e7f-a399ca9c0022.png" alt="Settings screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/67162596-a232de80-f365-11e9-8631-4cec3ee22bc2.png" alt="Settings screen" width="300"/>
 
 
 
