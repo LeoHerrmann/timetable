@@ -79,6 +79,7 @@ function reset() {
 
 function save() {
     var language_input_value = document.querySelector("[name='language_input']").value;
+    console.log(language_input_value)
     config.data.language = language_input_value;
     
     config.save_data(config.data);

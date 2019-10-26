@@ -74,7 +74,7 @@ h2 {
 
 
 
-input, button {
+input, button, select {
     font-size: var(--space--1);
     font-family: "Montserrat", sans-serif;
     height: var(--space-3);
@@ -82,7 +82,7 @@ input, button {
 	padding: 0 var(--space--1);
 	border-radius: 5px;
 }
-input {
+input, select {
 	background: #eee;
 }
 
