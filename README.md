@@ -3,6 +3,8 @@ A simple web application that helps you keep track of your school or university 
 
 I made this app primarily for personal use, however you can still feel free to try it out yourself. If you happen to do so, I'd really appreciate you to give me some feedback aswell.
 
+Click [here](https://rahmsauce.github.io/Timetable) to give it a try.
+
 
 
 ## Screenshots
