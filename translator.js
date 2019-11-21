@@ -3,10 +3,10 @@ var translator = {
         var translation = translator.languages[config.data.language][key];
         return translation;
     },
-    
+
     translate_ui: function() {
         var elements_to_translate = document.querySelectorAll("[data-translator-key]");
-        
+
         for (element of elements_to_translate) {
             element.innerText = translator.translate(element.getAttribute("data-translator-key"));
         }
@@ -18,7 +18,7 @@ var translator = {
             "settings": "Settings",
             "language: ": "Language:",
             "save": "Save",
-            "general": "General",
+            "application": "Application",
             "backup": "Backup",
             "restore": "Restore",
             "reset": "Reset",
@@ -28,13 +28,13 @@ var translator = {
             "data_saved": "Your application data was successfully saved.",
             "reset_confirm": "Are you sure to reset all data? If you haven't made a backup, all application data will be lost forever."
         },
-        
+
         de: {
             "timetable": "Stundenplan",
             "settings": "Einstellungen",
             "language: ": "Sprache:",
             "save": "Speichern",
-            "general": "Allgemein",
+            "application": "Anwendung",
             "backup": "Sichern",
             "restore": "Wiederherstellen",
             "reset": "Zurücksetzen",
@@ -45,4 +45,4 @@ var translator = {
             "reset_confirm": "Sind Sie sich sicher, dass sie alle Anwendungsdaten zurücksetzen wollen? Wenn Sie kein Backup gemacht haben, gehen dadurch alle Anwendungsdaten für immer verloren."
         }
     }
-}
+};

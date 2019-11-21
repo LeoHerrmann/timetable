@@ -1,3 +1,7 @@
+21.11.2019
+Renamed general settings to application settings
+Default titles for every page
+
 17.11.2019
 Icon replaced
 

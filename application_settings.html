@@ -4,13 +4,13 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title data-translator-key="timetable"></title>
+		<title data-translator-key="timetable">Timetable</title>
 		<link rel="stylesheet" type="text/css" href="general.css"/>
 		<link rel="stylesheet" type="text/css" href="settings_pages.css"/>
 		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css"/>
 		<script src="configuration.js"></script>
 		<script src="translator.js"></script>
-		<script src="general_settings.js"></script>
+		<script src="application_settings.js"></script>
 
 
 		<link rel="manifest" href="manifest.json"/>
@@ -27,30 +27,29 @@
 		<header>
 			<h1 data-translator-key="settings"></h1>
 		</header>
-		
+
 		<div id="settings_container">
 			<div class="settings_group closed">
 				<div class="settings_group_header">
-					<h2 data-translator-key="general">General</h2>
+					<h2 data-translator-key="application">Application</h2>
 					<button class="positive" data-translator-key="save" onclick="save();">Save</button>
 				</div>
-		
+
 				<div class="input_group">
 					<label data-translator-key="language: " for="language_input">Language:</label>
-					<!--<input type="text" name="language_input" size="4"/>-->
 					<select name="language_input">
 						<option value="de">Deutsch</option>
 						<option value="en">English</option>
 					</select>
 				</div>
-				
+
 				<div class="input_group">
 					<a><button id="backup_button" data-translator-key="backup">Backup</button></a>
 
 					<label for="restore_file_input" data-translator-key="restore">Restore</label>
 					<input id="restore_file_input" name="restore_file_input" type="file"/>
 				</div>
-				
+
 				<div class="input_group">
 					<button class="negative" onclick="reset();" data-translator-key="reset">Reset</button>
 				</div>
