@@ -65,6 +65,7 @@ function show_options() {
     for (input_element of inputs) {
         input_element.onchange = function() {
             settings_saved = false;
+            document.getElementById("save_button").classList.add("positive");
         }
     }
 }
@@ -108,4 +109,5 @@ function save() {
     alert("Timetable settings have been saved. Changes will take effect after page refresh.");
     
     settings_saved = true;
+    document.getElementById("save_button").classList.remove("positive");
 }

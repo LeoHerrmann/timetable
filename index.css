@@ -10,8 +10,11 @@
 	float:right;
 }
 #collapsing_header > a > button {
-	height: var(--space-5);
-	width: var(--space-5);
+    width: var(--space-4);
+    height: var(--space-4);
+    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    font-size: var(--space-0);
+    padding: 0;
 }
 
 

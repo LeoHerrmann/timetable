@@ -51,7 +51,8 @@ function show_options() {
         var inputs = document.getElementsByTagName("input");
         for (input_element of inputs) {
             input_element.onchange = function() {
-            settings_saved = false;
+                settings_saved = false;
+                document.getElementById("save_button").classList.add("positive");
             }
         }
     }
@@ -77,4 +78,5 @@ function save() {
     alert("Color settings have been saved. Changes will take effect after page refresh.");
     
     settings_saved = true;
+    document.getElementById("save_button").classList.remove("positive");
 }

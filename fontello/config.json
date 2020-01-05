@@ -1,5 +1,5 @@
 {
-  "name": "fontello",
+  "name": "",
   "css_prefix_text": "icon-",
   "css_use_suffix": false,
   "hinting": true,
@@ -9,7 +9,7 @@
     {
       "uid": "e99461abfef3923546da8d745372c995",
       "css": "settings",
-      "code": 59392,
+      "code": 59396,
       "src": "fontawesome"
     },
     {
@@ -21,13 +21,19 @@
     {
       "uid": "531bc468eecbb8867d822f1c11f1e039",
       "css": "timetable",
-      "code": 59394,
+      "code": 59392,
       "src": "fontawesome"
     },
     {
       "uid": "fa9a0b7e788c2d78e24cef1de6b70e80",
       "css": "colors",
       "code": 61948,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f4445feb55521283572ee88bc304f928",
+      "css": "save",
+      "code": 59394,
       "src": "fontawesome"
     }
   ]

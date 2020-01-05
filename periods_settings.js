@@ -33,6 +33,7 @@ function show_options() {
         add_input_group_button.onclick = function() {
             add_input_group("", "");
             settings_saved = false;
+            document.getElementById("save_button").classList.add("positive");
         };
 
         periods_settings_group.append(add_input_group_button);
@@ -48,13 +49,14 @@ function show_options() {
                 "<div class='input_group'>" + 
                     `<input type='time' value='${start}'/>` +
                     `<input type='time' value='${end}'/>` +
-                    "<button class='negative' onclick='this.parentElement.remove(); settings_saved=false;'>X</button>" +
+                    "<button class='negative' onclick='this.parentElement.remove(); settings_saved=false; document.getElementById(&quot;save_button&quot;).classList.add(&quot;positive&quot;);'>X</button>" +
                 "</div>";
 
             var inputs = document.getElementsByTagName("input");
             for (input_element of inputs) {
                 input_element.onchange = function() {
                     settings_saved = false;
+                    document.getElementById("save_button").classList.add("positive");
                 }
             }
         }
@@ -84,4 +86,5 @@ function save() {
     alert("Periods settings have been saved. Changes will take effect after page refresh.");
 
     settings_saved = true;
+    document.getElementById("save_button").classList.remove("positive");
 }

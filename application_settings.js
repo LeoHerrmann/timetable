@@ -16,6 +16,7 @@ window.onload = function() {
 	
 	document.getElementById("language_input").onchange = function() {
 	    settings_saved = false;
+	    document.getElementById("save_button").classList.add("positive");
 	}
 };
 
@@ -102,4 +103,5 @@ function save() {
     config.save_data(config.data);
     alert("General settings have been saved. Changes will take effect after page refresh.");
     settings_saved = true;
+    document.getElementById("save_button").classList.remove("positive");
 }
