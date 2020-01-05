@@ -1,5 +1,5 @@
 05.01.2019
-Prompt, when trying to leave a page without saved settings
+Prompt when trying to leave a page without saved settings
 
 21.11.2019
 Renamed general settings to application settings
