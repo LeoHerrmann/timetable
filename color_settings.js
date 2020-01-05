@@ -1,8 +1,22 @@
+settings_saved = true;
+
+
+
 window.onload = function() {
     config.load_data();
     translator.translate_ui();
-    
+
     show_options();
+};
+
+
+
+window.onbeforeunload = function(e) {
+    if (settings_saved === false) {
+        e.preventDefault();
+        e.returnValue = "";
+        delete e['returnValue'];
+    }
 };
 
 
@@ -13,9 +27,9 @@ function show_options() {
     function show_color_options() {
         var color_settings_group = document.getElementById("color_settings_group");
         var color_input_groups_container = document.getElementById("color_input_groups_container");
-        
+
         var subjects_list = [];
-        
+
         for (day of config.data.timetable) {
             for (period of day.schedule) {
                 if (subjects_list.indexOf(period.subject) < 0 && period.subject != "") {
@@ -23,15 +37,22 @@ function show_options() {
                 }
             }
         }
-        
+
         for (subject of subjects_list) {
             var color = config.data.colors[subject];
-        
+
             color_input_groups_container.innerHTML += 
                 "<div class='input_group'>" +
                     `<label>${subject}</label>` +
                     `<input type='color' value='${typeof(color) == "undefined" ? "#000" : color}'`+
                 "</div>";
+        }
+
+        var inputs = document.getElementsByTagName("input");
+        for (input_element of inputs) {
+            input_element.onchange = function() {
+            settings_saved = false;
+            }
         }
     }
 }
@@ -49,9 +70,11 @@ function save() {
 
         new_colors[label.innerText] = input.value;
     }
-    
+
     config.data.colors = new_colors;
-    
+
     config.save_data(config.data);
     alert("Color settings have been saved. Changes will take effect after page refresh.");
+    
+    settings_saved = true;
 }

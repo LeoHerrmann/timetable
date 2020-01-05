@@ -1,3 +1,7 @@
+var settings_saved = true;
+
+
+
 window.onload = function() {
     config.load_data();
     translator.translate_ui();
@@ -9,6 +13,20 @@ window.onload = function() {
 	input.addEventListener("change", function() {
 	    restore();
 	});
+	
+	document.getElementById("language_input").onchange = function() {
+	    settings_saved = false;
+	}
+};
+
+
+
+window.onbeforeunload = function(e) {
+    if (settings_saved === false) {
+        e.preventDefault();
+        e.returnValue = "";
+        delete e['returnValue'];
+    }
 };
 
 
@@ -24,9 +42,9 @@ function show_options() {
 function setup_backup_button() {
     var data_string = JSON.stringify(config.data);
     var data_uri = "data:application/json; charset=utf-8," + encodeURIComponent(data_string);
-        
+
     var file_name = "timetable_data_backup.json";
-        
+
     var link_element = document.getElementById("backup_button").parentElement;
     link_element.setAttribute("href", data_uri);
     link_element.setAttribute("download", file_name);
@@ -83,4 +101,5 @@ function save() {
 
     config.save_data(config.data);
     alert("General settings have been saved. Changes will take effect after page refresh.");
+    settings_saved = true;
 }
