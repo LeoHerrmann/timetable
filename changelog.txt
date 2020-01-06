@@ -1,3 +1,6 @@
+06.01.2019
+Replaced "X" in periods_settings with delete icon
+
 05.01.2019
 Prompt when trying to leave a page without saved settings
 Changed position of save button in settings
