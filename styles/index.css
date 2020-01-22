@@ -31,6 +31,8 @@ header > button {
 	border-bottom: 2px solid #FFF;
 	color: #777;
 	border-radius: 0;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 header > button.open {
 	color: #000;

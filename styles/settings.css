@@ -26,8 +26,14 @@ a {
 	color: #000;
     padding: var(--space--2) var(--space--3);
     margin: 0;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
-
+a:active {
+    background-color: #EEE;
+}
 a::before {
     margin-right: var(--space-0) !important;
 }

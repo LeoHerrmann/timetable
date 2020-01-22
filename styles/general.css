@@ -91,6 +91,7 @@ button {
 	text-transform: uppercase;
 	font-weight: 600;
 	transition:background 0.2s, border 0.4s;
+	outline: none;
 }
 button.positive {
 	color: #0BF;

@@ -1,8 +1,11 @@
-06.01.2019
+22.01.2020
+Small style adjustments
+
+06.01.2020
 Replaced "X" in periods_settings with delete icon
 Improved directory structure
 
-05.01.2019
+05.01.2020
 Prompt when trying to leave a page without saved settings
 Changed position of save button in settings
 
