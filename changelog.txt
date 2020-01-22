@@ -1,5 +1,6 @@
 22.01.2020
 Small style adjustments
+Page transitions added
 
 06.01.2020
 Replaced "X" in periods_settings with delete icon

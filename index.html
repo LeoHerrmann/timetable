@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/fontello/css/fontello.css"/>
 		<script src="scripts/configuration.js"></script>
 		<script src="scripts/translator.js"></script>
+		<script src="scripts/page_transitions.js"></script>
 		<script src="scripts/script.js"></script>
 
 		<link rel="manifest" href="manifest.json"/>
@@ -25,7 +26,7 @@
 	<body>
 	    <div id="collapsing_header">
 		    <h1 data-translator-key="timetable">Timetable</h1>
-		    <a href="settings.html"><button class="icon-settings"></button></a>
+		    <a><button class="icon-settings" onclick="transition_to_page('settings.html')"></button></a>
 		</div>
 
 		<header></header>

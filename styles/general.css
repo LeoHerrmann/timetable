@@ -36,6 +36,8 @@ body {
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
 	background-color: #EEE;
+	opacity: 0;
+	transition: opacity 0.2s;
 }
 
 
@@ -102,6 +104,7 @@ button.negative {
 button:active {
 	background-color: #EEE;
 }
+
 
 
 @media screen and (min-width: 500px) and (min-height: 500px) {
