@@ -11,16 +11,9 @@ function transition_to_page(relative_url) {
 }
 
 
+
 window.addEventListener("pageshow", function() {
     setTimeout(function() {
         document.body.style.opacity = 1;
     }, 200);
-});
-
-
-window.addEventListener("beforeunload", function() {
-    console.log("ungeladen");
-
-    var transition_overlay = document.body;
-    document.body.style.opacity = 0;
 });
