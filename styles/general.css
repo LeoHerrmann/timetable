@@ -11,8 +11,9 @@
 	--space--2: calc(var(--space--1) / var(--ratio));
 	--space--3: calc(var(--space--2) / var(--ratio));
 
-	--color-background: #EEE;
-	--color-surface: #FFF;
+	--color-background-1: #EEE;
+	--color-background-2: #FFF;
+	--color-background-3: #EEE;
 	--color-foreground-1: #000;
 	--color-foreground-2: #555;
 	--color-foreground-3: #777;
@@ -23,8 +24,9 @@
 
 
 body.dark_mode {
-	--color-background: #000;
-	--color-surface: #222;
+	--color-background-1: #000;
+	--color-background-2: #222;
+	--color-background-3: #444;
 	--color-foreground-1: #FFF;
 	--color-foreground-2: #AAA;
 	--color-foreground-3: #999;
@@ -54,7 +56,7 @@ body {
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
 	color: var(--color-foreground-1);
-	background-color: var(--color-background);
+	background-color: var(--color-background-1);
 	opacity: 0;
 	transition: opacity 0.2s;
 }
@@ -68,7 +70,7 @@ header {
 	width: 100%;
 	box-sizing: border-box;
 	z-index: 5;
-	background-color: var(--color-surface);
+	background-color: var(--color-background-2);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
@@ -105,11 +107,11 @@ input, button, select {
 	color: var(--color-foreground-1);
 }
 input, select {
-	background: var(--color-background);
+	background: var(--color-background-3);
 }
 
 button {
-	background-color: var(--color-surface);
+	background-color: var(--color-background-2);
 	text-transform: uppercase;
 	font-weight: 600;
 	transition:background 0.2s, border 0.4s;
@@ -122,7 +124,7 @@ button.negative {
 	color: var(--color-negative);
 }
 button:active {
-	background-color: var(--color-background);
+	background-color: var(--color-background-3);
 }
 
 

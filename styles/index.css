@@ -3,8 +3,8 @@
 	z-index: 10;
     padding: var(--space-0);
     padding-bottom: 0;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-surface);
+    background: var(--color-background-2);
+    border-bottom: 1px solid var(--color-background-2);
 }
 #collapsing_header > a {
 	float:right;
@@ -28,7 +28,7 @@ header {
 header > button {
 	width: var(--space-5);
 	height: var(--space-5);
-	border-bottom: 2px solid var(--color-surface);
+	border-bottom: 2px solid var(--color-background-2);
 	color: var(--color-foreground-3);
 	border-radius: 0;
 	border-top-left-radius: 5px;
@@ -40,7 +40,7 @@ header > button.open {
 }
 header > button:active {
 	color: var(--color-foreground-2);
-	background-color: var(--color-background);
+	background-color: var(--color-background-3); /*brauche ich das?*/
 }
 
 
@@ -89,7 +89,7 @@ header > button:active {
 	font-size: var(--space-0);
 	transition: opacity 0.15s, transform 0.15s;
 	border-radius: 5px;
-	background-color: var(--color-surface);
+	background-color: var(--color-background-2);
 }
 #subjects_container > * + .subject, #periods_container > * + .period {
 	margin-top: var(--space--1);
