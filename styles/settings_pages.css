@@ -20,7 +20,7 @@ header > button {
 
 
 .settings_group {
-    background: #FFF;
+    background: var(--color-surface);
     padding: var(--space--1) var(--space-0);
     margin-bottom: var(--space-0);
     border-radius: 5px;
@@ -66,7 +66,7 @@ header > button {
 #color_input_groups_container > .input_group > button,
 #periods_input_groups_container > .input_group > button,
 #timetable_settings_group > .schedule_inputs_container > .input_group > button {
-    background-color: #EEE;
+    background-color: var(--color-background);
 }
 
 
@@ -131,7 +131,7 @@ label[for="restore_file_input"] {
     transition: background-color 0.2s;
 }
 label[for="restore_file_input"]:active {
-    background-color: #EEE;
+    background-color: var(--color-background);
 }
 input[name="restore_file_input"] {
     display: none;

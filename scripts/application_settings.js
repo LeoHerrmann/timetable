@@ -3,21 +3,23 @@ var settings_saved = true;
 
 
 window.onload = function() {
-    config.load_data();
-    translator.translate_ui();
-
     show_options();
+
 	setup_backup_button();
 
 	var input = document.getElementById("restore_file_input");
 	input.addEventListener("change", function() {
 	    restore();
 	});
-	
-	document.getElementById("language_input").onchange = function() {
-	    settings_saved = false;
-	    document.getElementById("save_button").classList.add("positive");
-	}
+
+    inputs = document.querySelectorAll("#language_input, #dark_mode_input");
+
+    for (input of inputs) {
+        input.onchange = function() {
+	        settings_saved = false;
+	        document.getElementById("save_button").classList.add("positive");
+	    }
+    }
 };
 
 
@@ -35,8 +37,10 @@ window.onbeforeunload = function(e) {
 function show_options() {
     var language_input = document.querySelector("[name='language_input']");
     language_input.value = config.data.language;
-}
 
+    var dark_mode_input = document.querySelector("[name='dark_mode_input']");
+    dark_mode_input.checked = config.data.dark_mode_enabled;
+}
 
 
 
@@ -53,16 +57,13 @@ function setup_backup_button() {
 
 
 
-
-
-
 function restore() {
     var input = document.getElementById("restore_file_input");
     var file = input.files[0];
     var x = 0;
 
     var reader = new FileReader();
-    
+
     reader.onload = function(e) {
         try {
             var content = e.target.result;
@@ -82,6 +83,8 @@ function restore() {
     reader.readAsText(file);
 }
 
+
+
 function reset() {
     if (confirm(translator.translate("reset_confirm"))) {
         config.reset_data();
@@ -90,15 +93,12 @@ function reset() {
 
 
 
-
-
-
-
-
-
 function save() {
     var language_input_value = document.querySelector("[name='language_input']").value;
     config.data.language = language_input_value;
+
+    var dark_mode_input_value = document.querySelector("[name='dark_mode_input']").checked;
+    config.data.dark_mode_enabled = dark_mode_input_value; 
 
     config.save_data(config.data);
     alert("General settings have been saved. Changes will take effect after page refresh.");

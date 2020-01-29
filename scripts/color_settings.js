@@ -1,11 +1,8 @@
-settings_saved = true;
+var settings_saved = true;
 
 
 
 window.onload = function() {
-    config.load_data();
-    translator.translate_ui();
-
     show_options();
 };
 
@@ -60,7 +57,6 @@ function show_options() {
 
 
 
-
 function save() {
     var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
     var new_colors = {};
@@ -76,7 +72,7 @@ function save() {
 
     config.save_data(config.data);
     alert("Color settings have been saved. Changes will take effect after page refresh.");
-    
+
     settings_saved = true;
     document.getElementById("save_button").classList.remove("positive");
 }

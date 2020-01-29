@@ -1,7 +1,7 @@
 var config = {
 	load_data: function() {
 		data = localStorage.getItem("config_data");
-		
+
 		if (data != null) {
 			try {
 				config.data = JSON.parse(data);
@@ -10,19 +10,20 @@ var config = {
 				alert("Error: Wrong data structure!");
 			}
 		}
-		
 	},
-	
+
 	save_data: function(new_data) {
 		localStorage.setItem("config_data", JSON.stringify(new_data));
 	},
-	
+
 	reset_data: function() {
 		localStorage.removeItem("config_data");
 	},
 
 	data: {
 		language: "en",
+
+		dark_mode_enabled: false,
 
 		timetable: [
 			{
@@ -105,9 +106,9 @@ var config = {
 				]
 			}
 		],
-	
-	
-	
+
+
+
 		periods: [
 			{start: "07:50", end: "08:35"},
 			{start: "08:40", end: "09:25"},
@@ -120,9 +121,9 @@ var config = {
 			{start: "14:45", end: "15:30"},
 			{start: "15:30", end: "16:15"}
 		],
-	
-	
-	
+
+
+
 		colors: {
 			"History":			"#552200",
 			"Biology": 			"#337732",

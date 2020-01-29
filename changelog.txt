@@ -1,3 +1,7 @@
+29.01.2020
+Optional dark mode, which can be activated in application settings
+
+
 26.01.2020
 Bug fix: Blank page after "Leave page?" dialog
 

@@ -1,11 +1,8 @@
-settings_saved = true;
+var settings_saved = true;
 
 
 
 window.onload = function() {
-    config.load_data();
-    translator.translate_ui();
-
     show_options();
 };
 
@@ -107,7 +104,7 @@ function save() {
     config.data.timetable = new_timetable;
     config.save_data(config.data);
     alert("Timetable settings have been saved. Changes will take effect after page refresh.");
-    
+
     settings_saved = true;
     document.getElementById("save_button").classList.remove("positive");
 }

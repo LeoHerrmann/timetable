@@ -10,9 +10,27 @@
 	--space--1: calc(var(--space-0) / var(--ratio));
 	--space--2: calc(var(--space--1) / var(--ratio));
 	--space--3: calc(var(--space--2) / var(--ratio));
+
+	--color-background: #EEE;
+	--color-surface: #FFF;
+	--color-foreground-1: #000;
+	--color-foreground-2: #555;
+	--color-foreground-3: #777;
+	--color-positive: #0BF;
+	--color-negative: #F53;
+
 } 
 
 
+body.dark_mode {
+	--color-background: #000;
+	--color-surface: #222;
+	--color-foreground-1: #FFF;
+	--color-foreground-2: #AAA;
+	--color-foreground-3: #999;
+	--color-positive: #0BF;
+	--color-negative: #F53;
+}
 
 
 @font-face {
@@ -35,7 +53,8 @@ body {
 	font-size: var(--space-0);
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
-	background-color: #EEE;
+	color: var(--color-foreground-1);
+	background-color: var(--color-background);
 	opacity: 0;
 	transition: opacity 0.2s;
 }
@@ -49,7 +68,7 @@ header {
 	width: 100%;
 	box-sizing: border-box;
 	z-index: 5;
-	background-color: #FFF;
+	background-color: var(--color-surface);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
@@ -83,26 +102,27 @@ input, button, select {
     border:0;
 	padding: 0 var(--space--1);
 	border-radius: 5px;
+	color: var(--color-foreground-1);
 }
 input, select {
-	background: #eee;
+	background: var(--color-background);
 }
 
 button {
-	background-color: #FFF;
+	background-color: var(--color-surface);
 	text-transform: uppercase;
 	font-weight: 600;
 	transition:background 0.2s, border 0.4s;
 	outline: none;
 }
 button.positive {
-	color: #0BF;
+	color: var(--color-positive);
 }
 button.negative {
-	color: #F53;
+	color: var(--color-negative);
 }
 button:active {
-	background-color: #EEE;
+	background-color: var(--color-background);
 }
 
 

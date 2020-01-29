@@ -1,10 +1,8 @@
 var settings_saved = true;
 
 
-window.onload = function() {
-    config.load_data();
-    translator.translate_ui();
 
+window.onload = function() {
     show_options();
 };
 
@@ -62,9 +60,6 @@ function show_options() {
         }
     }
 }
-
-
-
 
 
 function save() {

@@ -12,7 +12,7 @@ header {
 
 
 .settings_group {
-    background: #FFF;
+    background: var(--color-surface);
     padding: var(--space--3) var(--space--3);
     margin-bottom: var(--space-0);
     border-radius: 5px;
@@ -23,7 +23,7 @@ header {
 a {
     display: block;
 	text-decoration: none;
-	color: #000;
+	color: var(--color-foreground-1);
     padding: var(--space--2) var(--space--3);
     margin: 0;
     border-radius: 5px;
@@ -32,7 +32,7 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 a:active {
-    background-color: #EEE;
+    background-color: var(--color-background);
 }
 a::before {
     margin-right: var(--space-0) !important;
