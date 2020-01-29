@@ -1,5 +1,6 @@
 29.01.2020
 Optional dark mode, which can be activated in application settings
+Added favicon
 
 
 26.01.2020
