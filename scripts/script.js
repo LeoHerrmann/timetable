@@ -174,7 +174,6 @@ var timetable = {
 		fill: function (dayNumber) {
 			var subject_divs = document.querySelectorAll(".subject");
 
-			//for (let period = 0; period < config.data.timetable[dayNumber].schedule.length; period++) {
 			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length && period < config.data.periods.length; period++) {
 				var subject_name = config.data.timetable[dayNumber].schedule[period].subject;
 				var subject_room = config.data.timetable[dayNumber].schedule[period].room;
@@ -182,11 +181,17 @@ var timetable = {
 				if (subject_name != "") {
 					subject_divs[period].classList.remove("empty");
 
-					if (typeof config.data.colors[subject_name] != "undefined") {
-						subject_divs[period].style.color = config.data.colors[subject_name];
+					var subject_hue = config.data.colors[subject_name];
+
+					if (typeof(subject_hue) == "undefined") {
+					    subject_hue = "0";
+					}
+
+                    if (config.data.dark_mode_enabled) {
+						subject_divs[period].style.color = `hsl(${subject_hue}, 90%, 70%)`;
 					}
 					else {
-						subject_divs[period].style.color = "#000";
+						subject_divs[period].style.color = `hsl(${subject_hue}, 65%, 45%)`;
 					}
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;

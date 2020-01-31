@@ -125,17 +125,17 @@ var config = {
 
 
 		colors: {
-			"History":			"#552200",
-			"Biology": 			"#337732",
-			"German":			"#0055AA",
-			"English": 			"#FF8800",
-			"Computer Science":	"#447777",
-			"Maths": 			"#009922",
-			"Music": 			"#DD2222",
-			"Physics": 			"#0088FF",
-			"Religion": 		"#AA00DD",
-			"Geography":		"#FFCC00",
-			"Sport":			"#222222",
+			"Physics":"179",
+			"English":"38",
+			"Biology":"82",
+			"German":"208",
+			"Maths":"134",
+			"Music":"0",
+			"History":"21",
+			"Religion":"282",
+			"Geography":"56",
+			"Computer Science":"326",
+			"Sport":"251"
 		}
 	}
 };

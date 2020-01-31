@@ -1,3 +1,8 @@
+31.01.2020
+Saturation and lightness of subject colors are adjusted depending on whether dark mode is enabled or not
+-> Only hue of subject colors can be set by the user
+
+
 29.01.2020
 Optional dark mode, which can be activated in application settings
 Added favicon

@@ -36,20 +36,28 @@ function show_options() {
         }
 
         for (subject of subjects_list) {
-            var color = config.data.colors[subject];
+            //var color = config.data.colors[subject];
+            var hue = config.data.colors[subject];
+
+            if (typeof(hue) == "undefined") {
+                hue = 0;
+            }
 
             color_input_groups_container.innerHTML += 
                 "<div class='input_group'>" +
                     `<label>${subject}</label>` +
-                    `<input type='color' value='${typeof(color) == "undefined" ? "#000" : color}'`+
+                    //`<input type='color' value='${typeof(color) == "undefined" ? "#000" : color}'`+
+                    `<input type='range' min='0' max='360' value='${hue}'/>` +
+                    `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>`
                 "</div>";
         }
 
         var inputs = document.getElementsByTagName("input");
         for (input_element of inputs) {
-            input_element.onchange = function() {
+            input_element.onchange = function(e) {
                 settings_saved = false;
                 document.getElementById("save_button").classList.add("positive");
+                e.target.parentElement.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${e.target.value}, 100%, 50%)`;
             }
         }
     }
@@ -66,6 +74,7 @@ function save() {
         var input = input_group.getElementsByTagName("input")[0];
 
         new_colors[label.innerText] = input.value;
+        console.log(input.value);
     }
 
     config.data.colors = new_colors;
