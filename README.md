@@ -8,7 +8,7 @@ Click [here](https://rahmsauce.github.io/Timetable) to give it a try.
 
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/53840228/67162595-a232de80-f365-11e9-9730-5c5fa3b532ec.png" alt="Main screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/67162597-a232de80-f365-11e9-9e7f-a399ca9c0022.png" alt="Settings screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/67162596-a232de80-f365-11e9-8631-4cec3ee22bc2.png" alt="Settings screen" width="300"/>
+<img src="https://user-images.githubusercontent.com/53840228/73595819-e44eed00-451c-11ea-9c08-3042356efd8b.png" alt="Main screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/73595821-e4e78380-451c-11ea-8a77-6052fbf39a10.png" alt="Settings screen" width="300"/> <img src="https://user-images.githubusercontent.com/53840228/73595820-e44eed00-451c-11ea-9349-b80f090c544a.png" alt="Periods settings screen" width="300"/>
 
 
 

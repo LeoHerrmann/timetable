@@ -4,6 +4,7 @@ Migrated to a progressive web application
 README updated
 Adjustment of non dark mode colors
 Improvement of accessibility ratings
+Updated screenshots
 
 
 31.01.2020
