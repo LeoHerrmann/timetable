@@ -3,6 +3,8 @@ window.onload = function() {
 	add_navigation_events();
 	timetable.display_current();
 
+	register_service_worker();
+
 
 
 	function dom_setup() {
@@ -110,6 +112,14 @@ window.onload = function() {
 					timetable.display_next_day();
 				}
 			});
+		}
+	}
+
+
+
+	function register_service_worker() {
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("service_worker.js");
 		}
 	}
 };
