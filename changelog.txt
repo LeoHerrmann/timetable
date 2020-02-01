@@ -1,6 +1,7 @@
 01.02.2020
 Removed settings.js as it was no longer used
 Migrated to a progressive web application
+README updated
 
 
 31.01.2020

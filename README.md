@@ -1,5 +1,5 @@
 # Timetable
-A simple web application that helps you keep track of your school or university schedule
+A simple progressive web application that helps you keep track of your school or university schedule
 
 I made this app primarily for personal use, however you can still feel free to try it out yourself. If you happen to do so, I'd really appreciate you to give me some feedback aswell.
 
@@ -12,16 +12,13 @@ Click [here](https://rahmsauce.github.io/Timetable) to give it a try.
 
 
 
-## Installation and setup
-- Clone this repository or download the files
+## Installation
 
-- Open index.html using a web browser, then click on the settings icon in the top right corner or open settings.html directly
+### Using it as a progressive web application
+Since this is a progressive web application there is no need to install it, because the service worker caches all the necessary application files during first use. This allows you to use this application even when you are offline. On mobile, you can add this application to your homescreen to make it feel more like a native app. 
 
-- Enter the periods of your classes, your schedule and your prefered colors for each subject (Dont't forget to save your changes!)
-
-- Navigate back to index.html. Now you should see your timetable
- 
-- Optionally, create a shortcut to your home screen or desktop for faster access
+### Local Installation
+You can still install the application the "traditional way" by downloading the files or cloning this repository and opening the index.html to start it. 
 
 
 
