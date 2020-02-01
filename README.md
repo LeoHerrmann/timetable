@@ -1,5 +1,5 @@
 # Timetable
-A simple progressive web application that helps you keep track of your school or university schedule
+A simple progressive web application helping you to keep track of your school or university schedule
 
 I made this app primarily for personal use, however you can still feel free to try it out yourself. If you happen to do so, I'd really appreciate you to give me some feedback aswell.
 
