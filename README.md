@@ -15,7 +15,7 @@ Click [here](https://rahmsauce.github.io/Timetable) to give it a try.
 ## Installation
 
 ### Using it as a progressive web application
-Since this is a progressive web application there is no need to install it, because the service worker caches all the necessary application files during first use. This allows you to use this application even when you are offline. On mobile, you can add this application to your homescreen to make it feel more like a native app. 
+Since this is a progressive web application, there is no need to install it because the service worker caches all the necessary application files during first use. This allows you to use this application even when you are offline. On mobile, you can add this application to your homescreen to make it feel more like a native app. 
 
 ### Local Installation
 You can still install the application the "traditional way" by downloading the files or cloning this repository and opening the index.html to start it. 
