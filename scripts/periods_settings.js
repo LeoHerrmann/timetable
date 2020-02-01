@@ -47,7 +47,7 @@ function show_options() {
                 "<div class='input_group'>" + 
                     `<input type='time' value='${start}'/>` +
                     `<input type='time' value='${end}'/>` +
-                    "<button class='icon-delete negative' onclick='this.parentElement.remove(); settings_saved=false; document.getElementById(&quot;save_button&quot;).classList.add(&quot;positive&quot;);'></button>" +
+                    "<button class='icon-delete negative' onclick='this.parentElement.remove(); settings_saved=false; document.getElementById(&quot;save_button&quot;).classList.add(&quot;positive&quot;);' aria-label='Delete'></button>" +
                 "</div>";
 
             var inputs = document.getElementsByTagName("input");

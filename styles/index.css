@@ -6,10 +6,11 @@
     background: var(--color-background-2);
     border-bottom: 1px solid var(--color-background-2);
 }
-#collapsing_header > a {
+
+#collapsing_header > button {
 	float:right;
 }
-#collapsing_header > a > button {
+#collapsing_header > button {
     width: var(--space-4);
     height: var(--space-4);
     margin-top: calc((var(--space-5) - var(--space-4)) / 2);
@@ -37,10 +38,6 @@ header > button {
 header > button.open {
 	color: var(--color-foreground-1);
 	border-color: var(--color-foreground-1);
-}
-header > button:active {
-	color: var(--color-foreground-2);
-	background-color: var(--color-background-3); /*brauche ich das?*/
 }
 
 
