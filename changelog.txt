@@ -2,6 +2,7 @@
 Removed settings.js as it was no longer used
 Migrated to a progressive web application
 README updated
+Adjustment of non dark mode colors
 
 
 31.01.2020

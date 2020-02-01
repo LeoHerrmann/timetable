@@ -201,7 +201,7 @@ var timetable = {
 						subject_divs[period].style.color = `hsl(${subject_hue}, 90%, 70%)`;
 					}
 					else {
-						subject_divs[period].style.color = `hsl(${subject_hue}, 65%, 45%)`;
+						subject_divs[period].style.color = `hsl(${subject_hue}, 100%, 35%)`;
 					}
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
