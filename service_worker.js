@@ -4,6 +4,8 @@ self.addEventListener("fetch", function(event) {
             return response || fetch_and_cache(event.request);
         })
     );
+
+    fetch_and_cache(event.request);
 });
 
 
