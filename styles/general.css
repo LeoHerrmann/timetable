@@ -71,8 +71,7 @@ header {
 	width: 100%;
 	box-sizing: border-box;
 	z-index: 5;
-	background-color: #000;
-	/*background-color: var(--color-background-2);*/
+	background-color: var(--color-background-2);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
