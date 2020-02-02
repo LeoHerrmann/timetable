@@ -1,9 +1,7 @@
 self.addEventListener("fetch", function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
-            var val = fetch_and_cache(event.request)
-            return response || val;
-            //return response || fetch_and_cache(event.request);
+            return response || fetch_and_cache(event.request);
         })
     );
 });
@@ -15,7 +13,7 @@ function fetch_and_cache(url) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
-        return caches.open("timetable_cache_3").then(function(cache) {
+        return caches.open("timetable_cache_1").then(function(cache) {
             cache.put(url, response.clone());
             return response;
         });
@@ -29,7 +27,7 @@ function fetch_and_cache(url) {
 
 self.addEventListener("install", function(e) {
     e.waitUntil(
-        caches.open("timetable_cache_3").then(function(cache) {
+        caches.open("timetable_cache_1").then(function(cache) {
             return cache.addAll([
                 "./",
                 "./application_settings.html",
