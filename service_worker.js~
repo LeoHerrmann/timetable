@@ -1,11 +1,11 @@
 self.addEventListener("fetch", function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
-            //return response || fetch_and_cache(event.request);
-            fetch_and_cache(event.request)
             return response || fetch_and_cache(event.request);
         })
     );
+
+    fetch_and_cache(event.request);
 });
 
 
