@@ -1,14 +1,39 @@
 self.addEventListener("fetch", function(event) {
-    event.respondWith(
+    /*event.respondWith(
         caches.match(event.request).then(function(response) {
             return response || fetch_and_cache(event.request);
         })
-    );
+    );*/
+
+    event.respondWith(from_cache(event.request));
+
+    event.waitUntil(update(event.request));
 });
 
 
 
-function fetch_and_cache(url) {
+function from_cache(request) {
+    return caches.open("timetable_cache_1").then(function (cache) {
+        return cache.match(request).then(function (matching) {
+            return matching || Promise.reject("no-match");
+        });
+    });
+}
+
+
+
+function update(request) {
+    return caches.open("timetable_cache_1").then(function(cache) {
+        return fetch(request).then(function(response) {
+            return cache.put(request, response);
+        });
+    });
+}
+
+
+
+
+/*function fetch_and_cache(url) {
     return fetch(url).then(function(response) {
         if (!response.ok) {
             throw Error(response.statusText);
@@ -21,7 +46,7 @@ function fetch_and_cache(url) {
     .catch(function(error) {
         console.log("Request failed:", error);
     });
-}
+}*/
 
 
 
