@@ -12,6 +12,16 @@ function transition_to_page(relative_url) {
 
 
 
+function transition_back() {
+    document.body.style.opacity = 0;
+
+    setTimeout(function() {
+        window.history.back();
+    }, 200);
+}
+
+
+
 window.addEventListener("pageshow", function() {
     setTimeout(function() {
         document.body.style.opacity = 1;

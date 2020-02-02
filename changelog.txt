@@ -1,5 +1,6 @@
 02.02.2020
 Added back button
+Fixed back button behaviour
 
 
 01.02.2020
