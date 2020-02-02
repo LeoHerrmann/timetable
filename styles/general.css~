@@ -57,8 +57,7 @@ body {
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
 	color: var(--color-foreground-1);
-	background-color: #F00;
-	/*background-color: var(--color-background-1);*/
+	background-color: var(--color-background-1);
 	opacity: 0;
 	transition: opacity 0.2s;
 }
