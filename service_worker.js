@@ -13,7 +13,7 @@ function fetch_and_cache(url) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
-        return caches.open("timetable_cache").then(function(cache) {
+        return caches.open("timetable_cache_2").then(function(cache) {
             cache.put(url, response.clone());
             return response;
         });
@@ -27,7 +27,7 @@ function fetch_and_cache(url) {
 
 self.addEventListener("install", function(e) {
     e.waitUntil(
-        caches.open("timetable_cache").then(function(cache) {
+        caches.open("timetable_cache_2").then(function(cache) {
             return cache.addAll([
                 "./",
                 "./application_settings.html",
