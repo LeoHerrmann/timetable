@@ -10,6 +10,7 @@
 	--space--1: calc(var(--space-0) / var(--ratio));
 	--space--2: calc(var(--space--1) / var(--ratio));
 	--space--3: calc(var(--space--2) / var(--ratio));
+	--space--4: calc(var(--space--3) / var(--ratio));
 
 	--color-background-1: #EEE;
 	--color-background-2: #FFF;
@@ -72,6 +73,16 @@ header {
 	z-index: 5;
 	background-color: var(--color-background-2);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+header > .back_button {
+    float: left;
+    width: var(--space-4);
+    height: var(--space-4);
+    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    margin-right: var(--space-0);
+    font-size: var(--space-0);
+    padding: 0;
 }
 
 header + * {

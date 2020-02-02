@@ -1,7 +1,9 @@
 
 .icon-timetable:before { content: '\e800'; } /* '' */
 .icon-periods:before { content: '\e801'; } /* '' */
-.icon-save:before { content: '\e802'; } /* '' */
+.icon-save-alt:before { content: '\e802'; } /* '' */
 .icon-delete:before { content: '\e803'; } /* '' */
 .icon-settings:before { content: '\e804'; } /* '' */
+.icon-back:before { content: '\e805'; } /* '' */
+.icon-save:before { content: '\e806'; } /* '' */
 .icon-colors:before { content: '\f1fc'; } /* '' */

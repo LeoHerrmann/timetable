@@ -13,6 +13,10 @@ window.onbeforeunload = function(e) {
         e.preventDefault();
         e.returnValue = "";
         delete e['returnValue'];
+
+        setTimeout(function() {
+            document.body.style.opacity = 1;
+        }, 500);
     }
 };
 
@@ -24,7 +28,7 @@ function show_options() {
     function show_timetable_options() {
         var timetable_settings_group = document.getElementById("timetable_settings_group");
 
-        for (day_object of config.data.timetable) {            
+        for (day_object of config.data.timetable) {
             timetable_settings_group.innerHTML += 
                 "<div class='input_group'>" + 
                     `<input name='day_name_input' value='${day_object.day}'/>` + 

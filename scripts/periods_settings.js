@@ -13,14 +13,17 @@ window.onbeforeunload = function(e) {
         e.preventDefault();
         e.returnValue = "";
         delete e['returnValue'];
+
+        setTimeout(function() {
+            document.body.style.opacity = 1;
+        }, 500);
     }
 };
 
 
 
-function show_options() {    
+function show_options() {
     show_periods_options();
-
 
 
     function show_periods_options() {

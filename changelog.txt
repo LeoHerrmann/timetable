@@ -1,3 +1,7 @@
+02.02.2020
+Added back button
+
+
 01.02.2020
 Removed settings.js as it was no longer used
 Migrated to a progressive web application

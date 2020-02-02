@@ -13,6 +13,10 @@ window.onbeforeunload = function(e) {
         e.preventDefault();
         e.returnValue = "";
         delete e['returnValue'];
+
+        setTimeout(function() {
+            document.body.style.opacity = 1;
+        }, 500);
     }
 };
 
@@ -20,6 +24,7 @@ window.onbeforeunload = function(e) {
 
 function show_options() {  
     show_color_options();
+
 
     function show_color_options() {
         var color_settings_group = document.getElementById("color_settings_group");
@@ -36,7 +41,6 @@ function show_options() {
         }
 
         for (subject of subjects_list) {
-            //var color = config.data.colors[subject];
             var hue = config.data.colors[subject];
 
             if (typeof(hue) == "undefined") {
@@ -46,7 +50,6 @@ function show_options() {
             color_input_groups_container.innerHTML += 
                 "<div class='input_group'>" +
                     `<label>${subject}</label>` +
-                    //`<input type='color' value='${typeof(color) == "undefined" ? "#000" : color}'`+
                     `<input type='range' min='0' max='360' value='${hue}'/>` +
                     `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>`
                 "</div>";
