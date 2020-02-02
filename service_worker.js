@@ -1,12 +1,5 @@
 self.addEventListener("fetch", function(event) {
-    /*event.respondWith(
-        caches.match(event.request).then(function(response) {
-            return response || fetch_and_cache(event.request);
-        })
-    );*/
-
     event.respondWith(from_cache(event.request));
-
     event.waitUntil(update(event.request));
 });
 
@@ -29,24 +22,6 @@ function update(request) {
         });
     });
 }
-
-
-
-
-/*function fetch_and_cache(url) {
-    return fetch(url).then(function(response) {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return caches.open("timetable_cache_1").then(function(cache) {
-            cache.put(url, response.clone());
-            return response;
-        });
-    })
-    .catch(function(error) {
-        console.log("Request failed:", error);
-    });
-}*/
 
 
 
