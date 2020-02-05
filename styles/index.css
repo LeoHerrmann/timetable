@@ -93,7 +93,7 @@ header > button.open {
 }
 
 .subject.empty {
-	visibility: hidden;
+	opacity: 0;
 }
 
 .subject.hidden {
@@ -104,4 +104,24 @@ header > button.open {
 #subjects_container > .subject > span:nth-of-type(2) {
 	float: right;
 	font-size: var(--space--1);
+}
+
+
+
+
+
+#subject_edit_popup > span {
+	display: block;
+}
+#subject_edit_popup > * + * {
+	margin-top: var(--space--2);
+}
+#subject_edit_inputs_container {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-gap: var(--space--2);
+	align-items: center;
+}
+#subject_edit_popup > button {
+	float: right;
 }

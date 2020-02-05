@@ -39,5 +39,26 @@
 
 			<div id="subjects_container"></div>
 		</div>
+
+		<div class="overlay" onclick="popup.close();"></div>
+
+		<div id="subject_edit_popup" class="popup">
+			<h2 data-translator-key="edit">Edit</h2>
+
+			<span id="day_label">0</span>
+			<span id="period_number_label">0</span>
+			<span id="period_times_label">0</span>
+
+			<div id="subject_edit_inputs_container">
+				<label for="subject_input" data-translator-key="subject:">Subject:</label>
+				<input name="subject_input" type="text"/>
+
+				<label for="room_input" data-translator-key="room:">Room:</label>
+				<input name="room_input" type="text"/>
+			</div>
+
+			<button class="positive" onclick="save_changes();popup.close();" data-translator-key="save">Save</button>
+			<button onclick="popup.close();" data-translator-key="cancel">Cancel</button>
+		</div>
 	</body>
 </html>

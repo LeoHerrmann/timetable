@@ -69,6 +69,30 @@ window.onload = function() {
 
 				subjectDiv.innerHTML = "<span></span><span></span>";
 
+				subjectDiv.addEventListener("contextmenu", function(e) {
+				    e.preventDefault();
+
+					var clicked_subject_div = e.target;
+
+				    if (e.target.classList.contains("subject") === false) {
+				    	clicked_subject_div = e.target.closest(".subject");
+				    }
+
+				    var day, period;
+
+				    day = timetable.currently_shown_day_number;
+
+				    var neighbours = document.getElementById("subjects_container").childNodes;
+
+				    for (n in neighbours) {
+				    	if (clicked_subject_div == neighbours[n]) {
+				    		period = n;
+				    	}
+				    }
+
+				    show_edit_popup(day, period);
+				});
+
 				subjectsContainer.append(subjectDiv);
 			}
 		}
@@ -231,3 +255,77 @@ var timetable = {
 		}
 	}
 };
+
+
+
+var popup = {
+	close: function() {
+		var popups = document.getElementsByClassName("popup");
+		var overlay = document.getElementsByClassName("overlay")[0];
+
+		for (var popup of popups) {
+			popup.style.opacity = "0";
+		}
+
+		overlay.style.opacity = "0";
+
+		setTimeout(function() {
+			for (var popup of popups) {
+				popup.style.display = "none";
+			}
+
+			overlay.style.display = "none";
+		}, 200)
+	},
+
+	show: function(id) {
+		var popup = document.getElementById(id); 
+		var overlay = document.getElementsByClassName("overlay")[0];
+		popup.style.opacity = "1";
+		overlay.style.opacity = "1";
+		popup.style.display = "block";
+		document.getElementsByClassName("overlay")[0].style.display = "block";
+	}
+}
+
+
+
+function show_edit_popup(day, period) {
+	var day_name = config.data.timetable[day].day;
+	var period_times = config.data.periods[period].start + " - " + config.data.periods[period].end;
+
+	var subject = config.data.timetable[day].schedule[period].subject;
+	var room = config.data.timetable[day].schedule[period].room;
+
+	if (typeof(hue) == "undefined") {
+		hue = 0;
+	}
+ 
+ 	document.getElementById("day_label").innerText = day_name;
+ 	document.getElementById("day_label").setAttribute("data-day-index", day);
+ 	document.getElementById("period_number_label").innerText = translator.translate("period") + " " + (parseInt(period) + 1);
+ 	document.getElementById("period_number_label").setAttribute("data-period-index", period);
+ 	document.getElementById("period_times_label").innerText = period_times;
+	document.querySelector("[name='subject_input']").value = subject;
+	document.querySelector("[name='room_input']").value = room;
+
+	popup.show("subject_edit_popup");
+}
+
+
+
+function save_changes() {
+	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
+	var period_index = document.getElementById("period_number_label").getAttribute("data-period-index");
+	var subject = document.querySelector("[name='subject_input']").value;
+	var room = document.querySelector("[name='room_input']").value;
+
+	var new_data = JSON.parse(JSON.stringify(config.data));
+
+	new_data.timetable[day_index].schedule[period_index].subject = subject;
+	new_data.timetable[day_index].schedule[period_index].room = room;
+
+	config.save_data(new_data);
+	config.load_data();
+	timetable.display_for_day(timetable.currently_shown_day_number);
+}
