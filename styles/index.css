@@ -44,17 +44,13 @@ header > button.open {
 
 
 
-
-
-
-
-
 #timetable {
 	display: grid;
 	grid-template-columns: var(--space-6) 1fr;
 	grid-template-rows: 1fr;
 	grid-gap: var(--space--1);
 	padding: var(--space--1);
+	user-select: none;
 }
 
 
