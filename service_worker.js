@@ -44,7 +44,7 @@ self.addEventListener("install", function(e) {
                 "./scripts/general.js",
                 "./scripts/page_transitions.js",
                 "./scripts/periods_settings.js",
-                "./scripts/script.js",
+                "./scripts/index.js",
                 "./scripts/timetable_settings.js",
                 "./scripts/translator.js",
                 "./styles/general.css",

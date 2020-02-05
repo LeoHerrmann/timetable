@@ -1,3 +1,7 @@
+05.02.2020
+Renamed script.js to index.js
+
+
 02.02.2020
 Added back button
 Fixed back button behaviour
