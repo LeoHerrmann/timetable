@@ -17,7 +17,6 @@ window.onload = function() {
 			var header = document.getElementsByTagName("header")[0];
 			var counter = 0;
 
-
 			for (entry of config.data.timetable) {
 				var new_button = document.createElement("button");
 
@@ -37,7 +36,6 @@ window.onload = function() {
 					timetable.display_for_day(e.target.getAttribute("data-dayNumber"));
 				});
 
-
 				header.append(new_button);
 				counter++;
 			}
@@ -49,11 +47,15 @@ window.onload = function() {
 
 			for (period of config.data.periods) {
 				periods_container.innerHTML += 
-					"<div class='period'>" +
+					"<div class='period' oncontextmenu='editor.show_period_edit_popup(this);'>" +
 						`<span>${period.start}</span>` +
 						`<span>${period.end}</span>` +
 					"</div>";
 			}
+
+			periods_container.addEventListener("contextmenu", function(e) {
+				e.preventDefault();
+			})
 		}
 
 
@@ -78,19 +80,7 @@ window.onload = function() {
 				    	clicked_subject_div = e.target.closest(".subject");
 				    }
 
-				    var day, period;
-
-				    day = timetable.currently_shown_day_number;
-
-				    var neighbours = document.getElementById("subjects_container").childNodes;
-
-				    for (n in neighbours) {
-				    	if (clicked_subject_div == neighbours[n]) {
-				    		period = n;
-				    	}
-				    }
-
-				    show_edit_popup(day, period);
+				    editor.show_schedule_edit_popup(clicked_subject_div);
 				});
 
 				subjectsContainer.append(subjectDiv);
@@ -258,6 +248,8 @@ var timetable = {
 
 
 
+
+
 var popup = {
 	close: function() {
 		var popups = document.getElementsByClassName("popup");
@@ -290,42 +282,99 @@ var popup = {
 
 
 
-function show_edit_popup(day, period) {
-	var day_name = config.data.timetable[day].day;
-	var period_times = config.data.periods[period].start + " - " + config.data.periods[period].end;
 
-	var subject = config.data.timetable[day].schedule[period].subject;
-	var room = config.data.timetable[day].schedule[period].room;
 
-	if (typeof(hue) == "undefined") {
-		hue = 0;
-	}
+
+var editor = {
+	show_schedule_edit_popup: function(clicked_subject_div) {
+		var day_index = timetable.currently_shown_day_number;
+
+		var period_index;
+		var neighbours = document.getElementById("subjects_container").childNodes;
+
+		for (n in neighbours) {
+			if (clicked_subject_div == neighbours[n]) {
+				period_index = n;
+			}
+    	}
+
+		var day_name = config.data.timetable[day_index].day;
+		var period_times = config.data.periods[period_index].start + " - " + config.data.periods[period_index].end;
+
+		var subject = config.data.timetable[day_index].schedule[period_index].subject;
+		var room = config.data.timetable[day_index].schedule[period_index].room;
  
- 	document.getElementById("day_label").innerText = day_name;
- 	document.getElementById("day_label").setAttribute("data-day-index", day);
- 	document.getElementById("period_number_label").innerText = translator.translate("period") + " " + (parseInt(period) + 1);
- 	document.getElementById("period_number_label").setAttribute("data-period-index", period);
- 	document.getElementById("period_times_label").innerText = period_times;
-	document.querySelector("[name='subject_input']").value = subject;
-	document.querySelector("[name='room_input']").value = room;
+ 		document.getElementById("day_label").innerText = day_name;
+ 		document.getElementById("day_label").setAttribute("data-day-index", day_index);
+ 		document.querySelector("#schedule_edit_popup #period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
+ 		document.querySelector("#schedule_edit_popup #period_number_label").setAttribute("data-period-index", period_index);
+ 		document.getElementById("period_times_label").innerText = period_times;
+		document.querySelector("[name='subject_input']").value = subject;
+		document.querySelector("[name='room_input']").value = room;
 
-	popup.show("subject_edit_popup");
-}
+		popup.show("schedule_edit_popup");
+	},
 
 
 
-function save_changes() {
-	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
-	var period_index = document.getElementById("period_number_label").getAttribute("data-period-index");
-	var subject = document.querySelector("[name='subject_input']").value;
-	var room = document.querySelector("[name='room_input']").value;
+	save_schedule_changes: function() {
+		var day_index = document.getElementById("day_label").getAttribute("data-day-index");
+		var period_index = document.querySelector("#schedule_edit_popup #period_number_label").getAttribute("data-period-index");
+		var subject = document.querySelector("[name='subject_input']").value;
+		var room = document.querySelector("[name='room_input']").value;
 
-	var new_data = JSON.parse(JSON.stringify(config.data));
+		var new_data = JSON.parse(JSON.stringify(config.data));
 
-	new_data.timetable[day_index].schedule[period_index].subject = subject;
-	new_data.timetable[day_index].schedule[period_index].room = room;
+		new_data.timetable[day_index].schedule[period_index].subject = subject;
+		new_data.timetable[day_index].schedule[period_index].room = room;
 
-	config.save_data(new_data);
-	config.load_data();
-	timetable.display_for_day(timetable.currently_shown_day_number);
-}
+		config.save_data(new_data);
+		config.load_data();
+		timetable.display_for_day(timetable.currently_shown_day_number);
+	},
+
+
+
+	show_period_edit_popup: function(clicked_period) {
+		var start_time = clicked_period.getElementsByTagName("span")[0].innerText;
+		var end_time = clicked_period.getElementsByTagName("span")[1].innerText;
+		var period_index;
+		var period_number;
+
+		var neighbours = document.getElementById("periods_container").childNodes;
+
+		for (let n in neighbours) {
+			if (clicked_period == neighbours[n]) {
+				period_index = n;
+				period_number = parseInt(n) + 1;
+			}
+		}
+
+		document.querySelector("#periods_edit_popup #period_number_label").innerText = translator.translate("period") + " " + period_number;
+		document.querySelector("#periods_edit_popup #period_number_label").setAttribute("data-period-index", period_index);
+		document.querySelector("[name='period_start_input']").value = start_time;
+		document.querySelector("[name='period_end_input']").value = end_time;
+
+		popup.show("periods_edit_popup");
+	},
+
+
+
+	save_period_changes: function() {
+		var period_index = document.querySelector("#periods_edit_popup #period_number_label").getAttribute("data-period-index");
+		var start_time = document.querySelector("[name='period_start_input']").value;
+		var end_time = document.querySelector("[name='period_end_input']").value;
+
+		var new_data = JSON.parse(JSON.stringify(config.data));
+
+		new_data.periods[period_index].start = start_time;
+		new_data.periods[period_index].end = end_time;
+
+		config.save_data(new_data);
+		config.load_data();
+
+		var period_labels = document.querySelectorAll(`#periods_container > .period:nth-of-type(${parseInt(period_index) + 1}) span`);
+		period_labels[0].innerText = start_time;
+		period_labels[1].innerText = end_time;
+	}
+};

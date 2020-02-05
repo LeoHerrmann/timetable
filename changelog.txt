@@ -2,6 +2,7 @@
 Renamed script.js to index.js
 Timetable can be edited by right-clicking or long-pressing subjetcs
 Prevent text from being selected when trying to edit timetable
+Periods can be edited by right-clicking or long-pressing subjetcs
 
 
 02.02.2020

@@ -106,18 +106,18 @@ header > button.open {
 
 
 
-#subject_edit_popup > span {
+.popup > span {
 	display: block;
 }
-#subject_edit_popup > * + * {
+.popup > * + * {
 	margin-top: var(--space--2);
 }
-#subject_edit_inputs_container {
+.popup > .inputs_container {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-gap: var(--space--2);
 	align-items: center;
 }
-#subject_edit_popup > button {
+.popup > button {
 	float: right;
 }
