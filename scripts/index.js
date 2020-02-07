@@ -306,8 +306,8 @@ var editor = {
  
  		document.getElementById("day_label").innerText = day_name;
  		document.getElementById("day_label").setAttribute("data-day-index", day_index);
- 		document.querySelector("#schedule_edit_popup #period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
- 		document.querySelector("#schedule_edit_popup #period_number_label").setAttribute("data-period-index", period_index);
+ 		document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
+ 		document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
  		document.getElementById("period_times_label").innerText = period_times;
 		document.querySelector("[name='subject_input']").value = subject;
 		document.querySelector("[name='room_input']").value = room;
@@ -319,7 +319,7 @@ var editor = {
 
 	save_schedule_changes: function() {
 		var day_index = document.getElementById("day_label").getAttribute("data-day-index");
-		var period_index = document.querySelector("#schedule_edit_popup #period_number_label").getAttribute("data-period-index");
+		var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
 		var subject = document.querySelector("[name='subject_input']").value;
 		var room = document.querySelector("[name='room_input']").value;
 
@@ -350,8 +350,8 @@ var editor = {
 			}
 		}
 
-		document.querySelector("#periods_edit_popup #period_number_label").innerText = translator.translate("period") + " " + period_number;
-		document.querySelector("#periods_edit_popup #period_number_label").setAttribute("data-period-index", period_index);
+		document.querySelector("#periods_edit_popup .period_number_label").innerText = translator.translate("period") + " " + period_number;
+		document.querySelector("#periods_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
 		document.querySelector("[name='period_start_input']").value = start_time;
 		document.querySelector("[name='period_end_input']").value = end_time;
 
@@ -361,7 +361,7 @@ var editor = {
 
 
 	save_period_changes: function() {
-		var period_index = document.querySelector("#periods_edit_popup #period_number_label").getAttribute("data-period-index");
+		var period_index = document.querySelector("#periods_edit_popup .period_number_label").getAttribute("data-period-index");
 		var start_time = document.querySelector("[name='period_start_input']").value;
 		var end_time = document.querySelector("[name='period_end_input']").value;
 

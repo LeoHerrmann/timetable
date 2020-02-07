@@ -1,3 +1,7 @@
+07.02.2020
+Fixed duplicate id value
+
+
 05.02.2020
 Renamed script.js to index.js
 Timetable can be edited by right-clicking or long-pressing subjetcs
