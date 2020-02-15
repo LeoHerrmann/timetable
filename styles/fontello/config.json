@@ -53,6 +53,18 @@
       "css": "save",
       "code": 59398,
       "src": "fontawesome"
+    },
+    {
+      "uid": "8fb55fd696d9a0f58f3b27c1d8633750",
+      "css": "table",
+      "code": 61646,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "a2a74f5e7b7d9ba054897d8c795a326a",
+      "css": "list",
+      "code": 61642,
+      "src": "fontawesome"
     }
   ]
 }

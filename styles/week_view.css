@@ -1,4 +1,4 @@
-#collapsing_header {
+/*#collapsing_header {
 	position: relative;
 	z-index: 10;
     padding: var(--space-0);
@@ -16,7 +16,6 @@
     margin-top: calc((var(--space-5) - var(--space-4)) / 2);
     font-size: var(--space-0);
     padding: 0;
-    margin-left: var(--space--3);
 }
 
 
@@ -39,6 +38,27 @@ header > button {
 header > button.open {
 	color: var(--color-foreground-1);
 	border-color: var(--color-foreground-1);
+}*/
+
+
+html, body {
+	height: 100%;
+}
+
+
+
+header {
+    padding: var(--space-0);
+    padding-bottom: 0;
+}
+header > button {
+    float: right;
+    width: var(--space-4);
+    height: var(--space-4);
+    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    font-size: var(--space-0);
+    padding: 0;
+    margin-left: var(--space--3);
 }
 
 
@@ -46,14 +66,22 @@ header > button.open {
 
 
 #timetable {
-	display: grid;
+	/*display: grid;
 	grid-template-columns: var(--space-6) 1fr;
 	grid-template-rows: 1fr;
-	grid-gap: var(--space--1);
+	grid-gap: var(--space--1);*/
+	
+	display: flex;
 	padding: var(--space--1);
 	user-select: none;
+	max-width: 100%;
+	overflow-x: auto;
+	max-height: calc(100% - var(--space-5) - var(--space-0));
+	box-sizing: border-box;
 }
-
+#timetable > * + * {
+	margin-left: var(--space--1);
+}
 
 
 
@@ -63,8 +91,10 @@ header > button.open {
 	flex-direction: column;
 	justify-content: center;
 	height: var(--space-5);
+	width: var(--space-6);
 	text-align: center;
 	color: var(--color-foreground-2);
+	margin-top: calc(var(--space-0) + var(--space-3));
 }
 #periods_container > .period > span {
 	display: block;
@@ -73,32 +103,51 @@ header > button.open {
 
 
 
+.day_container {
+	flex-grow: 1;
+	flex-basis: 100px;
+}
 
+.day_container > .day_label {
+	font-size: var(--space--1);
+	color: var(--color-foreground-2);
+	text-transform: uppercase;
+	line-height: var(--space-3);
+}
 
-#subjects_container > .subject {
+.day_container > .subject_container {
 	height: var(--space-5);
-	line-height: var(--space-5);
+	/*line-height: var(--space-5);*/
 	padding: 0 var(--space-0) 0 var(--space-0);
 	box-sizing: border-box;
 	font-size: var(--space-0);
 	transition: opacity 0.15s, transform 0.15s;
 	border-radius: 5px;
 	background-color: var(--color-background-2);
+
+	display: flex;
+	align-items: center;
 }
-#subjects_container > * + .subject, #periods_container > * + .period {
+
+.day_container > * + .subject_container, #periods_container > * + .period {
 	margin-top: var(--space--1);
 }
 
-.subject.empty {
+.subject_container.empty {
 	opacity: 0;
 }
 
-.subject.hidden {
+.subject_container.hidden {
 	opacity: 0;
 	transform: translateY(10px);
 }
 
-#subjects_container > .subject > span:nth-of-type(2) {
+.day_container > .subject_container > span:nth-of-type(1) {
+	flex-grow: 1;
+	padding-right: 1ch;
+}
+
+.day_container > .subject_container > span:nth-of-type(2) {
 	float: right;
 	font-size: var(--space--1);
 }

@@ -6,4 +6,6 @@
 .icon-settings:before { content: '\e804'; } /* '' */
 .icon-back:before { content: '\e805'; } /* '' */
 .icon-save:before { content: '\e806'; } /* '' */
+.icon-list:before { content: '\f0ca'; } /* '' */
+.icon-table:before { content: '\f0ce'; } /* '' */
 .icon-colors:before { content: '\f1fc'; } /* '' */

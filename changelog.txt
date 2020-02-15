@@ -1,3 +1,7 @@
+15.02.2020
+Added week view which makes better use of large screens
+
+
 07.02.2020
 Fixed duplicate id value
 
