@@ -53,7 +53,7 @@ self.addEventListener("install", function(e) {
                 "./styles/index.css",
                 "./styles/settings.css",
                 "./styles/settings_pages.css",
-                ".(styles/week_view.css",
+                "./styles/week_view.css",
                 "./styles/fontello/css/fontello.css",
                 "./styles/fontello/font/fontello.eot",
                 "./styles/fontello/font/fontello.svg",
