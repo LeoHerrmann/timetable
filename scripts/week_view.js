@@ -1,83 +1,85 @@
 window.onload = function() {
-	dom_setup();
-
-
-	function dom_setup() {
-		fill_periods_container();
-		create_day_containers();
+	fill_periods_container();
+	create_day_containers();
 
 
 
-		function fill_periods_container() {
-			var periods_container = document.getElementById("periods_container");
+	function fill_periods_container() {
+		var periods_container = document.getElementById("periods_container");
 
-			for (period of config.data.periods) {
-				periods_container.innerHTML += 
-					"<div class='period' oncontextmenu='editor.show_period_edit_popup(this);'>" +
-						`<span>${period.start}</span>` +
-						`<span>${period.end}</span>` +
-					"</div>";
-			}
-
-			periods_container.addEventListener("contextmenu", function(e) {
-				e.preventDefault();
-			})
+		for (period of config.data.periods) {
+			periods_container.innerHTML += 
+				"<div class='period' oncontextmenu='editor.show_period_edit_popup(this);'>" +
+					`<span>${period.start}</span>` +
+					`<span>${period.end}</span>` +
+				"</div>";
 		}
 
+		periods_container.addEventListener("contextmenu", function(e) {
+			e.preventDefault();
+		})
+	}
 
 
-		function create_day_containers() {
-			var timetable = config.data.timetable;
 
-			for (let day_index = 0; day_index < timetable.length; day_index++) {
-				var new_day_container = document.createElement("div");
-				new_day_container.classList.add("day_container");
-				document.getElementById("timetable").append(new_day_container);
+	function create_day_containers() {
+		var timetable = config.data.timetable;
 
-				new_day_container.innerHTML = `<div class='day_label'>${timetable[day_index].day}</div>`;
+		for (let day_index = 0; day_index < timetable.length; day_index++) {
+			var new_day_container = document.createElement("div");
+			new_day_container.classList.add("day_container");
+			document.getElementById("timetable").append(new_day_container);
 
-				for (period of timetable[day_index].schedule) {
-					new_subject_container = document.createElement("div");
-					new_subject_container.classList.add("subject_container");
-					new_subject_container.innerHTML =
-						`<span>${period.subject}</span>` +
-						`<span>${period.room}</span>`;
+			new_day_container.innerHTML = `<div class='day_label'>${timetable[day_index].day}</div>`;
 
-					new_subject_container.oncontextmenu = function(e) {
-						e.preventDefault();
+			for (period of timetable[day_index].schedule) {
+				new_subject_container = document.createElement("div");
+				new_subject_container.classList.add("subject_container");
+				new_subject_container.innerHTML =
+					`<span>${period.subject}</span>` +
+					`<span>${period.room}</span>`;
 
-						if (e.target.classList.contains("subject_container")) {
-							editor.show_schedule_edit_popup(e.target);
-						}
-						else {
-							editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
-						}
-					};
+				new_subject_container.oncontextmenu = function(e) {
+					e.preventDefault();
 
-					if (period.subject == "") {
-						new_subject_container.classList.add("empty");
-					}
-
-					var subject_hue = config.data.colors[period.subject];
-
-					if (typeof(subject_hue) == "undefined") {
-					    subject_hue = "0";
-					}
-
-                    if (config.data.dark_mode_enabled) {
-						new_subject_container.style.color = `hsl(${subject_hue}, 90%, 70%)`;
+					if (e.target.classList.contains("subject_container")) {
+						editor.show_schedule_edit_popup(e.target);
 					}
 					else {
-						new_subject_container.style.color = `hsl(${subject_hue}, 100%, 35%)`;
+						editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
 					}
+				};
 
-					new_day_container.append(new_subject_container);
+				if (period.subject == "") {
+					new_subject_container.classList.add("empty");
 				}
+
+				new_subject_container.style.color = get_subject_color(period.subject);
+
+				new_day_container.append(new_subject_container);
 			}
 		}
 	}
 };
 
+
+
+
+
+function get_subject_color(subject) {
+	var subject_hue = config.data.colors[subject];
+
+	if (typeof(subject_hue) == "undefined") {
+		subject_hue = "0";
+	}
+
+    if (config.data.dark_mode_enabled) {
+		return `hsl(${subject_hue}, 90%, 70%)`;
+	}
+	else {
+		return `hsl(${subject_hue}, 100%, 35%)`;
+	}
+}
 
 
 
@@ -177,8 +179,9 @@ var editor = {
 
 		var day_container = document.getElementsByClassName("day_container")[day_index];
 		subject_container = day_container.getElementsByClassName("subject_container")[period_index];
-		subject_container.innerHTML = `<span>${subject}</span>` + `<span>${room}</span`
-		//Farbe muss angepasst werden!!!
+		subject_container.innerHTML = `<span>${subject}</span>` + `<span>${room}</span`;
+
+		subject_container.style.color = get_subject_color(subject);
 	},
 
 
