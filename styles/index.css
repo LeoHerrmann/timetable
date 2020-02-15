@@ -115,7 +115,7 @@ header > button.open {
 
 
 .popup > span {
-	display: block;
+	display: inline-block;
 }
 .popup > * + * {
 	margin-top: var(--space--2);

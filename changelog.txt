@@ -1,5 +1,6 @@
 15.02.2020
 Added week view which makes better use of large screens
+Period times are no longer shown on "Edit schedule" popup
 
 
 07.02.2020

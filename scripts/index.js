@@ -299,16 +299,14 @@ var editor = {
     	}
 
 		var day_name = config.data.timetable[day_index].day;
-		var period_times = config.data.periods[period_index].start + " - " + config.data.periods[period_index].end;
 
 		var subject = config.data.timetable[day_index].schedule[period_index].subject;
 		var room = config.data.timetable[day_index].schedule[period_index].room;
  
- 		document.getElementById("day_label").innerText = day_name;
+ 		document.getElementById("day_label").innerText = day_name + ",";
  		document.getElementById("day_label").setAttribute("data-day-index", day_index);
  		document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
  		document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
- 		document.getElementById("period_times_label").innerText = period_times;
 		document.querySelector("[name='subject_input']").value = subject;
 		document.querySelector("[name='room_input']").value = room;
 
