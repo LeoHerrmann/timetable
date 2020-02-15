@@ -1,49 +1,8 @@
-/*#collapsing_header {
-	position: relative;
-	z-index: 10;
-    padding: var(--space-0);
-    padding-bottom: 0;
-    background: var(--color-background-2);
-    border-bottom: 1px solid var(--color-background-2);
-}
-
-#collapsing_header > button {
-	float:right;
-}
-#collapsing_header > button {
-    width: var(--space-4);
-    height: var(--space-4);
-    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
-    font-size: var(--space-0);
-    padding: 0;
-}
-
-
-
-header {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-	grid-template-rows: 1fr;
-	justify-items: center;
-}
-header > button {
-	width: var(--space-5);
-	height: var(--space-5);
-	border-bottom: 2px solid var(--color-background-2);
-	color: var(--color-foreground-3);
-	border-radius: 0;
-	border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-header > button.open {
-	color: var(--color-foreground-1);
-	border-color: var(--color-foreground-1);
-}*/
-
-
 html, body {
 	height: 100%;
 }
+
+
 
 
 
@@ -65,12 +24,7 @@ header > button {
 
 
 
-#timetable {
-	/*display: grid;
-	grid-template-columns: var(--space-6) 1fr;
-	grid-template-rows: 1fr;
-	grid-gap: var(--space--1);*/
-	
+#timetable {	
 	display: flex;
 	padding: var(--space--1);
 	user-select: none;
@@ -117,7 +71,6 @@ header > button {
 
 .day_container > .subject_container {
 	height: var(--space-5);
-	/*line-height: var(--space-5);*/
 	padding: 0 var(--space-0) 0 var(--space-0);
 	box-sizing: border-box;
 	font-size: var(--space-0);
@@ -148,7 +101,6 @@ header > button {
 }
 
 .day_container > .subject_container > span:nth-of-type(2) {
-	float: right;
 	font-size: var(--space--1);
 }
 
