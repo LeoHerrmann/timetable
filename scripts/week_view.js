@@ -28,7 +28,7 @@ window.onload = function() {
 		for (let day_index = 0; day_index < timetable.length; day_index++) {
 			var new_day_container = document.createElement("div");
 			new_day_container.classList.add("day_container");
-			document.getElementById("timetable").append(new_day_container);
+			document.getElementById("timetable").appendChild(new_day_container);
 
 			new_day_container.innerHTML = `<div class='day_label'>${timetable[day_index].day}</div>`;
 
@@ -56,7 +56,7 @@ window.onload = function() {
 
 				new_subject_container.style.color = get_subject_color(period.subject);
 
-				new_day_container.append(new_subject_container);
+				new_day_container.appendChild(new_subject_container);
 			}
 		}
 	}
