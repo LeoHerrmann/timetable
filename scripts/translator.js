@@ -5,6 +5,8 @@ var translator = {
     },
 
     translate_ui: function() {
+        document.getElementsByTagName("html")[0].setAttribute("lang", config.data.language);
+
         var elements_to_translate = document.querySelectorAll("[data-translator-key]");
 
         for (element of elements_to_translate) {

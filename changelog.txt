@@ -1,3 +1,8 @@
+26.02.2020
+<title> is no longer translated
+<html> lang attribute adapts to current language
+
+
 25.02.2020
 Better support for extremely small screens
 Replaced append() with appendChild()
