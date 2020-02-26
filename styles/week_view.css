@@ -24,9 +24,10 @@ header > button {
 
 
 
-#timetable {	
+#timetable {
 	display: flex;
 	padding: var(--space--1);
+	padding-right: 0;
 	user-select: none;
 	max-width: 100%;
 	overflow-x: auto;
@@ -60,6 +61,10 @@ header > button {
 .day_container {
 	flex-grow: 1;
 	flex-basis: 100px;
+}
+
+.day_container:last-of-type {
+    padding-right: var(--space--1);
 }
 
 .day_container > .day_label {

@@ -1,6 +1,7 @@
 26.02.2020
 <title> is no longer translated
 <html> lang attribute adapts to current language
+Fixed padding for week_view.html
 
 
 25.02.2020
