@@ -48,7 +48,7 @@ function show_options() {
                 }
             }
 
-            timetable_settings_group.append(schedule_inputs_container);
+            timetable_settings_group.appendChild(schedule_inputs_container);
         }
 
 

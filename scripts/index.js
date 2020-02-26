@@ -36,7 +36,7 @@ window.onload = function() {
 					timetable.display_for_day(e.target.getAttribute("data-dayNumber"));
 				});
 
-				header.append(new_button);
+				header.appendChild(new_button);
 				counter++;
 			}
 		}
@@ -83,7 +83,7 @@ window.onload = function() {
 				    editor.show_schedule_edit_popup(clicked_subject_div);
 				});
 
-				subjectsContainer.append(subjectDiv);
+				subjectsContainer.appendChild(subjectDiv);
 			}
 		}
 	}

@@ -37,7 +37,7 @@ function show_options() {
             document.getElementById("save_button").classList.add("positive");
         };
 
-        periods_settings_group.append(add_input_group_button);
+        periods_settings_group.appendChild(add_input_group_button);
 
         for (period of config.data.periods) {
             add_input_group(period.start, period.end);

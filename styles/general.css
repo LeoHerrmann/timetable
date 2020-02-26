@@ -186,6 +186,11 @@ button:active {
 }
 
 
+@media screen and (max-width: 300px) {
+	:root {
+		--space-0: 0.75rem;
+	}
+}
 
 @media screen and (min-width: 500px) and (min-height: 500px) {
 	:root {
