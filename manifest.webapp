@@ -1,10 +1,10 @@
 {
   "name": "Timetable",
   "description": "A simple progressive web application helping you to keep track of your school or university schedule",
-  "launch_path": "/index.html",
+  "launch_path": "index.html",
   "icons": {
-    "512": "/icon.png",
-    "128": "/icon_128.png"
+    "512": "icon.png",
+    "128": "icon_128.png"
   },
   "developer": {
     "name": "Rahmsauce",
