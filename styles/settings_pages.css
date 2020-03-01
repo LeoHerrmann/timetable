@@ -1,12 +1,8 @@
-header {
-    padding: var(--space-0);
-    padding-bottom: 0;
-}
 header > button {
     float: right;
     width: var(--space-4);
     height: var(--space-4);
-    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    margin-top: calc((var(--space-6) - var(--space-4)) / 2);
     font-size: var(--space-0);
     padding: 0;
 }

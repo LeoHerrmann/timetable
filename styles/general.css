@@ -73,13 +73,14 @@ header {
 	z-index: 5;
 	background-color: var(--color-background-2);
 	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	padding: 0 var(--space-0);
 }
 
 header > .back_button {
     float: left;
     width: var(--space-4);
     height: var(--space-4);
-    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    margin-top: calc((var(--space-6) - var(--space-4)) / 2);
     margin-right: var(--space-0);
     font-size: var(--space-0);
     padding: 0;
@@ -96,7 +97,7 @@ header + * {
 
 h1 {
 	font-size: var(--space-2);
-	line-height: var(--space-5);
+	line-height: var(--space-6);
 	margin: 0;
 	display: inline-block;
 }

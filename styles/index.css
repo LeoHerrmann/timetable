@@ -1,8 +1,7 @@
 #collapsing_header {
 	position: relative;
 	z-index: 10;
-    padding: var(--space-0);
-    padding-bottom: 0;
+    padding: 0 var(--space-0);
     background: var(--color-background-2);
     border-bottom: 1px solid var(--color-background-2);
 }
@@ -11,7 +10,7 @@
 	float:right;
     width: var(--space-4);
     height: var(--space-4);
-    margin-top: calc((var(--space-5) - var(--space-4)) / 2);
+    margin-top: calc((var(--space-6) - var(--space-4)) / 2);
     font-size: var(--space-0);
     padding: 0;
     margin-left: var(--space--3);
@@ -26,15 +25,18 @@ header {
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 	grid-template-rows: 1fr;
 	justify-items: center;
+	padding: 0 !important;
 }
 header > button {
-	width: var(--space-5);
-	height: var(--space-5);
+	width: 100%;
+	max-width: 150px;
+	height: var(--space-4);
 	border-bottom: 2px solid var(--color-background-2);
 	color: var(--color-foreground-3);
 	border-radius: 0;
-	border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+}
+header > button:active {
+	border-color: var(--color-background-1);
 }
 header > button.open {
 	color: var(--color-foreground-1);
