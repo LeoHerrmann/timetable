@@ -14,13 +14,13 @@ Core features include:
 
 ## Screenshots
 
-<img src="https://user-images.githubusercontent.com/53840228/89913664-45562c80-dbf4-11ea-9083-3c0922be7476.png" alt="Main" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913667-46875980-dbf4-11ea-9d38-93c733c7e8d5.png" alt="Main dark" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913671-48511d00-dbf4-11ea-89ae-3737fcaa6ff3.png" alt="Settings" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913676-4a1ae080-dbf4-11ea-86fe-4c58ff8fd486.png" alt="Print" height="300"/>
+<img src="https://user-images.githubusercontent.com/53840228/89913664-45562c80-dbf4-11ea-9083-3c0922be7476.png" alt="Main" width="180"/> <img src="https://user-images.githubusercontent.com/53840228/89913667-46875980-dbf4-11ea-9d38-93c733c7e8d5.png" alt="Main dark" width="180"/> <img src="https://user-images.githubusercontent.com/53840228/89913671-48511d00-dbf4-11ea-89ae-3737fcaa6ff3.png" alt="Settings" width="180"/> <img src="https://user-images.githubusercontent.com/53840228/89913676-4a1ae080-dbf4-11ea-86fe-4c58ff8fd486.png" alt="Print" width="540"/>
 
 
 
 ## Getting started
 
-You can run this application either [here](https://rahmsauce.github.io/Timetable) or by cloning this repository and opening index.html.
+You can run this application [here](https://rahmsauce.github.io/Timetable) or by cloning this repository and opening index.html.
 
 Since this is a progressive web application, there is no need to manually install it because of the service worker caching all the necessary application files during first use. This allows the application to work even when you are offline. For quicker access and a more native app-like feel, you might want to consider adding it to your home screen or desktop.
 
