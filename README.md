@@ -5,25 +5,24 @@ A simple progressive web application helping you to keep track of your school or
 Core features include:
 - Customizable schedule and subject colors
 - Choice between bright and dark theme
+- Printing of timetables
 - Language support for English and German
-- Backup and restore user data
+- Backup and restoration of user data
 - Offline functionality
-
-Click [here](https://rahmsauce.github.io/Timetable) to give it a try.
 
 
 
 ## Screenshots
 
-<img src="https://user-images.githubusercontent.com/53840228/87590703-88051180-c6e7-11ea-8aed-ee0388f643f2.png" alt="Main screen" width="200"/> <img src="https://user-images.githubusercontent.com/53840228/87590721-8cc9c580-c6e7-11ea-838e-b2a3da3c67a4.png" alt="Settings screen" width="200"/> <img src="https://user-images.githubusercontent.com/53840228/87590736-918e7980-c6e7-11ea-9f92-ebe4fcf28ab0.png" alt="Periods settings screen" width="200"/> <img src="https://user-images.githubusercontent.com/53840228/87590747-95ba9700-c6e7-11ea-946d-5b1c10ec30f4.png" alt="Periods settings screen" width="200"/>
+<img src="https://user-images.githubusercontent.com/53840228/89913664-45562c80-dbf4-11ea-9083-3c0922be7476.png" alt="Main" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913667-46875980-dbf4-11ea-9d38-93c733c7e8d5.png" alt="Main dark" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913671-48511d00-dbf4-11ea-89ae-3737fcaa6ff3.png" alt="Settings" height="300"/> <img src="https://user-images.githubusercontent.com/53840228/89913676-4a1ae080-dbf4-11ea-86fe-4c58ff8fd486.png" alt="Print" height="300"/>
 
 
 
 ## Getting started
 
-Since this is a progressive web application, there is no need to manually install it because of the service worker caching all the necessary application files during first use. This allows the application to work even when you are offline. For quicker access and a more native app-like feel, you might want to consider adding it to your home screen or desktop.
+You can run this application either [here](https://rahmsauce.github.io/Timetable) or by cloning this repository and opening index.html.
 
-Alternatively, you can run this application by downloading the files or cloning this repository and opening the index.html to start it.
+Since this is a progressive web application, there is no need to manually install it because of the service worker caching all the necessary application files during first use. This allows the application to work even when you are offline. For quicker access and a more native app-like feel, you might want to consider adding it to your home screen or desktop.
 
 
 

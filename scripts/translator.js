@@ -33,9 +33,9 @@ var translator = {
             "colors": "Colors",
             "periods": "Periods",
             "period": "Period",
+            "print": "Print",
             "start:": "Start:",
             "end:": "End:",
-            "period": "Period",
             "add": "Add",
             "data_saved": "Your application data was successfully saved.",
             "reset_confirm": "Are you sure to reset all data? If you haven't made a backup, all application data will be lost forever."
@@ -59,9 +59,9 @@ var translator = {
             "colors": "Farben",
             "periods": "Zeiten",
             "period": "Stunde",
+            "print": "Drucken",
             "start:": "Anfang:",
             "end:": "Ende:",
-            "period": "Stunde",
             "add": "Hinzufügen",
             "data_saved": "Ihre Anwendungsdaten wurden erfolgreich gespeichert.",
             "reset_confirm": "Sind Sie sich sicher, dass sie alle Anwendungsdaten zurücksetzen wollen? Wenn Sie kein Backup gemacht haben, gehen dadurch alle Anwendungsdaten für immer verloren."

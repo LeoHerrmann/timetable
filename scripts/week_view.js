@@ -1,6 +1,22 @@
+var printing_mode = false;
+
+
+
 window.onload = function() {
+    if (window.location.href.split("?")[1] == "print") {
+    	printing_mode = true;
+    }
+
 	fill_periods_container();
 	create_day_containers();
+
+    if (printing_mode === true) {
+		document.body.classList.remove("dark_mode")
+
+        setTimeout(function() {
+        	window.print();
+        }, 1000);
+    }
 
 
 
@@ -73,7 +89,7 @@ function get_subject_color(subject) {
 		subject_hue = "0";
 	}
 
-    if (config.data.dark_mode_enabled) {
+    if (config.data.dark_mode_enabled && printing_mode === false) {
 		return `hsl(${subject_hue}, 90%, 70%)`;
 	}
 	else {

@@ -124,3 +124,26 @@ header > button {
 .popup > button {
 	float: right;
 }
+
+
+@media print {
+    body {
+        background-color: #FFFFFF !important;
+    }
+
+	header {
+		box-shadow: none !important;
+	}
+
+	header > button {
+		display: none;
+	}
+
+	#timetable {
+		padding-top: 0;
+	}
+
+    .subject_container {
+        border: 2px solid;
+    }
+}
