@@ -45,7 +45,7 @@ header > button {
 	width: var(--space-6);
 	text-align: center;
 	color: var(--color-foreground-2);
-	margin-top: calc(var(--space-0) + var(--space-3));
+	margin-top: calc(var(--space--1) + var(--space-3));
 }
 #periods_container > .period > span {
 	display: block;

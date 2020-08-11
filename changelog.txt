@@ -1,3 +1,6 @@
+11.08.2020
+Fix positioning of periods in week_view.html
+
 15.07.2020
 README updated
 
