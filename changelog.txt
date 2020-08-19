@@ -1,3 +1,6 @@
+19.08.2020
+Fixed printing feature not working offline
+
 11.08.2020
 New feature: printing of timetables
 Fix positioning of periods in week_view.html
