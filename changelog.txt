@@ -1,5 +1,6 @@
 19.08.2020
 Fixed printing feature not working offline
+Maskable icon
 
 11.08.2020
 New feature: printing of timetables
