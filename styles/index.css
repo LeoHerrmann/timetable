@@ -115,6 +115,25 @@ header > button.open {
 
 
 
+#periods_edit_inputs_container {
+	display: grid;
+	grid-template-columns: auto 1fr 1fr auto;
+	align-items: center;
+	grid-gap: var(--space--2);
+}
+
+#periods_edit_inputs_container .icon-delete {
+	padding: 0;
+	width: var(--space-3);
+	background-color: var(--color-background-3);
+	color: var(--color-negative);
+}
+
+#periods_edit_popup .add_button {
+	float: left;
+}
+
+
 
 .popup > span {
 	display: inline-block;

@@ -177,6 +177,8 @@ button:active {
 	z-index: 25;
 	animation: fade_fly_in 0.2s;
 	transition: opacity 0.2s;
+	max-height: calc(100% - 2 * var(--space-0));
+	overflow-y: auto;
 }
 
 @keyframes fade_fly_in {
