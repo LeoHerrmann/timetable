@@ -134,7 +134,7 @@ header > button.open {
 }
 
 #periods_edit_popup .add_button {
-	float: left;
+	float: none;
 }
 
 
