@@ -55,7 +55,7 @@ window.onload = function() {
 
 			periods_container.addEventListener("contextmenu", function(e) {
 				e.preventDefault();
-			})
+			});
 		}
 
 
@@ -243,6 +243,21 @@ var timetable = {
 				div.classList.add("hidden");
 			}
 		}
+	},
+
+
+	refresh_periods_container: function() {
+		var periods_container = document.getElementById("periods_container");
+
+		periods_container.innerHTML = "";
+
+		for (period of config.data.periods) {
+			periods_container.innerHTML += 
+				"<div class='period' oncontextmenu='editor.show_period_edit_popup(this);'>" +
+					`<span>${period.start}</span>` +
+					`<span>${period.end}</span>` +
+				"</div>";
+		}
 	}
 };
 
@@ -334,45 +349,95 @@ var editor = {
 
 
 	show_period_edit_popup: function(clicked_period) {
-		var start_time = clicked_period.getElementsByTagName("span")[0].innerText;
-		var end_time = clicked_period.getElementsByTagName("span")[1].innerText;
-		var period_index;
-		var period_number;
+		var periods = config.data.periods;
 
-		var neighbours = document.getElementById("periods_container").childNodes;
+		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
 
-		for (let n in neighbours) {
-			if (clicked_period == neighbours[n]) {
-				period_index = n;
-				period_number = parseInt(n) + 1;
-			}
+		periods_edit_inputs_container.innerHTML = "";
+
+		for (let i = 0; i < periods.length; i++) {
+			let period_id = i + 1;
+
+			let period_label = `<span data-period-id="${period_id}">${period_id}</span>`;
+			let inputs = 
+				`<input class="period_start_input" type="time" value="${periods[i].start}" data-period-id="${period_id}"/>` +
+				`<input class="period_end_input" type="time" value="${periods[i].end}" data-period-id="${period_id}"/>`
+
+			let delete_button = `<button class='icon-delete' data-period-id="${period_id}" onclick="editor.delete_period(${period_id});"></button>`;
+
+			periods_edit_inputs_container.innerHTML += period_label + inputs + delete_button;
 		}
-
-		document.querySelector("#periods_edit_popup .period_number_label").innerText = translator.translate("period") + " " + period_number;
-		document.querySelector("#periods_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
-		document.querySelector("[name='period_start_input']").value = start_time;
-		document.querySelector("[name='period_end_input']").value = end_time;
 
 		popup.show("periods_edit_popup");
 	},
 
 
 
+	add_period: function() {
+		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
+
+		var period_number = periods_edit_inputs_container.childElementCount / 4 + 1;
+
+		let period_label = `<span data-period-id="${period_number}">${period_number}</span>`;
+		let inputs = 
+			`<input class="period_start_input" type="time" data-period-id="${period_number}"/>` +
+			`<input class="period_end_input" type="time" data-period-id="${period_number}"/>`
+
+		let delete_button = `<button class='icon-delete' data-period-id="${period_number}" onclick="editor.delete_period(${period_number});"></button>`;
+
+		periods_edit_inputs_container.innerHTML += period_label + inputs + delete_button;
+	},
+
+
+
+	delete_period: function(id) {
+		var elements_to_delete = document.querySelectorAll(`#periods_edit_inputs_container [data-period-id="${id}"]`);
+
+		for (let element of elements_to_delete) {
+			element.remove();
+		}
+
+		//refresh period ids
+		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
+
+		for (let i = 0; i < periods_edit_inputs_container.childElementCount; i++) {
+			periods_edit_inputs_container.childNodes[i].setAttribute("data-period-id", Math.floor(i / 4) + 1);
+		}
+
+		//refresh period labels and delete buttons
+		var period_labels = document.querySelectorAll("#periods_edit_inputs_container > span");
+		var delete_buttons = document.querySelectorAll("#periods_edit_inputs_container > .icon-delete");
+
+		for (let i = 0; i < period_labels.length; i++) {
+			period_labels[i].innerText = i + 1;
+			delete_buttons[i].setAttribute("onclick", `editor.delete_period(${i + 1})`);
+		}
+	},
+
+
+
 	save_period_changes: function() {
-		var period_index = document.querySelector("#periods_edit_popup .period_number_label").getAttribute("data-period-index");
-		var start_time = document.querySelector("[name='period_start_input']").value;
-		var end_time = document.querySelector("[name='period_end_input']").value;
+		var new_period_config = [];
 
-		var new_data = JSON.parse(JSON.stringify(config.data));
+		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
+		var period_start_inputs = periods_edit_inputs_container.getElementsByClassName("period_start_input");
+		var period_end_inputs = periods_edit_inputs_container.getElementsByClassName("period_end_input");
+		var periods_count = periods_edit_inputs_container.childElementCount / 4;
 
-		new_data.periods[period_index].start = start_time;
-		new_data.periods[period_index].end = end_time;
+		for (let i = 0; i < periods_count; i++) {
+			new_period_config.push({
+				"start": period_start_inputs[i].value,
+				"end": period_end_inputs[i].value, 
+			});
+		}
 
-		config.save_data(new_data);
+		var new_config = JSON.parse(JSON.stringify(config.data));
+
+		new_config.periods = new_period_config;
+
+		config.save_data(new_config);
 		config.load_data();
 
-		var period_labels = document.querySelectorAll(`#periods_container > .period:nth-of-type(${parseInt(period_index) + 1}) span`);
-		period_labels[0].innerText = start_time;
-		period_labels[1].innerText = end_time;
+		timetable.refresh_periods_container();
 	}
 };
