@@ -27,6 +27,7 @@ header {
 	justify-items: center;
 	padding: 0 !important;
 }
+
 header > button {
 	width: 100%;
 	max-width: 150px;
@@ -35,9 +36,11 @@ header > button {
 	color: var(--color-foreground-3);
 	border-radius: 0;
 }
+
 header > button:active {
 	border-color: var(--color-background-1);
 }
+
 header > button.open {
 	color: var(--color-foreground-1);
 	border-color: var(--color-foreground-1);
@@ -68,6 +71,7 @@ header > button.open {
 	text-align: center;
 	color: var(--color-foreground-2);
 }
+
 #periods_container > .period > span {
 	display: block;
 	font-size: var(--space--1);
@@ -138,15 +142,18 @@ header > button.open {
 .popup > span {
 	display: inline-block;
 }
+
 .popup > * + * {
 	margin-top: var(--space--2);
 }
+
 .popup > .inputs_container {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-gap: var(--space--2);
 	align-items: center;
 }
+
 .popup > button {
 	float: right;
 }
