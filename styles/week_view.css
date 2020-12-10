@@ -126,6 +126,9 @@ header > button {
 	float: none;
 }
 
+#periods_edit_popup input {
+    width: auto;
+}
 
 
 

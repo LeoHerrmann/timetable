@@ -137,6 +137,10 @@ header > button.open {
 	float: none;
 }
 
+#periods_edit_popup input {
+    width: auto;
+}
+
 
 
 .popup > span {
