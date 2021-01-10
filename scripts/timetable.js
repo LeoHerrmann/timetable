@@ -1,4 +1,4 @@
-refresh_periods_container  = function() {
+refresh_periods_container = function() {
 	var periods_container = document.getElementById("periods_container");
 
 	periods_container.innerHTML = "";

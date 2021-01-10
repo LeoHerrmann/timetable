@@ -135,6 +135,8 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 	popup.show("schedule_edit_popup");
 }
 
+
+
 editor.save_schedule_changes = function() {
 	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
 	var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
