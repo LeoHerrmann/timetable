@@ -1,0 +1,58 @@
+#periods_container > .period {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: var(--space-5);
+	text-align: center;
+	color: var(--color-foreground-2);
+}
+
+#periods_container > .period > span {
+	display: block;
+	font-size: var(--space--1);
+}
+
+
+
+.popup > span {
+	display: inline-block;
+}
+
+.popup > * + * {
+	margin-top: var(--space--2);
+}
+
+.popup > .inputs_container {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-gap: var(--space--2);
+	align-items: center;
+}
+
+.popup > button {
+	float: right;
+}
+
+
+
+#periods_edit_inputs_container {
+	display: grid;
+	grid-template-columns: auto 1fr 1fr auto;
+	align-items: center;
+	grid-gap: var(--space--2);
+}
+
+#periods_edit_inputs_container .icon-delete {
+	padding: 0;
+	width: var(--space-3);
+	background-color: var(--color-background-3);
+	color: var(--color-negative);
+}
+
+#periods_edit_popup .add_button {
+	float: none;
+}
+
+#periods_edit_popup input {
+    width: auto;
+}
