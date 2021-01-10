@@ -3,12 +3,12 @@
   "description": "A simple progressive web application helping you to keep track of your school or university schedule",
   "launch_path": "/Timetable/index.html",
   "icons": {
-    "512": "/Timetable/icon.png",
+    "512": "/Timetable/icon_512.png",
     "128": "/Timetable/icon_128.png"
   },
   "developer": {
-    "name": "Rahmsauce",
-    "url": "https://rahmsauce.github.io"
+    "name": "Leo Herrmann",
+    "url": "https://leoherrmann.github.io"
   },
   "default_locale": "en",
   "chrome": { "navigation": false },

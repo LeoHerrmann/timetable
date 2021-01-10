@@ -53,6 +53,7 @@ self.addEventListener("install", function(e) {
                 "./scripts/week_view.js?print",
                 "./scripts/translator.js",
                 "./styles/general.css",
+                "./styles/timetable.css",
                 "./styles/index.css",
                 "./styles/settings.css",
                 "./styles/settings_pages.css",
