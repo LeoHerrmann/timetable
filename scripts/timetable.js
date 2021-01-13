@@ -5,7 +5,7 @@ refresh_periods_container = function() {
 
 	for (period of config.data.periods) {
 		periods_container.innerHTML += 
-			"<div class='period' oncontextmenu='editor.show_period_edit_popup(this);'>" +
+			"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
 				`<span>${period.start}</span>` +
 				`<span>${period.end}</span>` +
 			"</div>";
@@ -47,7 +47,7 @@ var popup = {
 
 
 var editor = {
-		show_period_edit_popup: function(clicked_period) {
+		show_period_edit_popup: function() {
 		var periods = config.data.periods;
 
 		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
