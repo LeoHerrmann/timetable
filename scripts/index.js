@@ -10,7 +10,7 @@ window.onload = function() {
 	function dom_setup() {
 		create_header_buttons();
 		fill_periods_container();
-		create_subject_divs();
+		timetable.subject_divs.create();
 
 
 		function create_header_buttons() {
@@ -56,35 +56,6 @@ window.onload = function() {
 			periods_container.addEventListener("contextmenu", function(e) {
 				e.preventDefault();
 			});
-		}
-
-
-		function create_subject_divs() {
-			var subjectsContainer = document.getElementById("subjects_container");
-
-			for (let i = 0; i < config.data.periods.length; i++) {
-				var subjectDiv = document.createElement("div");
-
-				subjectDiv.classList.add("subject");
-				subjectDiv.classList.add("hidden");
-				subjectDiv.style.transitionDelay = i*0.025 + "s";
-
-				subjectDiv.innerHTML = "<span></span><span></span>";
-
-				subjectDiv.addEventListener("contextmenu", function(e) {
-				    e.preventDefault();
-
-					var clicked_subject_div = e.target;
-
-				    if (e.target.classList.contains("subject") === false) {
-				    	clicked_subject_div = e.target.closest(".subject");
-				    }
-
-				    editor.show_schedule_edit_popup(clicked_subject_div);
-				});
-
-				subjectsContainer.appendChild(subjectDiv);
-			}
 		}
 	}
 
@@ -137,6 +108,14 @@ window.onload = function() {
 		}
 	}
 };
+
+
+
+function refresh_schedule_container() {
+	document.getElementById("subjects_container").innerHTML = "";
+	timetable.subject_divs.create();
+	timetable.display_current();
+}
 
 
 
@@ -195,6 +174,34 @@ var timetable = {
 
 
 	subject_divs: {
+		create: function() {
+			var subjectsContainer = document.getElementById("subjects_container");
+
+			for (let i = 0; i < config.data.periods.length; i++) {
+				var subjectDiv = document.createElement("div");
+
+				subjectDiv.classList.add("subject");
+				subjectDiv.classList.add("hidden");
+				subjectDiv.style.transitionDelay = i*0.025 + "s";
+
+				subjectDiv.innerHTML = "<span></span><span></span>";
+
+				subjectDiv.addEventListener("contextmenu", function(e) {
+					e.preventDefault();
+
+					var clicked_subject_div = e.target;
+
+					if (e.target.classList.contains("subject") === false) {
+						clicked_subject_div = e.target.closest(".subject");
+					}
+
+					editor.show_schedule_edit_popup(clicked_subject_div);
+				});
+
+				subjectsContainer.appendChild(subjectDiv);
+			}
+		},
+
 		fill: function (dayNumber) {
 			var subject_divs = document.querySelectorAll(".subject");
 
