@@ -47,7 +47,7 @@ var popup = {
 
 
 var editor = {
-		show_period_edit_popup: function() {
+	show_period_edit_popup: function() {
 		var periods = config.data.periods;
 
 		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
@@ -116,12 +116,14 @@ var editor = {
 
 
 	save_period_changes: function() {
+		var new_config = JSON.parse(JSON.stringify(config.data));
 		var new_period_config = [];
 
 		var periods_edit_inputs_container = document.getElementById("periods_edit_inputs_container");
 		var period_start_inputs = periods_edit_inputs_container.getElementsByClassName("period_start_input");
 		var period_end_inputs = periods_edit_inputs_container.getElementsByClassName("period_end_input");
 		var periods_count = periods_edit_inputs_container.childElementCount / 4;
+		var old_periods_count = config.data.periods.length;
 
 		for (let i = 0; i < periods_count; i++) {
 			new_period_config.push({
@@ -130,13 +132,34 @@ var editor = {
 			});
 		}
 
-		var new_config = JSON.parse(JSON.stringify(config.data));
-
 		new_config.periods = new_period_config;
+
+
+		//modify schedule if there are more or less periods than before
+		if (periods_count > old_periods_count) {
+			for (let i = 0; i < (periods_count - old_periods_count); i++) {
+				for (let j = 0; j < new_config.timetable.length; j++) {
+					new_config.timetable[j].schedule.push({
+						"subject": "",
+						"room": ""
+					});
+				}
+			}
+		}
+
+		else if (periods_count < old_periods_count) {
+			for (let i = 0; i < (old_periods_count - periods_count); i++) {
+				for (let j = 0; j < new_config.timetable.length; j++) {
+					new_config.timetable[j].schedule.pop();
+				}
+			}
+		}
+
 
 		config.save_data(new_config);
 		config.load_data();
 
 		refresh_periods_container();
+		refresh_schedule_container();
 	}
 };

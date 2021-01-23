@@ -35,48 +35,60 @@ window.onload = function() {
 			e.preventDefault();
 		})
 	}
+};
 
 
 
-	function create_day_containers() {
-		var timetable = config.data.timetable;
+function create_day_containers() {
+	var timetable = config.data.timetable;
 
-		for (let day_index = 0; day_index < timetable.length; day_index++) {
-			var new_day_container = document.createElement("div");
-			new_day_container.classList.add("day_container");
-			document.getElementById("timetable").appendChild(new_day_container);
+	for (let day_index = 0; day_index < timetable.length; day_index++) {
+		var new_day_container = document.createElement("div");
+		new_day_container.classList.add("day_container");
+		document.getElementById("timetable").appendChild(new_day_container);
 
-			new_day_container.innerHTML = `<div class='day_label'>${timetable[day_index].day}</div>`;
+		new_day_container.innerHTML = `<div class='day_label'>${timetable[day_index].day}</div>`;
 
-			for (period of timetable[day_index].schedule) {
-				new_subject_container = document.createElement("div");
-				new_subject_container.classList.add("subject_container");
-				new_subject_container.innerHTML =
-					`<span>${period.subject}</span>` +
-					`<span>${period.room}</span>`;
+		for (period of timetable[day_index].schedule) {
+			new_subject_container = document.createElement("div");
+			new_subject_container.classList.add("subject_container");
+			new_subject_container.innerHTML =
+				`<span>${period.subject}</span>` +
+				`<span>${period.room}</span>`;
 
-				new_subject_container.oncontextmenu = function(e) {
-					e.preventDefault();
+			new_subject_container.oncontextmenu = function(e) {
+				e.preventDefault();
 
-					if (e.target.classList.contains("subject_container")) {
-						editor.show_schedule_edit_popup(e.target);
-					}
-					else {
-						editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
-					}
-				};
-
-				if (period.subject == "") {
-					new_subject_container.classList.add("empty");
+				if (e.target.classList.contains("subject_container")) {
+					editor.show_schedule_edit_popup(e.target);
 				}
+				else {
+					editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
+				}
+			};
 
-				new_subject_container.style.color = get_subject_color(period.subject);
-
-				new_day_container.appendChild(new_subject_container);
+			if (period.subject == "") {
+				new_subject_container.classList.add("empty");
 			}
+
+			new_subject_container.style.color = get_subject_color(period.subject);
+
+			new_day_container.appendChild(new_subject_container);
 		}
 	}
-};
+}
+
+
+
+function refresh_schedule_container() {
+    var day_containers = document.getElementsByClassName("day_container");
+
+	while (day_containers.length > 0) {
+		day_containers[0].remove();
+	}
+
+    create_day_containers();
+}
 
 
 
