@@ -7,7 +7,7 @@ window.onload = function() {
     	printing_mode = true;
     }
 
-	fill_periods_container();
+	refresh_periods_container();
 	create_day_containers();
 
     if (printing_mode === true) {
@@ -17,24 +17,6 @@ window.onload = function() {
         	window.print();
         }, 1000);
     }
-
-
-
-	function fill_periods_container() {
-		var periods_container = document.getElementById("periods_container");
-
-		for (period of config.data.periods) {
-			periods_container.innerHTML += 
-				"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
-					`<span>${period.start}</span>` +
-					`<span>${period.end}</span>` +
-				"</div>";
-		}
-
-		periods_container.addEventListener("contextmenu", function(e) {
-			e.preventDefault();
-		})
-	}
 };
 
 

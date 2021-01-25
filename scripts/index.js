@@ -9,7 +9,7 @@ window.onload = function() {
 
 	function dom_setup() {
 		create_header_buttons();
-		fill_periods_container();
+		refresh_periods_container();
 		timetable.subject_divs.create();
 
 
@@ -39,23 +39,6 @@ window.onload = function() {
 				header.appendChild(new_button);
 				counter++;
 			}
-		}
-
-
-		function fill_periods_container() {
-			var periods_container = document.getElementById("periods_container");
-
-			for (period of config.data.periods) {
-				periods_container.innerHTML += 
-					"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
-						`<span>${period.start}</span>` +
-						`<span>${period.end}</span>` +
-					"</div>";
-			}
-
-			periods_container.addEventListener("contextmenu", function(e) {
-				e.preventDefault();
-			});
 		}
 	}
 

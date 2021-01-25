@@ -1,7 +1,18 @@
-refresh_periods_container = function() {
+var refresh_periods_container = function() {
 	var periods_container = document.getElementById("periods_container");
 
+	periods_container.oncontextmenu = function(e) {
+		e.preventDefault();
+	};
+
 	periods_container.innerHTML = "";
+
+	if (config.data.periods.length == 0) {
+		periods_container.innerHTML =
+			"<div oncontextmenu='editor.show_period_edit_popup();' style='color: var(--color-foreground-2);'>" +
+				translator.translate("long_press_to_add_period") +
+			"</div>";
+	}
 
 	for (period of config.data.periods) {
 		periods_container.innerHTML += 
@@ -10,7 +21,7 @@ refresh_periods_container = function() {
 				`<span>${period.end}</span>` +
 			"</div>";
 	}
-}
+};
 
 
 

@@ -28,6 +28,33 @@ var config = {
 		timetable: [
 			{
 				day: "Monday",
+				schedule: []
+			},
+			{
+				day: "Tuesday",
+				schedule: []
+			},
+			{
+				day: "Wednesday",
+				schedule: []
+			},
+			{
+				day: "Thursday",
+				schedule: []
+			},
+			{
+				day: "Friday",
+				schedule: []
+			}
+		],
+
+		periods: [],
+
+		colors: {}
+
+		/*timetable: [
+			{
+				day: "Monday",
 				schedule: [
 					{subject: "Physics", room: 321},
 					{subject: "Geography", room:304},
@@ -136,6 +163,6 @@ var config = {
 			"Geography":"56",
 			"Computer Science":"326",
 			"Sport":"251"
-		}
+		}*/
 	}
 };
