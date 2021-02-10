@@ -77,14 +77,30 @@ var editor = {
 
 		var period_number = periods_edit_inputs_container.childElementCount / 4 + 1;
 
-		let period_label = `<span data-period-id="${period_number}">${period_number}</span>`;
-		let inputs = 
-			`<input class="period_start_input" type="time" data-period-id="${period_number}"/>` +
-			`<input class="period_end_input" type="time" data-period-id="${period_number}"/>`
+        let period_label = document.createElement("span");
+        let input_start = document.createElement("input");
+        let input_end = document.createElement("input");
+        let delete_button = document.createElement("button");
 
-		let delete_button = `<button class='icon-delete' data-period-id="${period_number}" onclick="editor.delete_period(${period_number});"></button>`;
+		period_label.setAttribute("data-period-id", period_number);
+		period_label.innerText = period_number;
 
-		periods_edit_inputs_container.innerHTML += period_label + inputs + delete_button;
+		input_start.classList.add("period_start_input");
+		input_start.setAttribute("type", "time");
+		input_start.setAttribute("data-period-id", period_number);
+
+		input_end.classList.add("period_end_input");
+		input_end.setAttribute("type", "time");
+		input_end.setAttribute("data-period-id", period_number);
+
+		delete_button.classList.add("icon-delete");
+		delete_button.setAttribute("data-period-id", period_number);
+		delete_button.setAttribute("onclick", `editor.delete_period(${period_number});`);
+
+		periods_edit_inputs_container.appendChild(period_label);
+		periods_edit_inputs_container.appendChild(input_start);
+		periods_edit_inputs_container.appendChild(input_end);
+		periods_edit_inputs_container.appendChild(delete_button);
 	},
 
 
