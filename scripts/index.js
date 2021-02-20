@@ -186,13 +186,28 @@ var timetable = {
 		},
 
 		fill: function (dayNumber) {
+			var timetable_empty = timetable_is_empty();
+
+			if (timetable_empty) {
+				document.getElementById("subjects_container").classList.add("empty_timetable");
+			}
+			else {
+				document.getElementById("subjects_container").classList.remove("empty_timetable");
+			}
+
 			var subject_divs = document.querySelectorAll(".subject");
 
 			for (let period = 0; period < config.data.timetable[dayNumber].schedule.length && period < config.data.periods.length; period++) {
 				var subject_name = config.data.timetable[dayNumber].schedule[period].subject;
 				var subject_room = config.data.timetable[dayNumber].schedule[period].room;
 
-				if (subject_name != "") {
+				if (timetable_empty) {
+					subject_divs[period].querySelectorAll("span")[0].innerText = "+";
+					subject_divs[period].querySelectorAll("span")[1].innerText = "";
+					subject_divs[period].style.color = "";
+				}
+
+				else if (subject_name != "") {
 					subject_divs[period].classList.remove("empty");
 
 					var subject_hue = config.data.colors[subject_name];
@@ -211,6 +226,7 @@ var timetable = {
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
 					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
 				}
+
 				else {
 					subject_divs[period].classList.add("empty");
 				}

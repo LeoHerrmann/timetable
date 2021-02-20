@@ -79,8 +79,8 @@ header > button.open {
 }
 
 .subject.hidden {
-	opacity: 0;
-	transform: translateY(10px);
+	opacity: 0 !important;
+	transform: translateY(10px) !important;
 }
 
 #subjects_container > .subject > span:nth-of-type(1) {
@@ -90,4 +90,13 @@ header > button.open {
 
 #subjects_container > .subject > span:nth-of-type(2) {
 	font-size: var(--space--1);
+}
+
+#subjects_container.empty_timetable > .subject {
+	opacity: 1;
+	background-color: rgba(0,0,0,0);
+	color: var(--color-foreground-2);
+	border: 3px dashed;
+	text-align: center;
+	font-size: var(--space-1);
 }

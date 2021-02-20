@@ -1,3 +1,17 @@
+function timetable_is_empty() {
+    for (let day of config.data.timetable) {
+        let schedule = day.schedule
+
+        for (let period of schedule) {
+            if (period.subject != "" || period.room != "") {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 var refresh_periods_container = function() {
 	var periods_container = document.getElementById("periods_container");
 
