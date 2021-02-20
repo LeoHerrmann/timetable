@@ -23,6 +23,14 @@ window.onload = function() {
 
 function create_day_containers() {
 	var timetable = config.data.timetable;
+    var timetable_empty = timetable_is_empty();
+
+    if (timetable_empty) {
+        document.getElementById("timetable").classList.add("empty_timetable");
+    }
+    else {
+    	document.getElementById("timetable").classList.remove("empty_timetable");
+    }
 
 	for (let day_index = 0; day_index < timetable.length; day_index++) {
 		var new_day_container = document.createElement("div");
@@ -34,9 +42,15 @@ function create_day_containers() {
 		for (period of timetable[day_index].schedule) {
 			new_subject_container = document.createElement("div");
 			new_subject_container.classList.add("subject_container");
-			new_subject_container.innerHTML =
-				`<span>${period.subject}</span>` +
-				`<span>${period.room}</span>`;
+
+            if (timetable_empty) {
+                new_subject_container.innerHTML = "<span>+</span>";
+            }
+            else {
+                new_subject_container.innerHTML =
+    				`<span>${period.subject}</span>` +
+    				`<span>${period.room}</span>`;
+            }
 
 			new_subject_container.oncontextmenu = function(e) {
 				e.preventDefault();
@@ -53,7 +67,12 @@ function create_day_containers() {
 				new_subject_container.classList.add("empty");
 			}
 
-			new_subject_container.style.color = get_subject_color(period.subject);
+			if (timetable_empty) {
+				new_subject_container.style.color = "";
+			}
+			else {
+				new_subject_container.style.color = get_subject_color(period.subject);
+			}
 
 			new_day_container.appendChild(new_subject_container);
 		}
@@ -150,4 +169,6 @@ editor.save_schedule_changes = function() {
 	subject_container.innerHTML = `<span>${subject}</span>` + `<span>${room}</span`;
 
 	subject_container.style.color = get_subject_color(subject);
+
+	refresh_schedule_container();
 }

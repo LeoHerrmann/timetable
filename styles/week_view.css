@@ -91,7 +91,14 @@ header > button {
 	font-size: var(--space--1);
 }
 
-
+#timetable.empty_timetable .subject_container {
+	opacity: 1;
+	background-color: rgba(0,0,0,0);
+	color: var(--color-foreground-2);
+	border: 3px dashed;
+	text-align: center;
+	font-size: var(--space-1);
+}
 
 @media print {
     body {
