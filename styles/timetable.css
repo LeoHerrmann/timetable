@@ -12,6 +12,15 @@
 	font-size: var(--space--1);
 }
 
+#periods_container > .no_period_placeholder {
+	color: var(--color-foreground-2);
+	line-height: calc(var(--space-5) - 8px);
+	border: 4px dashed;
+	font-size: var(--space-1);
+	text-align: center;
+	border-radius: 5px;
+}
+
 
 
 .popup > span {

@@ -9,9 +9,7 @@ var refresh_periods_container = function() {
 
 	if (config.data.periods.length == 0) {
 		periods_container.innerHTML =
-			"<div oncontextmenu='editor.show_period_edit_popup();' style='color: var(--color-foreground-2);'>" +
-				translator.translate("long_press_to_add_period") +
-			"</div>";
+			"<div class='no_period_placeholder' oncontextmenu='editor.show_period_edit_popup();'>+</div>";
 	}
 
 	for (period of config.data.periods) {
