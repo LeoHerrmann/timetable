@@ -91,7 +91,7 @@ header > button {
 	font-size: var(--space--1);
 }
 
-#timetable.empty_timetable .subject_container {
+.day_container > .subject_container.empty {
 	opacity: 1;
 	background-color: rgba(0,0,0,0);
 	color: var(--color-foreground-2);

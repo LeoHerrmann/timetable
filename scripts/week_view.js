@@ -23,14 +23,6 @@ window.onload = function() {
 
 function create_day_containers() {
 	var timetable = config.data.timetable;
-    var timetable_empty = timetable_is_empty();
-
-    if (timetable_empty) {
-        document.getElementById("timetable").classList.add("empty_timetable");
-    }
-    else {
-    	document.getElementById("timetable").classList.remove("empty_timetable");
-    }
 
 	for (let day_index = 0; day_index < timetable.length; day_index++) {
 		var new_day_container = document.createElement("div");
@@ -43,13 +35,21 @@ function create_day_containers() {
 			new_subject_container = document.createElement("div");
 			new_subject_container.classList.add("subject_container");
 
-            if (timetable_empty) {
-                new_subject_container.innerHTML = "<span>+</span>";
+            if (period.subject == "" && period.room == "") {
+            	new_subject_container.innerHTML =
+    				`<span>+</span>` +
+    				`<span></span>`;
+
+    			new_subject_container.style.color = "";
+    			new_subject_container.classList.add("empty");
             }
+
             else {
                 new_subject_container.innerHTML =
     				`<span>${period.subject}</span>` +
     				`<span>${period.room}</span>`;
+
+    			new_subject_container.style.color = get_subject_color(period.subject);
             }
 
 			new_subject_container.oncontextmenu = function(e) {
@@ -62,17 +62,6 @@ function create_day_containers() {
 					editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
 				}
 			};
-
-			if (period.subject == "") {
-				new_subject_container.classList.add("empty");
-			}
-
-			if (timetable_empty) {
-				new_subject_container.style.color = "";
-			}
-			else {
-				new_subject_container.style.color = get_subject_color(period.subject);
-			}
 
 			new_day_container.appendChild(new_subject_container);
 		}

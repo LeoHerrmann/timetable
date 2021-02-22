@@ -74,11 +74,7 @@ header > button.open {
 	margin-top: var(--space--1);
 }
 
-.subject.empty {
-	opacity: 0;
-}
-
-.subject.hidden {
+#subjects_container > .subject.hidden {
 	opacity: 0 !important;
 	transform: translateY(10px) !important;
 }
@@ -92,7 +88,7 @@ header > button.open {
 	font-size: var(--space--1);
 }
 
-#subjects_container.empty_timetable > .subject {
+#subjects_container > .subject.empty {
 	opacity: 1;
 	background-color: rgba(0,0,0,0);
 	color: var(--color-foreground-2);
