@@ -56,7 +56,7 @@ function create_day_containers() {
     			new_subject_container.style.color = get_subject_color(period.subject);
             }
 
-			new_subject_container.oncontextmenu = function(e) {
+			new_subject_container.onclick = function(e) {
 				e.preventDefault();
 
 				if (e.target.classList.contains("subject_container")) {

@@ -1,7 +1,7 @@
 var refresh_periods_container = function() {
 	var periods_container = document.getElementById("periods_container");
 
-	periods_container.oncontextmenu = function(e) {
+	periods_container.onclick = function(e) {
 		e.preventDefault();
 	};
 
@@ -9,12 +9,12 @@ var refresh_periods_container = function() {
 
 	if (config.data.periods.length == 0) {
 		periods_container.innerHTML =
-			"<div class='no_period_placeholder' oncontextmenu='editor.show_period_edit_popup();'>+</div>";
+			"<div class='no_period_placeholder' onclick='editor.show_period_edit_popup();'>+</div>";
 	}
 
 	for (period of config.data.periods) {
 		periods_container.innerHTML += 
-			"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
+			"<div class='period' onclick='editor.show_period_edit_popup();'>" +
 				`<span>${period.start}</span>` +
 				`<span>${period.end}</span>` +
 			"</div>";

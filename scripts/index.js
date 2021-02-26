@@ -169,7 +169,7 @@ var timetable = {
 
 				subjectDiv.innerHTML = "<span></span><span></span>";
 
-				subjectDiv.addEventListener("contextmenu", function(e) {
+				subjectDiv.addEventListener("click", function(e) {
 					e.preventDefault();
 
 					var clicked_subject_div = e.target;
