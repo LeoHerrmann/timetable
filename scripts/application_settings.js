@@ -12,7 +12,7 @@ window.onload = function() {
 	    restore();
 	});
 
-    inputs = document.querySelectorAll("#language_input, #dark_mode_input");
+    inputs = document.querySelectorAll("#language_input, #dark_mode_input", "#disable_hints_input");
 
     for (input of inputs) {
         input.onchange = function() {
@@ -39,11 +39,13 @@ window.onbeforeunload = function(e) {
 
 
 function show_options() {
-    var language_input = document.querySelector("[name='language_input']");
-    language_input.value = config.data.language;
+    var language_input = document.getElementById("language_input");
+    var dark_mode_input = document.getElementById("dark_mode_input");
+    var disable_hints_input = document.getElementById("disable_hints_input");
 
-    var dark_mode_input = document.querySelector("[name='dark_mode_input']");
+    language_input.value = config.data.language;
     dark_mode_input.checked = config.data.dark_mode_enabled;
+    disable_hints_input.checked = config.data.hints_disabled;
 }
 
 
@@ -98,11 +100,13 @@ function reset() {
 
 
 function save() {
-    var language_input_value = document.querySelector("[name='language_input']").value;
-    config.data.language = language_input_value;
+    var language_input_value = document.getElementById("language_input").value;
+    var dark_mode_input_value = document.getElementById("dark_mode_input").checked;
+    var disable_hints_input_value = document.getElementById("disable_hints_input").checked;
 
-    var dark_mode_input_value = document.querySelector("[name='dark_mode_input']").checked;
+    config.data.language = language_input_value;
     config.data.dark_mode_enabled = dark_mode_input_value; 
+    config.data.hints_disabled = disable_hints_input_value;
 
     config.save_data(config.data);
     alert("General settings have been saved. Changes will take effect after page refresh.");

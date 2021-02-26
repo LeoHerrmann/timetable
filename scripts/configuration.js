@@ -25,6 +25,8 @@ var config = {
 
 		dark_mode_enabled: false,
 
+        hints_disabled: false,
+
 		timetable: [
 			{
 				day: "Monday",
