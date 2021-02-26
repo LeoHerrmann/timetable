@@ -7,7 +7,7 @@ window.onload = function() {
     	printing_mode = true;
     }
 
-	fill_periods_container();
+	refresh_periods_container();
 	create_day_containers();
 
     if (printing_mode === true) {
@@ -17,24 +17,6 @@ window.onload = function() {
         	window.print();
         }, 1000);
     }
-
-
-
-	function fill_periods_container() {
-		var periods_container = document.getElementById("periods_container");
-
-		for (period of config.data.periods) {
-			periods_container.innerHTML += 
-				"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
-					`<span>${period.start}</span>` +
-					`<span>${period.end}</span>` +
-				"</div>";
-		}
-
-		periods_container.addEventListener("contextmenu", function(e) {
-			e.preventDefault();
-		})
-	}
 };
 
 
@@ -52,9 +34,27 @@ function create_day_containers() {
 		for (period of timetable[day_index].schedule) {
 			new_subject_container = document.createElement("div");
 			new_subject_container.classList.add("subject_container");
-			new_subject_container.innerHTML =
-				`<span>${period.subject}</span>` +
-				`<span>${period.room}</span>`;
+
+            if (period.subject == "" && period.room == "") {
+            	new_subject_container.innerHTML =
+    				`<span>+</span>` +
+    				`<span></span>`;
+
+    			new_subject_container.style.color = "";
+    			new_subject_container.classList.add("empty");
+    			
+				if (config.data.hints_disabled === true) {
+					new_subject_container.style.opacity = 0;
+				}
+            }
+
+            else {
+                new_subject_container.innerHTML =
+    				`<span>${period.subject}</span>` +
+    				`<span>${period.room}</span>`;
+
+    			new_subject_container.style.color = get_subject_color(period.subject);
+            }
 
 			new_subject_container.oncontextmenu = function(e) {
 				e.preventDefault();
@@ -66,12 +66,6 @@ function create_day_containers() {
 					editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
 				}
 			};
-
-			if (period.subject == "") {
-				new_subject_container.classList.add("empty");
-			}
-
-			new_subject_container.style.color = get_subject_color(period.subject);
 
 			new_day_container.appendChild(new_subject_container);
 		}
@@ -168,4 +162,6 @@ editor.save_schedule_changes = function() {
 	subject_container.innerHTML = `<span>${subject}</span>` + `<span>${room}</span`;
 
 	subject_container.style.color = get_subject_color(subject);
+
+	refresh_schedule_container();
 }

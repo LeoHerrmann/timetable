@@ -9,7 +9,7 @@ window.onload = function() {
 
 	function dom_setup() {
 		create_header_buttons();
-		fill_periods_container();
+		refresh_periods_container();
 		timetable.subject_divs.create();
 
 
@@ -39,23 +39,6 @@ window.onload = function() {
 				header.appendChild(new_button);
 				counter++;
 			}
-		}
-
-
-		function fill_periods_container() {
-			var periods_container = document.getElementById("periods_container");
-
-			for (period of config.data.periods) {
-				periods_container.innerHTML += 
-					"<div class='period' oncontextmenu='editor.show_period_edit_popup();'>" +
-						`<span>${period.start}</span>` +
-						`<span>${period.end}</span>` +
-					"</div>";
-			}
-
-			periods_container.addEventListener("contextmenu", function(e) {
-				e.preventDefault();
-			});
 		}
 	}
 
@@ -209,8 +192,20 @@ var timetable = {
 				var subject_name = config.data.timetable[dayNumber].schedule[period].subject;
 				var subject_room = config.data.timetable[dayNumber].schedule[period].room;
 
-				if (subject_name != "") {
+				if (subject_name == "" && subject_room == "") {
+					subject_divs[period].classList.add("empty");
+					subject_divs[period].querySelectorAll("span")[0].innerText = "+";
+					subject_divs[period].querySelectorAll("span")[1].innerText = "";
+					subject_divs[period].style.color = "";
+
+					if (config.data.hints_disabled === true) {
+						subject_divs[period].style.opacity = 0;
+					}
+				}
+
+				else {
 					subject_divs[period].classList.remove("empty");
+					subject_divs[period].style.opacity = "";
 
 					var subject_hue = config.data.colors[subject_name];
 
@@ -227,9 +222,6 @@ var timetable = {
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
 					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
-				}
-				else {
-					subject_divs[period].classList.add("empty");
 				}
 			}
 		},
@@ -280,7 +272,7 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 	document.querySelector("[name='room_input']").value = room;
 
 	popup.show("schedule_edit_popup");
-}
+};
 
 editor.save_schedule_changes = function() {
 	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
@@ -296,4 +288,4 @@ editor.save_schedule_changes = function() {
 	config.save_data(new_data);
 	config.load_data();
 	timetable.display_for_day(timetable.currently_shown_day_number);
-}
+};

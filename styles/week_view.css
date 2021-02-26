@@ -73,15 +73,6 @@ header > button {
 	margin-top: var(--space--1);
 }
 
-.subject_container.empty {
-	opacity: 0;
-}
-
-.subject_container.hidden {
-	opacity: 0;
-	transform: translateY(10px);
-}
-
 .day_container > .subject_container > span:nth-of-type(1) {
 	flex-grow: 1;
 	padding-right: 1ch;
@@ -91,7 +82,13 @@ header > button {
 	font-size: var(--space--1);
 }
 
-
+.day_container > .subject_container.empty {
+	background-color: rgba(0,0,0,0);
+	color: var(--color-foreground-2);
+	border: 3px dashed;
+	text-align: center;
+	font-size: var(--space-1);
+}
 
 @media print {
     body {

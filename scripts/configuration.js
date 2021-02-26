@@ -25,7 +25,36 @@ var config = {
 
 		dark_mode_enabled: false,
 
+        hints_disabled: false,
+
 		timetable: [
+			{
+				day: "Monday",
+				schedule: []
+			},
+			{
+				day: "Tuesday",
+				schedule: []
+			},
+			{
+				day: "Wednesday",
+				schedule: []
+			},
+			{
+				day: "Thursday",
+				schedule: []
+			},
+			{
+				day: "Friday",
+				schedule: []
+			}
+		],
+
+		periods: [],
+
+		colors: {}
+
+		/*timetable: [
 			{
 				day: "Monday",
 				schedule: [
@@ -136,6 +165,6 @@ var config = {
 			"Geography":"56",
 			"Computer Science":"326",
 			"Sport":"251"
-		}
+		}*/
 	}
 };

@@ -1,7 +1,16 @@
-refresh_periods_container = function() {
+var refresh_periods_container = function() {
 	var periods_container = document.getElementById("periods_container");
 
+	periods_container.oncontextmenu = function(e) {
+		e.preventDefault();
+	};
+
 	periods_container.innerHTML = "";
+
+	if (config.data.periods.length == 0) {
+		periods_container.innerHTML =
+			"<div class='no_period_placeholder' oncontextmenu='editor.show_period_edit_popup();'>+</div>";
+	}
 
 	for (period of config.data.periods) {
 		periods_container.innerHTML += 
@@ -10,7 +19,7 @@ refresh_periods_container = function() {
 				`<span>${period.end}</span>` +
 			"</div>";
 	}
-}
+};
 
 
 

@@ -74,13 +74,9 @@ header > button.open {
 	margin-top: var(--space--1);
 }
 
-.subject.empty {
-	opacity: 0;
-}
-
-.subject.hidden {
-	opacity: 0;
-	transform: translateY(10px);
+#subjects_container > .subject.hidden {
+	opacity: 0 !important;
+	transform: translateY(10px) !important;
 }
 
 #subjects_container > .subject > span:nth-of-type(1) {
@@ -90,4 +86,12 @@ header > button.open {
 
 #subjects_container > .subject > span:nth-of-type(2) {
 	font-size: var(--space--1);
+}
+
+#subjects_container > .subject.empty {
+	background-color: rgba(0,0,0,0);
+	color: var(--color-foreground-2);
+	border: 3px dashed;
+	text-align: center;
+	font-size: var(--space-1);
 }
