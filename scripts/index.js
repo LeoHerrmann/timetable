@@ -192,8 +192,20 @@ var timetable = {
 				var subject_name = config.data.timetable[dayNumber].schedule[period].subject;
 				var subject_room = config.data.timetable[dayNumber].schedule[period].room;
 
-				if (subject_name != "" && subject_room != "") {
+				if (subject_name == "" && subject_room == "") {
+					subject_divs[period].classList.add("empty");
+					subject_divs[period].querySelectorAll("span")[0].innerText = "+";
+					subject_divs[period].querySelectorAll("span")[1].innerText = "";
+					subject_divs[period].style.color = "";
+
+					if (config.data.hints_disabled === true) {
+						subject_divs[period].style.opacity = 0;
+					}
+				}
+
+				else {
 					subject_divs[period].classList.remove("empty");
+					subject_divs[period].style.opacity = "";
 
 					var subject_hue = config.data.colors[subject_name];
 
@@ -210,13 +222,6 @@ var timetable = {
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
 					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
-				}
-
-				else {
-					subject_divs[period].classList.add("empty");
-					subject_divs[period].querySelectorAll("span")[0].innerText = "+";
-					subject_divs[period].querySelectorAll("span")[1].innerText = "";
-					subject_divs[period].style.color = "";
 				}
 			}
 		},
@@ -267,7 +272,7 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 	document.querySelector("[name='room_input']").value = room;
 
 	popup.show("schedule_edit_popup");
-}
+};
 
 editor.save_schedule_changes = function() {
 	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
@@ -283,4 +288,4 @@ editor.save_schedule_changes = function() {
 	config.save_data(new_data);
 	config.load_data();
 	timetable.display_for_day(timetable.currently_shown_day_number);
-}
+};

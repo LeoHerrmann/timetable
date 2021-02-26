@@ -42,6 +42,10 @@ function create_day_containers() {
 
     			new_subject_container.style.color = "";
     			new_subject_container.classList.add("empty");
+    			
+				if (config.data.hints_disabled === true) {
+					new_subject_container.style.opacity = 0;
+				}
             }
 
             else {
