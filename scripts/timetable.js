@@ -22,6 +22,27 @@ var refresh_periods_container = function() {
 };
 
 
+function add_color_input_events() {
+    var color_input = document.querySelector("[name='color_input']");
+	var subject_input = document.querySelector("[name='subject_input']");
+
+    color_input.addEventListener("input", function(e) {
+        var color = e.target.value;
+
+        var color_preview = document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
+    });
+
+	subject_input.addEventListener("input", function(e) {
+		var subject = e.target.value;
+		var color = config.data.colors[subject];
+
+		if (color === undefined) {color = 0};
+
+		document.querySelector("[name='color_input']").value = color;
+		document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
+	});
+}
+
 
 var popup = {
 	close: function() {

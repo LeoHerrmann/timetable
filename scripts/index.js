@@ -2,6 +2,7 @@ window.onload = function() {
 	dom_setup();
 	add_navigation_events();
 	timetable.display_current();
+	add_color_input_events();
 
 	register_service_worker();
 
@@ -246,6 +247,8 @@ var timetable = {
 };
 
 
+//color_preview ändern, beim Eingeben, wenn ein gespeichertes Fach gefunden wird
+//color_preview ändern, wenn der Schieberegler verschoben wird
 
 editor.show_schedule_edit_popup = function(clicked_subject_div) {
 	var day_index = timetable.currently_shown_day_number;
@@ -263,6 +266,9 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 
 	var subject = config.data.timetable[day_index].schedule[period_index].subject;
 	var room = config.data.timetable[day_index].schedule[period_index].room;
+	var color = config.data.colors[subject];
+
+	if (color === undefined || subject == "") {color = 0}
 
 	document.getElementById("day_label").innerText = day_name + ",";
 	document.getElementById("day_label").setAttribute("data-day-index", day_index);
@@ -270,6 +276,8 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 	document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
 	document.querySelector("[name='subject_input']").value = subject;
 	document.querySelector("[name='room_input']").value = room;
+	document.querySelector("[name='color_input']").value = color;
+	document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
 
 	popup.show("schedule_edit_popup");
 };
@@ -279,11 +287,13 @@ editor.save_schedule_changes = function() {
 	var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
 	var subject = document.querySelector("[name='subject_input']").value;
 	var room = document.querySelector("[name='room_input']").value;
+    var color = document.querySelector("[name='color_input']").value;
 
 	var new_data = JSON.parse(JSON.stringify(config.data));
 
 	new_data.timetable[day_index].schedule[period_index].subject = subject;
 	new_data.timetable[day_index].schedule[period_index].room = room;
+	new_data.colors[subject] = color;
 
 	config.save_data(new_data);
 	config.load_data();
