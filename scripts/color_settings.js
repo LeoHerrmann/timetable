@@ -23,47 +23,38 @@ window.onbeforeunload = function(e) {
 
 
 function show_options() {  
-    show_color_options();
+    var color_settings_group = document.getElementById("color_settings_group");
+    var color_input_groups_container = document.getElementById("color_input_groups_container");
 
+    for (let subject in config.data.colors) {
+        let hue = config.data.colors[subject];
 
-    function show_color_options() {
-        var color_settings_group = document.getElementById("color_settings_group");
-        var color_input_groups_container = document.getElementById("color_input_groups_container");
+        color_input_groups_container.innerHTML +=
+            "<div class='input_group'>" +
+                `<label>${subject}</label>` +
+                `<input type='range' min='0' max='360' value='${hue}'/>` +
+                `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>` +
+                `<button onclick="remove_color(this);" class="icon-delete"></button>`
+            "</div>";
+    }
 
-        var subjects_list = [];
-
-        for (day of config.data.timetable) {
-            for (period of day.schedule) {
-                if (subjects_list.indexOf(period.subject) < 0 && period.subject != "") {
-                    subjects_list.push(period.subject);
-                }
-            }
-        }
-
-        for (subject of subjects_list) {
-            var hue = config.data.colors[subject];
-
-            if (typeof(hue) == "undefined") {
-                hue = 0;
-            }
-
-            color_input_groups_container.innerHTML += 
-                "<div class='input_group'>" +
-                    `<label>${subject}</label>` +
-                    `<input type='range' min='0' max='360' value='${hue}'/>` +
-                    `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>`
-                "</div>";
-        }
-
-        var inputs = document.getElementsByTagName("input");
-        for (input_element of inputs) {
-            input_element.onchange = function(e) {
-                settings_saved = false;
-                document.getElementById("save_button").classList.add("positive");
-                e.target.parentElement.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${e.target.value}, 100%, 50%)`;
-            }
+    var inputs = document.getElementsByTagName("input");
+    for (input_element of inputs) {
+        input_element.onchange = function(e) {
+            settings_saved = false;
+            document.getElementById("save_button").classList.add("positive");
+            e.target.parentElement.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${e.target.value}, 100%, 50%)`;
         }
     }
+
+    //nur die Farben löschbar machen, die nicht um Stundenplan sind
+}
+
+
+function remove_color(clicked_element) {
+    clicked_element.parentElement.remove();
+    settings_saved = false;
+    document.getElementById("save_button").classList.add("positive");
 }
 
 
@@ -72,7 +63,7 @@ function save() {
     var color_settings_input_groups = document.querySelectorAll("#color_input_groups_container > .input_group");
     var new_colors = {};
 
-    for (input_group of color_settings_input_groups) {
+    for (let input_group of color_settings_input_groups) {
         var label = input_group.getElementsByTagName("label")[0];
         var input = input_group.getElementsByTagName("input")[0];
 

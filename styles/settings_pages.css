@@ -65,25 +65,31 @@ header > button {
     background-color: var(--color-background-1);
 }
 
-
-
 #color_input_groups_container > .input_group > label {
     width: 12ch;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: keep-all;
 }
+
 #color_input_groups_container > .input_group > input {
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
     flex-grow: 1;
 }
+
 #color_input_groups_container > .input_group > .color_preview {
     margin-top: calc((var(--space-3) - var(--space-2)) / 2);
     width: var(--space-2);
     height: var(--space-2);
     border-radius: 5px;
+}
+
+#color_input_groups_container > .input_group > .icon-delete {
+    width: var(--space-3);
+    padding: 0;
+    color: var(--color-negative);
 }
 
 
