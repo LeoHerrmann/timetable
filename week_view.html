@@ -59,6 +59,10 @@
 
 				<label for="room_input" data-translator-key="room:">Room:</label>
 				<input name="room_input" type="text"/>
+
+                <label for="color_input" data-translator-key="color:">Color:</label>
+                <input name="color_input" type="range" min="0" max="360" value="0"/>
+                <div class="color_preview"></div>
 			</div>
 
 			<button class="positive" onclick="editor.save_schedule_changes();popup.close();" data-translator-key="save">Save</button>

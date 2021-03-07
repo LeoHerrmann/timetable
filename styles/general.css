@@ -139,6 +139,9 @@ button.negative {
 button:active {
 	background-color: var(--color-background-3);
 }
+button:disabled {
+	opacity: 0.5;
+}
 
 
 

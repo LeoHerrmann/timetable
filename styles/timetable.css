@@ -33,10 +33,25 @@
 
 .popup > .inputs_container {
 	display: grid;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: auto 1fr auto;
 	grid-gap: var(--space--2);
 	align-items: center;
 }
+
+.popup > .inputs_container > input:not([name="color_input"]) {
+	grid-column: 2 / 4;
+}
+
+.popup > .inputs_container > input[name="color_input"] {
+	padding: 0;
+}
+
+.popup > .inputs_container > .color_preview {
+    width: var(--space-2);
+    height: var(--space-2);
+    border-radius: 5px;
+    background-color: hsl(0, 100%, 50%);
+} 
 
 .popup > button {
 	float: right;
