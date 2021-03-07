@@ -26,16 +26,27 @@ function show_options() {
     var color_settings_group = document.getElementById("color_settings_group");
     var color_input_groups_container = document.getElementById("color_input_groups_container");
 
+    var subjects_in_schedule = get_subjects_in_schedule();
+
     for (let subject in config.data.colors) {
         let hue = config.data.colors[subject];
 
-        color_input_groups_container.innerHTML +=
+        let new_input_group = 
             "<div class='input_group'>" +
                 `<label>${subject}</label>` +
                 `<input type='range' min='0' max='360' value='${hue}'/>` +
-                `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>` +
-                `<button onclick="remove_color(this);" class="icon-delete"></button>`
-            "</div>";
+                `<div class="color_preview" style="background-color: hsl(${hue}, 100%, 50%)"></div>`;
+
+        if (subjects_in_schedule.indexOf(subject) >= 0) {
+            new_input_group += `<button onclick="remove_color(this);" class="icon-delete" disabled></button>`
+        }
+        else {
+            new_input_group += `<button onclick="remove_color(this);" class="icon-delete"></button>` 
+        }
+
+        new_input_group += "</div>"; 
+
+        color_input_groups_container.innerHTML += new_input_group;
     }
 
     var inputs = document.getElementsByTagName("input");
@@ -47,7 +58,21 @@ function show_options() {
         }
     }
 
-    //nur die Farben löschbar machen, die nicht um Stundenplan sind
+    function get_subjects_in_schedule() {
+        var subjects_in_schedule = [];
+
+        for (let day of config.data.timetable) {
+            let schedule = day.schedule;
+
+            for (let period of schedule) {
+                if (subjects_in_schedule.indexOf(period.subject) == -1 && period.subject != "") {
+                    subjects_in_schedule.push(period.subject);
+                }
+            }
+        }
+
+        return subjects_in_schedule;
+    }
 }
 
 
@@ -68,7 +93,6 @@ function save() {
         var input = input_group.getElementsByTagName("input")[0];
 
         new_colors[label.innerText] = input.value;
-        console.log(input.value);
     }
 
     config.data.colors = new_colors;
