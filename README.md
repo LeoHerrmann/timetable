@@ -18,11 +18,22 @@ Core features include:
 
 
 
-## Getting started
+## Running this application
 
 You can run this application [here](https://rahmsauce.github.io/Timetable) or by cloning this repository and opening index.html.
 
 Since this is a progressive web application, there is no need to manually install it because of the service worker caching all the necessary application files during first use. This allows the application to work even when you are offline. For quicker access and a more native app-like feel, you might want to consider adding it to your home screen or desktop.
+
+
+
+## Setting up a development environment
+
+Seting up an environment for development is fairly simple:
+
+- Start a websrever in the root directory of this project: ```python -m SimpleHTTPServer```
+- Open localhost:8000 using a web browser
+
+Note: To bypass the browser cache, hard refreshes might be necessary for changes to take effect
 
 
 
