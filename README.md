@@ -20,7 +20,7 @@ Core features include:
 
 ## Running this application
 
-You can run this application [here](https://rahmsauce.github.io/Timetable) or by cloning this repository and opening index.html.
+You can run this application [here](https://leoherrmann.github.io/Timetable) or by cloning this repository and opening index.html.
 
 Since this is a progressive web application, there is no need to manually install it because of the service worker caching all the necessary application files during first use. This allows the application to work even when you are offline. For quicker access and a more native app-like feel, you might want to consider adding it to your home screen or desktop.
 
