@@ -12,7 +12,7 @@ window.onload = function() {
 	    restore();
 	});
 
-    inputs = document.querySelectorAll("#language_input, #dark_mode_input", "#disable_hints_input");
+    inputs = document.querySelectorAll("#language_input, #dark_mode_input, #disable_hints_input");
 
     for (input of inputs) {
         input.onchange = function() {
