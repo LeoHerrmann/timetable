@@ -35,6 +35,7 @@ self.addEventListener("install", function(e) {
                 "./icon_128.png",
                 "./icon_512.png",
                 "./index.html",
+                "./LICENSE.txt",
                 "./manifest.json",
                 "./settings.html",
                 "./week_view.html",
