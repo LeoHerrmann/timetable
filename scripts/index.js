@@ -21,9 +21,8 @@ window.onload = function() {
 			for (entry of config.data.timetable) {
 				var new_button = document.createElement("button");
 
-				new_button.innerText = entry.day.substring(0,2);
+				new_button.innerText = translator.translate(entry.day.toLowerCase()).substring(0, 2);
 				new_button.setAttribute("data-dayNumber", counter);
-
 
 				new_button.addEventListener("click", function(e) {
 					var header_buttons = document.querySelectorAll("header > button");

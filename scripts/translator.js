@@ -40,7 +40,12 @@ var translator = {
             "end:": "End:",
             "add": "Add",
             "data_saved": "Your application data was successfully saved.",
-            "reset_confirm": "Are you sure to reset all data? If you haven't made a backup, all application data will be lost forever."
+            "reset_confirm": "Are you sure to reset all data? If you haven't made a backup, all application data will be lost forever.",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday"
         },
 
         de: {
@@ -68,7 +73,12 @@ var translator = {
             "end:": "Ende:",
             "add": "Hinzufügen",
             "data_saved": "Ihre Anwendungsdaten wurden erfolgreich gespeichert.",
-            "reset_confirm": "Sind Sie sich sicher, dass sie alle Anwendungsdaten zurücksetzen wollen? Wenn Sie kein Backup gemacht haben, gehen dadurch alle Anwendungsdaten für immer verloren."
+            "reset_confirm": "Sind Sie sich sicher, dass sie alle Anwendungsdaten zurücksetzen wollen? Wenn Sie kein Backup gemacht haben, gehen dadurch alle Anwendungsdaten für immer verloren.",
+            "monday": "Montag",
+            "tuesday": "Dienstag",
+            "wednesday": "Mittwoch",
+            "thursday": "Donnerstag",
+            "friday": "Freitag"
         }
     }
 };

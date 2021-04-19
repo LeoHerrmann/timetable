@@ -29,23 +29,23 @@ var config = {
 
 		timetable: [
 			{
-				day: "Monday",
+				day: "monday",
 				schedule: []
 			},
 			{
-				day: "Tuesday",
+				day: "tuesday",
 				schedule: []
 			},
 			{
-				day: "Wednesday",
+				day: "wednesday",
 				schedule: []
 			},
 			{
-				day: "Thursday",
+				day: "thursday",
 				schedule: []
 			},
 			{
-				day: "Friday",
+				day: "friday",
 				schedule: []
 			}
 		],
