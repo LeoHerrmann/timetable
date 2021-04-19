@@ -269,7 +269,7 @@ editor.show_schedule_edit_popup = function(clicked_subject_div) {
 
 	if (color === undefined || subject == "") {color = 0}
 
-	document.getElementById("day_label").innerText = day_name + ",";
+	document.getElementById("day_label").innerText = translator.translate(day_name) + ",";
 	document.getElementById("day_label").setAttribute("data-day-index", day_index);
 	document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
 	document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
