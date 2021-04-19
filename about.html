@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>Timetable</title>
 		<link rel="stylesheet" type="text/css" href="styles/general.css"/>
-		<link rel="stylesheet" type="text/css" href="styles/settings.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/settings_pages.css"/>
 		<link rel="stylesheet" type="text/css" href="styles/fontello/css/fontello.css"/>
 		<script src="scripts/configuration.js"></script>
 		<script src="scripts/translator.js"></script>
@@ -24,6 +24,7 @@
 	</head>
 
 
+
 	<body>
 		<header>
 			<button class="back_button icon-back" onclick="transition_back();"></button>
@@ -31,22 +32,13 @@
 		</header>
 
 		<div id="settings_container">
-			<div class="settings_group">
-				<a onclick="transition_to_page('application_settings.html');" data-translator-key="application" class="icon-settings">
-					General
-				</a>
+			<div id="about_group" class="settings_group closed">
+				<div class="settings_group_header">
+					<h2 data-translator-key="about_timetable">About Timetable</h2>
+				</div>
 
-				<a onclick="transition_to_page('color_settings.html');" data-translator-key="manage_colors" class="icon-colors">
-					Manage colors
-				</a>
-
-				<a onclick="transition_to_page('week_view.html?print');" data-translator-key="print" class="icon-print">
-					Print
-				</a>
-
-				<a onclick="transition_to_page('about.html');" data-translator-key="about_timetable" class="icon-info">
-					About Timetable
-				</a>
+				<a href="https://github.com/LeoHerrmann/Timetable" class="icon-source">Source Code</a>
+				<a href="LICENSE.txt" class="icon-info">License</a>
 			</div>
 		</div>
 	</body>
