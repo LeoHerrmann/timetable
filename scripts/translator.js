@@ -16,7 +16,6 @@ var translator = {
 
     languages: {
         en: {
-            "timetable": "Timetable",
             "settings": "Settings",
             "language: ": "Language:",
             "dark_mode: ": "Dark mode:",
@@ -45,7 +44,6 @@ var translator = {
         },
 
         de: {
-            "timetable": "Stundenplan",
             "settings": "Einstellungen",
             "language: ": "Sprache:",
             "dark_mode: ": "Dark mode:",
