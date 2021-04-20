@@ -201,7 +201,7 @@ var timetable = {
 					subject_divs[period].classList.remove("empty");
 					subject_divs[period].style.opacity = "";
 
-					subject_divs[period].style.color = get_subject_color(subject)
+					subject_divs[period].style.color = get_subject_color(subject_name)
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
 					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
