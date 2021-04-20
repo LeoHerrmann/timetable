@@ -22,6 +22,7 @@ var refresh_periods_container = function() {
 };
 
 
+
 function add_color_input_events() {
     var color_input = document.querySelector("[name='color_input']");
 	var subject_input = document.querySelector("[name='subject_input']");
@@ -42,6 +43,7 @@ function add_color_input_events() {
 		document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
 	});
 }
+
 
 
 var popup = {
@@ -225,5 +227,66 @@ var editor = {
 
 		refresh_periods_container();
 		refresh_schedule_container();
+	},
+
+
+
+    show_schedule_edit_popup: function(day_index, period_index) {
+	    var day_name = config.data.timetable[day_index].day;
+
+	    var subject = config.data.timetable[day_index].schedule[period_index].subject;
+	    var room = config.data.timetable[day_index].schedule[period_index].room;
+	    var color = config.data.colors[subject];
+
+	    if (color === undefined || subject == "") {color = 0}
+
+	    document.getElementById("day_label").innerText = translator.translate(day_name) + ",";
+	    document.getElementById("day_label").setAttribute("data-day-index", day_index);
+	    document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
+	    document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
+	    document.querySelector("[name='subject_input']").value = subject;
+	    document.querySelector("[name='room_input']").value = room;
+	    document.querySelector("[name='color_input']").value = color;
+	    document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
+
+	    popup.show("schedule_edit_popup");
+    },
+
+
+
+	save_schedule_changes: function() {
+		var day_index = document.getElementById("day_label").getAttribute("data-day-index");
+		var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
+		var subject = document.querySelector("[name='subject_input']").value;
+		var room = document.querySelector("[name='room_input']").value;
+		var color = document.querySelector("[name='color_input']").value;
+
+		var new_data = JSON.parse(JSON.stringify(config.data));
+
+		new_data.timetable[day_index].schedule[period_index].subject = subject;
+		new_data.timetable[day_index].schedule[period_index].room = room;
+		new_data.colors[subject] = color;
+
+		config.save_data(new_data);
+		config.load_data();
+
+		refresh_schedule_container();
 	}
 };
+
+
+
+function get_subject_color(subject) {
+	var subject_hue = config.data.colors[subject];
+
+	if (typeof(subject_hue) == "undefined") {
+		subject_hue = "0";
+	}
+
+    if (config.data.dark_mode_enabled && printing_mode === false) {
+		return `hsl(${subject_hue}, 90%, 70%)`;
+	}
+	else {
+		return `hsl(${subject_hue}, 100%, 35%)`;
+	}
+}

@@ -58,14 +58,29 @@ function create_day_containers() {
             }
 
 			new_subject_container.onclick = function(e) {
-				e.preventDefault();
+				var period_index;
+				var clicked_subject_div;
+				var day_container;
 
 				if (e.target.classList.contains("subject_container")) {
-					editor.show_schedule_edit_popup(e.target);
+					clicked_subject_div = e.target;
+					day_container = clicked_subject_div.closest(".day_container");
 				}
+
 				else {
-					editor.show_schedule_edit_popup(e.target.closest(".subject_container"));
+					clicked_subject_div = e.target.closest(".subject_container");
+					day_container = clicked_subject_div.closest(".day_container");
 				}
+
+				var subject_containers = day_container.getElementsByClassName("subject_container");
+
+				for (let container in subject_containers) {
+					if (clicked_subject_div == subject_containers[container]) {
+						period_index = container;
+					}
+				}
+
+				editor.show_schedule_edit_popup(day_index, period_index);
 			};
 
 			new_day_container.appendChild(new_subject_container);
@@ -84,92 +99,3 @@ function refresh_schedule_container() {
 
     create_day_containers();
 }
-
-
-
-function get_subject_color(subject) {
-	var subject_hue = config.data.colors[subject];
-
-	if (typeof(subject_hue) == "undefined") {
-		subject_hue = "0";
-	}
-
-    if (config.data.dark_mode_enabled && printing_mode === false) {
-		return `hsl(${subject_hue}, 90%, 70%)`;
-	}
-	else {
-		return `hsl(${subject_hue}, 100%, 35%)`;
-	}
-}
-
-
-
-editor.show_schedule_edit_popup = function(clicked_subject_div) {
-	var day_container = clicked_subject_div.closest(".day_container");
-
-	var day_index;
-	var day_containers = document.getElementsByClassName("day_container");
-
-	for (let i in day_containers) {
-		if (day_container == day_containers[i]) {
-			day_index = i;
-		}
-	}
-
-
-	var period_index;
-	var subject_containers = day_container.getElementsByClassName("subject_container");
-
-	for (container in subject_containers) {
-		if (clicked_subject_div == subject_containers[container]) {
-			period_index = container;
-		}
-	}
-
-
-	var day_name = config.data.timetable[day_index].day;
-
-	var subject = config.data.timetable[day_index].schedule[period_index].subject;
-	var room = config.data.timetable[day_index].schedule[period_index].room;
-	var color = config.data.colors[subject];
-
-	if (color === undefined || subject == "") {color = 0}
-
-	document.getElementById("day_label").innerText = translator.translate(day_name) + ",";
-	document.getElementById("day_label").setAttribute("data-day-index", day_index);
-	document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
-	document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
-	document.querySelector("[name='subject_input']").value = subject;
-	document.querySelector("[name='room_input']").value = room;
-	document.querySelector("[name='color_input']").value = color;
-	document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
-
-	popup.show("schedule_edit_popup");
-};
-
-
-
-editor.save_schedule_changes = function() {
-	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
-	var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
-	var subject = document.querySelector("[name='subject_input']").value;
-	var room = document.querySelector("[name='room_input']").value;
-    var color = document.querySelector("[name='color_input']").value;
-
-	var new_data = JSON.parse(JSON.stringify(config.data));
-
-	new_data.timetable[day_index].schedule[period_index].subject = subject;
-	new_data.timetable[day_index].schedule[period_index].room = room;
-	new_data.colors[subject] = color;
-
-	config.save_data(new_data);
-	config.load_data();
-
-	var day_container = document.getElementsByClassName("day_container")[day_index];
-	subject_container = day_container.getElementsByClassName("subject_container")[period_index];
-	subject_container.innerHTML = `<span>${subject}</span>` + `<span>${room}</span`;
-
-	subject_container.style.color = get_subject_color(subject);
-
-	refresh_schedule_container();
-};
