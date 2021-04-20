@@ -225,5 +225,28 @@ var editor = {
 
 		refresh_periods_container();
 		refresh_schedule_container();
-	}
+	},
+
+
+
+    show_schedule_edit_popup: function(day_index, period_index) {
+	    var day_name = config.data.timetable[day_index].day;
+
+	    var subject = config.data.timetable[day_index].schedule[period_index].subject;
+	    var room = config.data.timetable[day_index].schedule[period_index].room;
+	    var color = config.data.colors[subject];
+
+	    if (color === undefined || subject == "") {color = 0}
+
+	    document.getElementById("day_label").innerText = translator.translate(day_name) + ",";
+	    document.getElementById("day_label").setAttribute("data-day-index", day_index);
+	    document.querySelector("#schedule_edit_popup .period_number_label").innerText = translator.translate("period") + " " + (parseInt(period_index) + 1);
+	    document.querySelector("#schedule_edit_popup .period_number_label").setAttribute("data-period-index", period_index);
+	    document.querySelector("[name='subject_input']").value = subject;
+	    document.querySelector("[name='room_input']").value = room;
+	    document.querySelector("[name='color_input']").value = color;
+	    document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
+
+	    popup.show("schedule_edit_popup");
+    }
 };
