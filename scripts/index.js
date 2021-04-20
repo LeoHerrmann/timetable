@@ -97,7 +97,7 @@ window.onload = function() {
 function refresh_schedule_container() {
 	document.getElementById("subjects_container").innerHTML = "";
 	timetable.subject_divs.create();
-	timetable.display_current();
+	timetable.display_for_day(timetable.currently_shown_day_number);
 }
 
 
@@ -244,24 +244,4 @@ var timetable = {
 			}
 		}
 	}
-};
-
-
-
-editor.save_schedule_changes = function() {
-	var day_index = document.getElementById("day_label").getAttribute("data-day-index");
-	var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
-	var subject = document.querySelector("[name='subject_input']").value;
-	var room = document.querySelector("[name='room_input']").value;
-    var color = document.querySelector("[name='color_input']").value;
-
-	var new_data = JSON.parse(JSON.stringify(config.data));
-
-	new_data.timetable[day_index].schedule[period_index].subject = subject;
-	new_data.timetable[day_index].schedule[period_index].room = room;
-	new_data.colors[subject] = color;
-
-	config.save_data(new_data);
-	config.load_data();
-	timetable.display_for_day(timetable.currently_shown_day_number);
 };

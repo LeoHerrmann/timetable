@@ -248,5 +248,26 @@ var editor = {
 	    document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
 
 	    popup.show("schedule_edit_popup");
-    }
+    },
+
+
+
+	save_schedule_changes: function() {
+		var day_index = document.getElementById("day_label").getAttribute("data-day-index");
+		var period_index = document.querySelector("#schedule_edit_popup .period_number_label").getAttribute("data-period-index");
+		var subject = document.querySelector("[name='subject_input']").value;
+		var room = document.querySelector("[name='room_input']").value;
+		var color = document.querySelector("[name='color_input']").value;
+
+		var new_data = JSON.parse(JSON.stringify(config.data));
+
+		new_data.timetable[day_index].schedule[period_index].subject = subject;
+		new_data.timetable[day_index].schedule[period_index].room = room;
+		new_data.colors[subject] = color;
+
+		config.save_data(new_data);
+		config.load_data();
+
+		refresh_schedule_container();
+	}
 };
