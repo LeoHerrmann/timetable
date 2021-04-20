@@ -94,14 +94,6 @@ window.onload = function() {
 
 
 
-function refresh_schedule_container() {
-	document.getElementById("subjects_container").innerHTML = "";
-	timetable.subject_divs.create();
-	timetable.display_for_day(timetable.currently_shown_day_number);
-}
-
-
-
 var timetable = {
 	currently_shown_day_number: 0,
 
@@ -186,6 +178,7 @@ var timetable = {
 			}
 		},
 
+
 		fill: function (dayNumber) {
 			var subject_divs = document.querySelectorAll(".subject");
 
@@ -208,24 +201,14 @@ var timetable = {
 					subject_divs[period].classList.remove("empty");
 					subject_divs[period].style.opacity = "";
 
-					var subject_hue = config.data.colors[subject_name];
-
-					if (typeof(subject_hue) == "undefined") {
-					    subject_hue = "0";
-					}
-
-                    if (config.data.dark_mode_enabled) {
-						subject_divs[period].style.color = `hsl(${subject_hue}, 90%, 70%)`;
-					}
-					else {
-						subject_divs[period].style.color = `hsl(${subject_hue}, 100%, 35%)`;
-					}
+					subject_divs[period].style.color = get_subject_color(subject)
 
 					subject_divs[period].querySelectorAll("span")[0].innerText = subject_name;
 					subject_divs[period].querySelectorAll("span")[1].innerText = subject_room;
 				}
 			}
 		},
+
 
 		show: function() {
 			var subject_divs = document.querySelectorAll(".subject");
@@ -245,3 +228,11 @@ var timetable = {
 		}
 	}
 };
+
+
+
+function refresh_schedule_container() {
+	document.getElementById("subjects_container").innerHTML = "";
+	timetable.subject_divs.create();
+	timetable.display_for_day(timetable.currently_shown_day_number);
+}

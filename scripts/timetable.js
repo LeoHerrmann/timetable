@@ -22,6 +22,7 @@ var refresh_periods_container = function() {
 };
 
 
+
 function add_color_input_events() {
     var color_input = document.querySelector("[name='color_input']");
 	var subject_input = document.querySelector("[name='subject_input']");
@@ -42,6 +43,7 @@ function add_color_input_events() {
 		document.getElementsByClassName("color_preview")[0].style.backgroundColor = `hsl(${color}, 100%, 50%)`;
 	});
 }
+
 
 
 var popup = {
@@ -271,3 +273,20 @@ var editor = {
 		refresh_schedule_container();
 	}
 };
+
+
+
+function get_subject_color(subject) {
+	var subject_hue = config.data.colors[subject];
+
+	if (typeof(subject_hue) == "undefined") {
+		subject_hue = "0";
+	}
+
+    if (config.data.dark_mode_enabled && printing_mode === false) {
+		return `hsl(${subject_hue}, 90%, 70%)`;
+	}
+	else {
+		return `hsl(${subject_hue}, 100%, 35%)`;
+	}
+}

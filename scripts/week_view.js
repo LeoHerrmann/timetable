@@ -99,20 +99,3 @@ function refresh_schedule_container() {
 
     create_day_containers();
 }
-
-
-
-function get_subject_color(subject) {
-	var subject_hue = config.data.colors[subject];
-
-	if (typeof(subject_hue) == "undefined") {
-		subject_hue = "0";
-	}
-
-    if (config.data.dark_mode_enabled && printing_mode === false) {
-		return `hsl(${subject_hue}, 90%, 70%)`;
-	}
-	else {
-		return `hsl(${subject_hue}, 100%, 35%)`;
-	}
-}
